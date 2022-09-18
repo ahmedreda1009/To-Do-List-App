@@ -1,0 +1,25 @@
+@use '../abstracts';
+
+/*-------------------------------------------------------------------*/
+/*--app main header--------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+   
+header {
+    color: abstracts.$clrHeader;
+    width: 100%;
+    margin-bottom: 15px;
+    background-color: abstracts.$clrMainLight;
+    border-radius: abstracts.$radiusLg;
+    padding: 15px 20px;
+    position: sticky;
+    left: 0;
+    top: 0;
+    box-shadow: 1px 1px 5px 1px abstracts.$clrHeaderShadow;
+
+    h1 {
+        margin: 0;
+        text-transform: uppercase;
+        font-weight: normal;
+        font-family: 'GolosTextWebBlack';
+    }
+}

@@ -1,0 +1,412 @@
+@font-face {
+  font-family: "GolosTextWebRegular";
+  src: url("../../webfonts/Golos-Text_Regular.woff2") format("woff2"), url("../../webfonts/Golos-Text_Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GolosTextWebMedium";
+  src: url("../../webfonts/Golos-Text_Medium.woff2") format("woff2"), url("../../webfonts/Golos-Text_Medium.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GolosTextWebDemiBold";
+  src: url("../../webfonts/Golos-Text_DemiBold.woff2") format("woff2"), url("../../webfonts/Golos-Text_DemiBold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GolosTextWebBold";
+  src: url("../../webfonts/Golos-Text_Bold.woff2") format("woff2"), url("../../webfonts/Golos-Text_Bold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GolosTextWebBlack";
+  src: url("../../webfonts/Golos-Text_Black.woff2") format("woff2"), url("../../webfonts/Golos-Text_Black.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+/*-------------------------------------------------------------------*/
+/*--global rules-----------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+*,
+*::before,
+*::after {
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: #D1D1DF;
+  font-family: "GolosTextWebRegular";
+  margin: 0;
+  padding: 0;
+  position: relative;
+  height: 100vh;
+}
+body::before, body::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+body::before {
+  height: 100%;
+  background: linear-gradient(135deg, #595976 0%, #3B3B48 59%);
+  top: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.container {
+  display: flex;
+  gap: 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 30px;
+  margin: auto;
+  transition: width 0.3s ease-in-out;
+  border-radius: 10px;
+  height: min(90vh, 600px);
+  box-shadow: 1px 1px 5px 1px rgba(42, 42, 56, 0.5);
+}
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 800px;
+    width: 80%;
+  }
+}
+@media screen and (max-width: 767px) {
+  .container {
+    flex-direction: column;
+    gap: 0px;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    border-radius: 0 0 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+}
+
+/*-------------------------------------------------------------------*/
+/*--buttons----------------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+nav .nav-block > div {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: #3B3B48;
+  padding: 10px 20px;
+  border-radius: 10px;
+  width: 100%;
+  text-transform: capitalize;
+  font-size: 14px;
+  transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out, padding 0.1s ease-in-out, transform 0.1s ease-in-out, -webkit-text-decoration 0.1s ease-in-out;
+  transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out, padding 0.1s ease-in-out, transform 0.1s ease-in-out, text-decoration 0.1s ease-in-out;
+  transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out, padding 0.1s ease-in-out, transform 0.1s ease-in-out, text-decoration 0.1s ease-in-out, -webkit-text-decoration 0.1s ease-in-out;
+  cursor: pointer;
+  transform: scale(1);
+}
+nav .nav-block > div:hover {
+  background-color: rgba(209, 209, 209, 0.65);
+  transform: scale(0.98);
+}
+@media screen and (max-width: 767px) {
+  nav .nav-block > div:hover {
+    transform: scale(1);
+  }
+}
+nav .nav-block > div.search i {
+  color: #515091;
+  transition: color 0.2s ease-in-out;
+}
+nav .nav-block > div.search:hover {
+  background-color: #515091;
+  color: #D1D1DF;
+}
+nav .nav-block > div.search:hover i {
+  color: #D1D1DF;
+}
+nav .nav-block > div.all i {
+  color: #69C07B;
+  transition: color 0.2s ease-in-out;
+}
+nav .nav-block > div.all:hover {
+  background-color: #69C07B;
+  color: #282836;
+}
+nav .nav-block > div.all:hover i {
+  color: #282836;
+}
+nav .nav-block > div.completed i {
+  color: #1E89E3;
+  transition: color 0.2s ease-in-out;
+}
+nav .nav-block > div.completed:hover {
+  background-color: #1E89E3;
+}
+nav .nav-block > div.completed:hover i {
+  color: #D1D1DF;
+}
+nav .nav-block > div.important i {
+  color: #F9D879;
+  transition: color 0.2s ease-in-out;
+}
+nav .nav-block > div.important:hover {
+  background-color: #F9D879;
+  color: #282836;
+}
+nav .nav-block > div.important:hover i {
+  color: #282836;
+}
+nav .nav-block > div.deleted i {
+  color: #FA4689;
+  transition: color 0.2s ease-in-out;
+}
+nav .nav-block > div.deleted h3 {
+  text-decoration: line-through;
+}
+nav .nav-block > div.deleted:hover {
+  background-color: #FA4689;
+}
+nav .nav-block > div.deleted:hover i {
+  color: #D1D1DF;
+}
+nav .nav-block > div.deleted:hover h3 {
+  text-decoration: none;
+}
+nav .nav-block > div.clear {
+  background-color: #D65542;
+  margin-top: 20px;
+}
+nav .nav-block > div.clear i {
+  color: #D1D1DF;
+  transition: color 0.2s ease-in-out;
+}
+nav .nav-block > div.clear h3 {
+  text-transform: uppercase;
+}
+nav .nav-block > div.clear:hover i {
+  color: #D1D1DF;
+}
+
+main {
+  position: relative;
+}
+main button.new-task {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  z-index: 100;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.24);
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+main button.new-task i {
+  font-size: 30px;
+  color: #313138;
+}
+main button.new-task:hover {
+  transform: translateX(-50%) scale(1.1);
+}
+@media screen and (max-width: 767px) {
+  main button.new-task:hover {
+    transform: translateX(-50%) scale(1);
+  }
+}
+@media screen and (max-width: 767px) {
+  main button.new-task {
+    bottom: 20px;
+    left: 50px;
+  }
+}
+
+/*-------------------------------------------------------------------*/
+/*--app main header--------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+header {
+  color: rgba(209, 209, 209, 0.65);
+  width: 100%;
+  margin-bottom: 15px;
+  background-color: #313138;
+  border-radius: 10px;
+  padding: 15px 20px;
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  top: 0;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+}
+header h1 {
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-family: "GolosTextWebBlack";
+}
+
+/*-------------------------------------------------------------------*/
+/*--main-------------------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+main {
+  height: 100%;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: rgba(42, 42, 56, 0.7490196078);
+  box-shadow: 1px 1px 5px 1px rgba(42, 42, 56, 0.8);
+  flex-basis: 65%;
+  overflow: hidden;
+}
+@media screen and (max-width: 767px) {
+  main {
+    flex-basis: 100%;
+    border-radius: 0 0 0 0;
+    box-shadow: 0 0 0 0;
+  }
+}
+main header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+main header > i {
+  font-size: 25px;
+  visibility: hidden;
+}
+@media screen and (max-width: 767px) {
+  main header > i {
+    display: flex !important;
+    visibility: visible;
+    width: 35px;
+    height: 35px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: transparent;
+    color: #D1D1DF;
+    transform: scale(1);
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.1s ease-in-out;
+  }
+  main header > i:hover {
+    background-color: rgba(209, 209, 209, 0.4);
+    color: #282836;
+    transform: scale(1.05);
+  }
+}
+main header .title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+main header .title i {
+  font-size: 25px;
+  color: rgba(209, 209, 209, 0.65);
+}
+main .tasks-block {
+  height: calc(100% - 80px);
+  width: 100%;
+  overflow-y: auto;
+  padding: 10px;
+}
+main .tasks-block::-webkit-scrollbar {
+  width: 20px;
+}
+main .tasks-block::-webkit-scrollbar-thumb {
+  background-color: rgba(209, 209, 209, 0.194);
+  border: 6px solid transparent;
+  border-radius: 10px;
+  background-clip: padding-box;
+}
+
+/*-------------------------------------------------------------------*/
+/*--nav--------------------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+nav {
+  height: 100%;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: rgba(42, 42, 56, 0.7490196078);
+  box-shadow: 1px 1px 5px 1px rgba(42, 42, 56, 0.8);
+  flex-basis: 35%;
+  overflow: hidden;
+}
+@media screen and (max-width: 767px) {
+  nav {
+    order: 1;
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 100;
+    width: 60%;
+    height: calc(100% - 50px);
+  }
+  nav.active {
+    transform: translateX(-20px);
+  }
+}
+nav header h1 {
+  font-family: "GolosTextWebBlack";
+  text-align: center;
+}
+@media screen and (max-width: 767px) {
+  nav header {
+    display: none;
+  }
+}
+nav .nav-block {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: calc(100% - 80px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+nav .nav-block::-webkit-scrollbar {
+  width: 20px;
+}
+nav .nav-block::-webkit-scrollbar-thumb {
+  background-color: rgba(209, 209, 209, 0.194);
+  border: 6px solid transparent;
+  border-radius: 10px;
+  background-clip: padding-box;
+}/*# sourceMappingURL=main.css.map */

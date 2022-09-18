@@ -1,0 +1,185 @@
+@use '../abstracts';
+
+/*-------------------------------------------------------------------*/
+/*--buttons----------------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+
+nav .nav-block {
+    
+    > div {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        background-color: abstracts.$clrGradDark;
+        padding: 10px 20px;
+        border-radius: abstracts.$radiusLg;
+        width: 100%;
+        text-transform: capitalize;
+        font-size: 14px;
+        transition: background-color .1s ease-in-out,
+                    color .1s ease-in-out,
+                    padding .1s ease-in-out,
+                    transform .1s ease-in-out,
+                    text-decoration .1s ease-in-out;
+        cursor: pointer;
+        transform: scale(1);
+
+        &:hover {
+            background-color: abstracts.$clrHeader;
+            transform: scale(.98);
+            @include abstracts.media-down(mb) {
+                transform: scale(1);
+            }
+        }
+
+        &.search {
+            i {
+                color: abstracts.$clrPurple;
+                transition: color .2s ease-in-out;
+            }
+
+            &:hover {
+                background-color: abstracts.$clrPurple;
+                color: abstracts.$clrText;
+
+                i {
+                    color: abstracts.$clrText;
+                }
+            }
+        }
+
+        &.all {
+            i {
+                color: abstracts.$clrGreen;
+                transition: color .2s ease-in-out;
+            }
+
+            &:hover {
+                background-color: abstracts.$clrGreen;
+                color: abstracts.$clrBlack;
+
+                i {
+                    color: abstracts.$clrBlack;
+                }
+            }
+        }
+
+        &.completed {
+            i {
+                color: abstracts.$clrBlue;
+                transition: color .2s ease-in-out;
+            }
+
+            &:hover {
+                background-color: abstracts.$clrBlue;
+
+                i {
+                    color: abstracts.$clrText;
+                }
+            }
+        }
+
+        &.important {
+            i {
+                color: abstracts.$clrYellow;
+                transition: color .2s ease-in-out;
+            }
+
+            &:hover {
+                background-color: abstracts.$clrYellow;
+                color: abstracts.$clrBlack;
+
+                i {
+                    color: abstracts.$clrBlack;
+                }
+            }
+        }
+
+        &.deleted {
+            i {
+                color: abstracts.$clrRed2;
+                transition: color .2s ease-in-out;
+            }
+
+            h3 {
+                text-decoration: line-through;
+            }
+
+            &:hover {
+                background-color: abstracts.$clrRed2;
+
+                i {
+                    color: abstracts.$clrText;
+                }
+
+                h3 {
+                    text-decoration: none;
+                }
+            }
+        }
+
+        &.clear {
+            background-color: abstracts.$clrRed;
+            // margin-top: auto;
+            margin-top: 20px;
+
+            i {
+                color: abstracts.$clrText;
+                transition: color .2s ease-in-out;
+            }
+
+            h3 {
+                text-transform: uppercase;
+            }
+
+            &:hover {
+
+                i {
+                    color: abstracts.$clrText;
+                }
+            }
+        }
+    }
+}
+
+main {
+    position: relative;
+
+    button.new-task {
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        z-index: 100;
+        transform: translateX(-50%);
+        border-radius: 50%;
+        border: none;
+        outline: none;
+        box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.24);
+        transition: transform .2s ease-in-out;
+        cursor: pointer;
+        background-color: abstracts.$clrContainer;
+
+        i {
+            font-size: 30px;
+            color: abstracts.$clrMainLight;
+        }
+
+        &:hover {
+            transform: translateX(-50%) scale(1.1);
+            @include abstracts.media-down(mb) {
+                transform: translateX(-50%) scale(1);
+            }
+        }
+
+        @include abstracts.media-down(mb) {
+            bottom: 20px;
+            left: 50px;
+        }
+    }
+}

@@ -1,0 +1,100 @@
+@use "../abstracts";
+
+/*-------------------------------------------------------------------*/
+/*--global rules-----------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+
+*,
+*::before,
+*::after {
+  @include abstracts.prefixer(box-sizing, border-box, webkit moz o);
+  margin: 0;
+  padding: 0;
+  // border: 1px solid red;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: abstracts.$clrText;
+  font: {
+    family: "GolosTextWebRegular";
+  }
+  margin: 0;
+  padding: 0;
+  position: relative;
+  height: 100vh;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+  }
+
+  &::before {
+    height: 100%;
+    // background-image: linear-gradient(316deg, #FBAB7E 0%, #F7CE68 100%);
+    background: linear-gradient(
+      135deg,
+      abstracts.$clrGradLight 0%,
+      abstracts.$clrGradDark 59%
+    );
+    top: 0;
+  }
+}
+
+ul {
+  list-style-type: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  @include abstracts.media-down(mb) {
+    
+  }
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+  background-color: abstracts.$clrContainer;
+  padding: 30px;
+  margin: auto;
+  transition: width 0.3s ease-in-out;
+  border-radius: abstracts.$radiusLg;
+  height: min(90vh, 600px);
+  @include abstracts.media-up(sm) {
+    max-width: 800px;
+    width: 80%;
+  }
+  box-shadow: 1px 1px 5px 1px abstracts.$clrContainerShadow;
+
+  @include abstracts.media-down(mb) {
+    flex-direction: column;
+    gap: 0px;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100%;
+    border-radius: 0 0 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+}

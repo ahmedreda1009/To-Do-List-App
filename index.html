@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>To Do App</title>
+	<link rel="stylesheet" href="sass/all.min.css">
+	<link rel="stylesheet" href="sass/vendor/normalize.css">
+	<link rel="stylesheet" href="sass/main.css">
+</head>
+<body>
+	<!------------------------------------------------------------------->
+	<!------------------------------------------------------------------->
+	<!------------------------------------------------------------------->
+
+
+
+	<div class="wrapper">
+		<div class="container">
+			<nav class="active">
+				<header>
+					<h1>To Do</h1>
+				</header>
+
+				<div class="nav-block">
+					<div class="search">
+						<i class="fa-solid fa-magnifying-glass"></i>
+						<h3>search</h3>
+					</div>
+					<div class="all">
+						<i class="fa-solid fa-table-list"></i>
+						<h3>all</h3>
+					</div>
+					<div class="completed">
+						<i class="fa-solid fa-circle-check"></i>
+						<h3>completed</h3>
+					</div>
+					<div class="important">
+						<i class="fa-solid fa-star"></i>
+						<h3>important</h3>
+					</div>
+					<div class="deleted">
+						<i class="fa-solid fa-trash-can"></i>
+						<h3>deleted</h3>
+					</div>
+					<div class="clear">
+						<i class="fa-solid fa-trash-arrow-up"></i>
+						<h3>clear</h3>
+					</div>
+				</div>
+			</nav>
+
+			<main>
+				<header>
+					<div class="title">
+						<i class="fa-solid fa-list-check"></i>
+						<h1>Tasks</h1>
+					</div>
+					<i class="fa-solid fa-ellipsis-vertical"></i>
+				</header>
+
+				<div class="tasks-block">
+				</div>
+
+				<button class="new-task">
+					<i class="fa-solid fa-plus"></i>
+				</button>
+			</main>
+		</div>
+	</div>
+	
+
+	<script src="./js/functions.js" type="module"></script>
+	<script src="./js/main.js" type="module"></script>
+</body>
+</html>

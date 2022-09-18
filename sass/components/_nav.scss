@@ -1,0 +1,65 @@
+@use "../abstracts";
+@use "../base";
+/*-------------------------------------------------------------------*/
+/*--nav--------------------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+
+nav {
+  height: 100%;
+  border-radius: abstracts.$radiusLg;
+  padding: 20px;
+  background-color: abstracts.$clrMainDark;
+  box-shadow: 1px 1px 5px 1px abstracts.$clrMainNavShadow;
+  flex-basis: 35%;
+  overflow: hidden;
+
+  @include abstracts.media-down(mb) {
+    order: 1;
+    position: absolute;
+    bottom: -50px;
+    right: 0;
+    transform: translateX(100%);
+    transition: transform .3s ease-in-out;
+    &.active {
+        transform: translateX(-20px);
+    }
+    z-index: 100;
+    width: 60%;
+    height: calc(100% - 50px);
+  }
+
+  header {
+
+    h1 {
+      font-family: "GolosTextWebBlack";
+      text-align: center;
+    }
+
+    @include abstracts.media-down(mb) {
+        & {
+            display: none;
+        }
+    }
+  }
+
+  .nav-block {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100% - 80px);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &::-webkit-scrollbar {
+      width: 20px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: abstracts.$clrSroll;
+      border: 6px solid transparent;
+      border-radius: abstracts.$radiusLg;
+      background-clip: padding-box;
+    }
+  }
+}
