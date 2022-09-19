@@ -45,6 +45,7 @@ html {
 }
 
 body {
+  overflow: hidden;
   color: #D1D1DF;
   font-family: "GolosTextWebRegular";
   margin: 0;
@@ -59,10 +60,18 @@ body::before, body::after {
   width: 100%;
   z-index: -1;
 }
+body::after {
+  height: 95%;
+  width: 200%;
+  top: -50%;
+  left: -50%;
+  background-color: #333;
+  border-radius: 50%;
+}
 body::before {
   height: 100%;
-  background: linear-gradient(135deg, #595976 0%, #3B3B48 59%);
-  top: 0;
+  bottom: 0;
+  background-color: #E0E0E0;
 }
 
 ul {
@@ -83,6 +92,7 @@ a {
   align-items: center;
   height: 100vh;
 }
+
 .container {
   display: flex;
   gap: 20px;
@@ -93,6 +103,7 @@ a {
   border-radius: 10px;
   height: min(90vh, 600px);
   box-shadow: 1px 1px 5px 1px rgba(42, 42, 56, 0.5);
+  background: linear-gradient(135deg, #595976 0%, #3B3B48 59%);
 }
 @media screen and (min-width: 768px) {
   .container {
@@ -142,16 +153,25 @@ nav .nav-block > div:hover {
     transform: scale(1);
   }
 }
+nav .nav-block > div.search {
+  background-color: #D1D1DF;
+  margin-bottom: 20px;
+}
 nav .nav-block > div.search i {
   color: #515091;
   transition: color 0.2s ease-in-out;
 }
 nav .nav-block > div.search:hover {
   background-color: #515091;
-  color: #D1D1DF;
 }
 nav .nav-block > div.search:hover i {
   color: #D1D1DF;
+}
+nav .nav-block > div.search:hover h3 {
+  color: #D1D1DF;
+}
+nav .nav-block > div.search h3 {
+  color: #333;
 }
 nav .nav-block > div.all i {
   color: #69C07B;
@@ -159,10 +179,10 @@ nav .nav-block > div.all i {
 }
 nav .nav-block > div.all:hover {
   background-color: #69C07B;
-  color: #282836;
+  color: #333;
 }
 nav .nav-block > div.all:hover i {
-  color: #282836;
+  color: #333;
 }
 nav .nav-block > div.completed i {
   color: #1E89E3;
@@ -180,20 +200,20 @@ nav .nav-block > div.important i {
 }
 nav .nav-block > div.important:hover {
   background-color: #F9D879;
-  color: #282836;
+  color: #333;
 }
 nav .nav-block > div.important:hover i {
-  color: #282836;
+  color: #333;
 }
 nav .nav-block > div.deleted i {
-  color: #FA4689;
+  color: #ED603E;
   transition: color 0.2s ease-in-out;
 }
 nav .nav-block > div.deleted h3 {
   text-decoration: line-through;
 }
 nav .nav-block > div.deleted:hover {
-  background-color: #FA4689;
+  background-color: #ED603E;
 }
 nav .nav-block > div.deleted:hover i {
   color: #D1D1DF;
@@ -202,8 +222,10 @@ nav .nav-block > div.deleted:hover h3 {
   text-decoration: none;
 }
 nav .nav-block > div.clear {
-  background-color: #D65542;
+  background-color: #333;
   margin-top: 20px;
+  transform: scale(1);
+  border: 2px solid #D64942;
 }
 nav .nav-block > div.clear i {
   color: #D1D1DF;
@@ -211,6 +233,10 @@ nav .nav-block > div.clear i {
 }
 nav .nav-block > div.clear h3 {
   text-transform: uppercase;
+}
+nav .nav-block > div.clear:hover {
+  transform: scale(0.95);
+  background-color: #333;
 }
 nav .nav-block > div.clear:hover i {
   color: #D1D1DF;
@@ -235,7 +261,7 @@ main button.new-task {
   border: none;
   outline: none;
   box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.24);
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, bottom 0.3s ease-in-out, left 0.3s ease-in-out;
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.6);
 }
@@ -252,9 +278,9 @@ main button.new-task:hover {
   }
 }
 @media screen and (max-width: 767px) {
-  main button.new-task {
-    bottom: 20px;
-    left: 50px;
+  main.active button.new-task {
+    bottom: 30px;
+    left: 60px;
   }
 }
 
@@ -262,7 +288,7 @@ main button.new-task:hover {
 /*--app main header--------------------------------------------------*/
 /*-------------------------------------------------------------------*/
 header {
-  color: rgba(209, 209, 209, 0.65);
+  color: #D1D1DF;
   width: 100%;
   margin-bottom: 15px;
   background-color: #313138;
@@ -288,7 +314,7 @@ main {
   height: 100%;
   border-radius: 10px;
   padding: 20px;
-  background-color: rgba(42, 42, 56, 0.7490196078);
+  background-color: #2A2A38;
   box-shadow: 1px 1px 5px 1px rgba(42, 42, 56, 0.8);
   flex-basis: 65%;
   overflow: hidden;
@@ -298,12 +324,18 @@ main {
     flex-basis: 100%;
     border-radius: 0 0 0 0;
     box-shadow: 0 0 0 0;
+    padding: 0px;
   }
 }
 main header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+@media screen and (max-width: 767px) {
+  main header {
+    border-radius: 0 0 0 0;
+  }
 }
 main header > i {
   font-size: 25px;
@@ -326,7 +358,7 @@ main header > i {
   }
   main header > i:hover {
     background-color: rgba(209, 209, 209, 0.4);
-    color: #282836;
+    color: #333;
     transform: scale(1.05);
   }
 }
@@ -337,7 +369,7 @@ main header .title {
 }
 main header .title i {
   font-size: 25px;
-  color: rgba(209, 209, 209, 0.65);
+  color: #1E89E3;
 }
 main .tasks-block {
   height: calc(100% - 80px);
@@ -359,10 +391,12 @@ main .tasks-block::-webkit-scrollbar-thumb {
 /*--nav--------------------------------------------------------------*/
 /*-------------------------------------------------------------------*/
 nav {
+  color: rgba(209, 209, 223, 0.7);
   height: 100%;
+  min-width: 210px;
   border-radius: 10px;
   padding: 20px;
-  background-color: rgba(42, 42, 56, 0.7490196078);
+  background-color: #2A2A38;
   box-shadow: 1px 1px 5px 1px rgba(42, 42, 56, 0.8);
   flex-basis: 35%;
   overflow: hidden;
@@ -371,17 +405,23 @@ nav {
   nav {
     order: 1;
     position: absolute;
-    bottom: -50px;
     right: 0;
+    top: 80px;
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
     z-index: 100;
     width: 60%;
-    height: calc(100% - 50px);
+    height: calc(100% - 100px);
+    background-color: #313138;
   }
   nav.active {
     transform: translateX(-20px);
   }
+}
+nav header {
+  background-color: #FFA726;
+  background: linear-gradient(135deg, #D64942 0%, #FFA726 70%);
+  color: #333;
 }
 nav header h1 {
   font-family: "GolosTextWebBlack";
