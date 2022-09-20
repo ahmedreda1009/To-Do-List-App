@@ -217,8 +217,8 @@ main {
 
   .new-task-window {
     position: absolute;
-    bottom: 20px;
     left: 50%;
+    top: 50%;
     z-index: 200;
     height: 50%;
     min-height: 180px;
@@ -226,7 +226,7 @@ main {
     width: 60%;
     min-width: 250px;
     max-width: 280px;
-    transform: translate(-50%, 0%) scale(.1);
+    transform: translate(-50%, 0%) scale(0);
     transform-origin: center bottom;
     background-color: abstracts.$clrMainLight;
     display: flex;
@@ -257,7 +257,6 @@ main {
 
     &.active {
       transform: translate(-50%, -50%) scale(1);
-      bottom: 20px;
       opacity: 1;
     }
 
