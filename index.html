@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 	<title>To Do App</title>
 	<link rel="stylesheet" href="sass/all.min.css">
 	<link rel="stylesheet" href="sass/vendor/normalize.css">
@@ -15,7 +15,7 @@
 			<!------------------------------------------------------------------->
 			<!--nav list--------------------------------------------------------->
 			<!------------------------------------------------------------------->
-			<nav class="active">
+			<nav>
 				<header>
 					<h1>Do&nbsp;more.</h1>
 				</header>
@@ -64,10 +64,23 @@
 					<div class="task">
 						<div class="content">
 							<i class="fa-regular fa-circle"></i>
-							<!-- <i class="fa-regular fa-circle-dot"></i> -->
-							<!-- <i class="fa-regular fa-circle-check"></i> -->
 							<p>this is the first task</p>
-							<i class="fa-solid fa-ellipsis-vertical"></i>
+							<i data-id="1" class="fa-solid fa-ellipsis-vertical"></i>
+
+							<div data-id="1" class="options">
+								<div class="edit">
+									<i class="fa-solid fa-pen-to-square"></i>
+									<p>edit</p>
+								</div>
+								<div class="star">
+									<i class="fa-solid fa-star"></i>
+									<p>star</p>
+								</div>
+								<div class="delete">
+									<i class="fa-thin fa-trash"></i>
+									<p>delete</p>
+								</div>
+							</div>
 						</div>
 						<div class="date">
 							<time>15:22</time>
@@ -76,34 +89,151 @@
 							<time>28.08.2022</time>&nbsp;&nbsp;&nbsp;
 							<i class="fa-solid fa-star"></i>
 						</div>
-						<div class="options active">
-							<div class="edit">
-								<i class="fa-solid fa-pen-to-square"></i>
-								<p>edit</p>
+					</div>
+
+					<div class="task">
+						<div class="content">
+							<i class="fa-regular fa-circle"></i>
+							<p>this is the second task Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et a inventore praesentium corporis ducimus! Numquam inventore debitis asperiores impedit iste maiores eius deleniti quidem maxime aut, sapiente labore! Ullam ducimus vitae corporis maxime tempore temporibus. Eos ea veniam reiciendis quidem debitis autem officia odio ipsam mollitia placeat. Eligendi ut molestias ad adipisci doloribus, exercitationem nemo est harum non quas dolorem distinctio debitis sequi ex, atque dolorum! Consequuntur maiores accusamus exercitationem cum autem ad, obcaecati, saepe nesciunt laudantium sed ipsam nobis quam, quia sit ipsum recusandae possimus esse ullam pariatur reprehenderit corrupti optio a odio ducimus. Quaerat optio itaque quasi officia!</p>
+							<i data-id="2" class="fa-solid fa-ellipsis-vertical"></i>
+
+							<div data-id="2" class="options">
+								<div class="edit">
+									<i class="fa-solid fa-pen-to-square"></i>
+									<p>edit</p>
+								</div>
+								<div class="star">
+									<i class="fa-solid fa-star"></i>
+									<p>star</p>
+								</div>
+								<div class="delete">
+									<i class="fa-thin fa-trash"></i>
+									<p>delete</p>
+								</div>
 							</div>
-							<div class="star">
-								<i class="fa-regular fa-star"></i>
-								<p>star</p>
+						</div>
+						<div class="date">
+							<time>15:22</time>
+							-
+							<time>fri</time>&nbsp;&nbsp;&nbsp;
+							<time>28.08.2022</time>&nbsp;&nbsp;&nbsp;
+							<i class="fa-solid fa-star"></i>
+						</div>
+					</div>
+
+					<div class="task">
+						<div class="content">
+							<i class="fa-regular fa-circle"></i>
+							<p>this is the third task</p>
+							<i data-id="3" class="fa-solid fa-ellipsis-vertical"></i>
+
+							<div data-id="3" class="options">
+								<div class="edit">
+									<i class="fa-solid fa-pen-to-square"></i>
+									<p>edit</p>
+								</div>
+								<div class="star">
+									<i class="fa-solid fa-star"></i>
+									<p>star</p>
+								</div>
+								<div class="delete">
+									<i class="fa-thin fa-trash"></i>
+									<p>delete</p>
+								</div>
 							</div>
-							<div class="delete">
-								<i class="fa-thin fa-trash"></i>
-								<p>delete</p>
-							</div>
+						</div>
+						<div class="date">
+							<time>15:22</time>
+							-
+							<time>fri</time>&nbsp;&nbsp;&nbsp;
+							<time>28.08.2022</time>&nbsp;&nbsp;&nbsp;
+							<i class="fa-solid fa-star"></i>
 						</div>
 					</div>
 					<div class="task">
 						<div class="content">
 							<i class="fa-regular fa-circle"></i>
-							<!-- <i class="fa-regular fa-circle-dot"></i> -->
-							<!-- <i class="fa-regular fa-circle-check"></i> -->
-							<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo odit reprehenderit libero delectus facilis debitis, ea, quaerat sit error quam quibusdam atque repellat molestias, soluta iure sequi. Hic officia accusamus consequatur tenetur aspernatur minus laborum corporis nulla error, totam maxime amet dolor quam corrupti dolorum! Soluta, aliquid veritatis ab architecto voluptatum pariatur perspiciatis aperiam, quas voluptates commodi iste culpa cupiditate, quisquam ullam non facilis sit corporis. Dolor omnis a alias dolores hic molestiae distinctio, similique ipsum laudantium libero id blanditiis vitae accusamus eveniet nisi tempora asperiores minus recusandae quis. Sunt vitae consequuntur a debitis voluptatibus tenetur deserunt non autem cumque.</p>
-							<i class="fa-solid fa-ellipsis-vertical"></i>
+							<p>this is the fourth task</p>
+							<i data-id="4" class="fa-solid fa-ellipsis-vertical"></i>
+
+							<div data-id="4" class="options">
+								<div class="edit">
+									<i class="fa-solid fa-pen-to-square"></i>
+									<p>edit</p>
+								</div>
+								<div class="star">
+									<i class="fa-solid fa-star"></i>
+									<p>star</p>
+								</div>
+								<div class="delete">
+									<i class="fa-thin fa-trash"></i>
+									<p>delete</p>
+								</div>
+							</div>
 						</div>
 						<div class="date">
 							<time>15:22</time>
 							-
-							<time>fri</time>&nbsp;&nbsp;
-							<time>28.08.2022</time>
+							<time>fri</time>&nbsp;&nbsp;&nbsp;
+							<time>28.08.2022</time>&nbsp;&nbsp;&nbsp;
+							<i class="fa-solid fa-star"></i>
+						</div>
+					</div>
+					<div class="task">
+						<div class="content">
+							<i class="fa-regular fa-circle"></i>
+							<p>this is the fifth task</p>
+							<i data-id="5" class="fa-solid fa-ellipsis-vertical"></i>
+
+							<div data-id="5" class="options">
+								<div class="edit">
+									<i class="fa-solid fa-pen-to-square"></i>
+									<p>edit</p>
+								</div>
+								<div class="star">
+									<i class="fa-solid fa-star"></i>
+									<p>star</p>
+								</div>
+								<div class="delete">
+									<i class="fa-thin fa-trash"></i>
+									<p>delete</p>
+								</div>
+							</div>
+						</div>
+						<div class="date">
+							<time>15:22</time>
+							-
+							<time>fri</time>&nbsp;&nbsp;&nbsp;
+							<time>28.08.2022</time>&nbsp;&nbsp;&nbsp;
+							<i class="fa-solid fa-star"></i>
+						</div>
+					</div>
+					<div class="task">
+						<div class="content">
+							<i class="fa-regular fa-circle"></i>
+							<p>this is the last task</p>
+							<i data-id="6" class="fa-solid fa-ellipsis-vertical"></i>
+
+							<div data-id="6" class="options">
+								<div class="edit">
+									<i class="fa-solid fa-pen-to-square"></i>
+									<p>edit</p>
+								</div>
+								<div class="star">
+									<i class="fa-solid fa-star"></i>
+									<p>star</p>
+								</div>
+								<div class="delete">
+									<i class="fa-thin fa-trash"></i>
+									<p>delete</p>
+								</div>
+							</div>
+						</div>
+						<div class="date">
+							<time>15:22</time>
+							-
+							<time>fri</time>&nbsp;&nbsp;&nbsp;
+							<time>28.08.2022</time>&nbsp;&nbsp;&nbsp;
 							<i class="fa-solid fa-star"></i>
 						</div>
 					</div>
@@ -113,11 +243,13 @@
 					<i class="fa-solid fa-plus"></i>
 				</button>
 
-				<div class="new-task-window active">
-					<input type="text" name="task-window" id="task-window" placeholder="Add New Task">
-					<div class="icons">
-						<i class="fa-solid fa-star">&nbsp;&nbsp;fav</i>
-						<i class="fa-solid fa-plus">&nbsp;&nbsp;add</i>
+				<div class="new-task-container">
+					<div class="new-task-window">
+						<input type="text" name="task-window" id="task-window" placeholder="Add New Task">
+						<div class="icons">
+							<i class="fa-solid fa-star">&nbsp;&nbsp;fav</i>
+							<i class="fa-solid fa-plus">&nbsp;&nbsp;add</i>
+						</div>
 					</div>
 				</div>
 			</main>
@@ -125,6 +257,7 @@
 	</div>
 	
 
+	<script src="./js/click-event-scripts.js"></script>
 	<script src="./js/functions.js" type="module"></script>
 	<script src="./js/main.js" type="module"></script>
 </body>

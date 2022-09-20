@@ -1,3 +1,6 @@
+/*-------------------------------------------------------------------*/
+/*--font faces-------------------------------------------------------*/
+/*-------------------------------------------------------------------*/
 @font-face {
   font-family: "GolosTextWebRegular";
   src: url("./../webfonts/Golos-Text_Regular.woff2") format("woff2");
@@ -27,6 +30,25 @@
   src: url("./../webfonts/Golos-Text_Black.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
+}
+/*-------------------------------------------------------------------*/
+/*--buttons----------------------------------------------------------*/
+/*-------------------------------------------------------------------*/
+@-webkit-keyframes eat-menu {
+  from {
+    transform: translateX(-50%) scale(1);
+  }
+  to {
+    transform: translateX(-50%) scale(1.5);
+  }
+}
+@keyframes eat-menu {
+  from {
+    transform: translateX(-50%) scale(1);
+  }
+  to {
+    transform: translateX(-50%) scale(1.5);
+  }
 }
 /*-------------------------------------------------------------------*/
 /*--global rules-----------------------------------------------------*/
@@ -250,9 +272,9 @@ main button.new-task {
   justify-content: center;
   padding: 20px;
   position: absolute;
+  z-index: 1000;
   bottom: 30px;
   left: 50%;
-  z-index: 300;
   transform: translateX(-50%);
   border-radius: 50%;
   border: none;
@@ -264,16 +286,13 @@ main button.new-task {
 }
 main button.new-task i {
   font-size: 30px;
+  font-weight: bold;
   color: #313138;
+  pointer-events: none;
 }
 main button.new-task:hover {
-  transform: translateX(-50%) scale(1.1);
   background-color: #ededed;
-}
-@media screen and (max-width: 767px) {
-  main button.new-task:hover {
-    transform: translateX(-50%) scale(1);
-  }
+  transform: translateX(-50%) scale(1.07);
 }
 @media screen and (max-width: 767px) {
   main button.new-task {
@@ -296,8 +315,7 @@ header {
   position: sticky;
   left: 0;
   top: 0;
-  z-index: 1000;
-  cursor: default;
+  cursor: pointer;
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
 }
 header h1 {
@@ -329,6 +347,8 @@ main {
   }
 }
 main header {
+  position: relative;
+  z-index: 2000;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -349,6 +369,15 @@ main header {
     border-left: none;
     border-top: none;
   }
+}
+main header::before {
+  content: "";
+  background-color: #2A2A38;
+  width: 100%;
+  height: 45px;
+  position: absolute;
+  top: -48px;
+  left: 0;
 }
 main header > i {
   font-size: 25px;
@@ -401,12 +430,12 @@ main .tasks-block {
   width: 100%;
   overflow-y: auto;
   padding-right: 10px;
-  padding-bottom: 80px;
+  padding-bottom: 110px;
   border-radius: 10px;
 }
 @media screen and (max-width: 767px) {
   main .tasks-block {
-    padding: 20px 20px 110px;
+    padding: 20px 20px 210px;
   }
 }
 main .tasks-block::-webkit-scrollbar {
@@ -430,21 +459,114 @@ main .tasks-block .task {
   position: relative;
 }
 main .tasks-block .task .content {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
-main .tasks-block .task .content i {
+main .tasks-block .task .content > i {
+  position: absolute;
+  top: 0;
   cursor: pointer;
   font-size: 20px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
-main .tasks-block .task .content i.fa-ellipsis-vertical {
-  padding: 0 5px;
+main .tasks-block .task .content > i.fa-ellipsis-vertical {
+  min-width: 30px;
+  height: 30px;
+  right: -5px;
 }
-main .tasks-block .task .content p {
+main .tasks-block .task .content > i.fa-ellipsis-vertical:hover {
+  background-color: rgba(209, 209, 209, 0.123);
+}
+main .tasks-block .task .content > i.fa-circle {
+  min-width: 30px;
+  height: 30px;
+  left: -5px;
+  z-index: 1;
+}
+main .tasks-block .task .content > i.fa-circle.checked {
+  color: #1E89E3;
+}
+main .tasks-block .task .content > i.fa-circle.checked::before {
+  content: "\f058";
+}
+main .tasks-block .task .content > i.fa-circle.checked + P {
+  text-decoration: line-through;
+  opacity: 0.5;
+  z-index: 0;
+}
+main .tasks-block .task .content > i.fa-circle:hover {
+  color: #1E89E3;
+}
+main .tasks-block .task .content > p {
   margin-right: auto;
-  padding-left: 10px;
-  padding-right: 10px;
+  margin-top: 3px;
+  padding-left: 30px;
+  padding-right: 30px;
+  color: #D1D1DF;
+}
+main .tasks-block .task .content .options {
+  position: absolute;
+  right: 25px;
+  top: 5px;
+  z-index: 100;
+  flex-direction: column;
+  background-color: #313138;
+  border-radius: 8px;
+  color: #333;
+  overflow: hidden;
+  box-shadow: 1px 1px 8px 1px hsl(240deg, 18%, 20%);
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.1);
+  transform-origin: top right;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+main .tasks-block .task .content .options.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: scale(1);
+}
+main .tasks-block .task .content .options > div {
+  display: flex;
+  padding: 13px 20px;
+  cursor: pointer;
+}
+main .tasks-block .task .content .options > div:hover {
+  background-color: rgb(60, 60, 60);
+}
+main .tasks-block .task .content .options > div i {
+  color: #6b6b6b;
+  width: 15px;
+  font-size: 15px;
+}
+main .tasks-block .task .content .options > div p {
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: capitalize;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #D1D1DF;
+}
+main .tasks-block .task .content .options .edit i {
+  color: #1E89E3;
+}
+main .tasks-block .task .content .options .star {
+  border-top: 1px solid rgb(60, 60, 60);
+  border-bottom: 1px solid rgb(60, 60, 60);
+}
+main .tasks-block .task .content .options .star i {
+  color: #FFA726;
+}
+main .tasks-block .task .content .options .delete i {
+  font-family: "FontAwesome";
+  font-weight: 400;
+  color: #D64942;
 }
 main .tasks-block .task .date {
   padding-left: 31px;
@@ -452,64 +574,53 @@ main .tasks-block .task .date {
   text-transform: capitalize;
   color: rgba(209, 209, 223, 0.4);
 }
-main .tasks-block .task .options {
+main .new-task-container {
   position: absolute;
-  right: 30px;
-  top: 20px;
-  z-index: 100;
-  flex-direction: column;
-  background-color: #ededed;
-  border-radius: 10px;
-  color: #333;
-  overflow: hidden;
-  box-shadow: 1px 1px 8px 1px rgb(39, 39, 58);
-  pointer-events: none;
+  bottom: 55px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  transform-origin: bottom;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
   opacity: 0;
-  transform: scale(0.1);
-  transform-origin: top right;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  box-shadow: 0px 0px 0 400px transparent;
+  background-color: transparent;
+  transition: transform 0.4s ease-in-out, bottom 0.3s ease-in-out, left 0.3s ease-in-out, opacity 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
-main .tasks-block .task .options.active {
+main .new-task-container.active {
+  transform: translateX(-50%) scale(1);
+  background-color: rgba(42, 42, 56, 0.9);
+  box-shadow: 0px 0px 0 400px rgba(42, 42, 56, 0.9);
   opacity: 1;
-  pointer-events: all;
-  right: 30px;
-  transform: scale(1);
+  bottom: 56px;
 }
-main .tasks-block .task .options > div {
-  display: flex;
-  gap: 10px;
-  padding: 13px 20px;
-  cursor: pointer;
-  background-color: #FFF;
+@media screen and (max-width: 767px) {
+  main .new-task-container {
+    bottom: 30px;
+    left: 60px;
+    opacity: 0;
+    transition: transform 0.3s ease-in-out, bottom 0.3s ease-in-out, left 0.3s ease-in-out, opacity 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  main .new-task-container.active {
+    transform: translateX(-50%) scale(1);
+    background-color: rgba(49, 49, 56, 0.9);
+    box-shadow: 0px 0px 0 400px rgba(49, 49, 56, 0.9);
+    left: 50%;
+    opacity: 1;
+  }
 }
-main .tasks-block .task .options > div:hover {
-  background-color: #ededed;
-}
-main .tasks-block .task .options > div i {
-  color: #6b6b6b;
-  width: 20px;
-}
-main .tasks-block .task .options > div p {
-  font-weight: bold;
-  text-transform: capitalize;
-}
-main .tasks-block .task .options .delete i {
-  font-family: "FontAwesome";
-  font-weight: 400;
-}
-main .new-task-window {
+main .new-task-container .new-task-window {
   position: absolute;
   left: 50%;
   top: 50%;
-  z-index: 200;
+  transform: translate(-50%, -50%);
   height: 50%;
   min-height: 180px;
   max-height: 200px;
   width: 60%;
   min-width: 250px;
   max-width: 280px;
-  transform: translate(-50%, 0%) scale(0);
-  transform-origin: center bottom;
   background-color: #313138;
   display: flex;
   gap: 10px;
@@ -517,46 +628,15 @@ main .new-task-window {
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
-  opacity: 0;
-  transform-style: preserve-3d;
-  transition: transform 0.5s ease-in-out 0.1s, bottom 0.3s ease-in-out, left 0.3s ease-in-out, opacity 0.5s ease-in-out;
+  box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out, bottom 0.3s ease-in-out, left 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
-main .new-task-window::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 500%;
-  height: 1000%;
-  background-color: rgba(49, 49, 56, 0.95);
-  z-index: 199;
-  transform: translate3d(-50%, -50%, -1px);
-}
-main .new-task-window.active {
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 1;
-}
-@media screen and (max-width: 767px) {
-  main .new-task-window {
-    bottom: -41px;
-    left: 60px;
-    opacity: 0;
-    transform-origin: center;
-  }
-  main .new-task-window.active {
-    transform: translate(-50%, -50%) scale(1);
-    bottom: 30%;
-    left: 50%;
-    opacity: 1;
-  }
-}
-main .new-task-window input,
-main .new-task-window .icons {
+main .new-task-container .new-task-window input,
+main .new-task-container .new-task-window .icons {
   width: 70%;
 }
-main .new-task-window input {
-  height: 60px;
+main .new-task-container .new-task-window input {
+  height: 50px;
   outline: none;
   background: none;
   caret-color: #595976;
@@ -565,14 +645,14 @@ main .new-task-window input {
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
   color: #D1D1DF;
 }
-main .new-task-window input:focus {
+main .new-task-container .new-task-window input:focus {
   background: none;
 }
-main .new-task-window .icons {
+main .new-task-container .new-task-window .icons {
   display: flex;
   justify-content: space-between;
 }
-main .new-task-window .icons i {
+main .new-task-container .new-task-window .icons i {
   width: 45%;
   position: relative;
   font-size: 15px;
@@ -587,23 +667,23 @@ main .new-task-window .icons i {
   color: rgba(209, 209, 223, 0.7);
 }
 @media screen and (max-width: 767px) {
-  main .new-task-window .icons i {
+  main .new-task-container .new-task-window .icons i {
     font-size: 12px;
   }
 }
-main .new-task-window .icons i.fa-star {
+main .new-task-container .new-task-window .icons i.fa-star {
   background: none;
   border: 2px solid #F9D879;
 }
-main .new-task-window .icons i.fa-star:hover, main .new-task-window .icons i.fa-star.active {
+main .new-task-container .new-task-window .icons i.fa-star:hover, main .new-task-container .new-task-window .icons i.fa-star.active {
   background-color: #f9d879;
   color: #333;
 }
-main .new-task-window .icons i.fa-plus {
+main .new-task-container .new-task-window .icons i.fa-plus {
   background: none;
   border: 2px solid #1E89E3;
 }
-main .new-task-window .icons i.fa-plus:hover, main .new-task-window .icons i.fa-plus.active {
+main .new-task-container .new-task-window .icons i.fa-plus:hover, main .new-task-container .new-task-window .icons i.fa-plus.active {
   background-color: #1e89e3;
 }
 
@@ -611,6 +691,8 @@ main .new-task-window .icons i.fa-plus:hover, main .new-task-window .icons i.fa-
 /*--nav--------------------------------------------------------------*/
 /*-------------------------------------------------------------------*/
 nav {
+  position: relative;
+  z-index: 500;
   color: rgba(209, 209, 223, 0.7);
   height: 100%;
   min-width: 230px;
@@ -629,7 +711,6 @@ nav {
     top: 115px;
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
-    z-index: 200;
     width: 40%;
     height: calc(100% - 150px);
     background-color: #313138;

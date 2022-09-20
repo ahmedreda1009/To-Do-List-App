@@ -173,9 +173,9 @@ main {
         justify-content: center;
         padding: 20px;
         position: absolute;
+        z-index: 1000;
         bottom: 30px;
         left: 50%;
-        z-index: 300;
         transform: translateX(-50%);
         border-radius: 50%;
         border: none;
@@ -190,15 +190,14 @@ main {
 
         i {
             font-size: 30px;
+            font-weight: bold;
             color: abstracts.$clrMainLight;
+            pointer-events: none;
         }
 
         &:hover {
-            transform: translateX(-50%) scale(1.1);
-            @include abstracts.media-down(mb) {
-                transform: translateX(-50%) scale(1);
-            }
             background-color: abstracts.$clrLightBg;
+            transform: translateX(-50%) scale(1.07);
         }
     }
 

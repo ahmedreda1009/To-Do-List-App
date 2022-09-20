@@ -5,6 +5,8 @@
 /*-------------------------------------------------------------------*/
 
 nav {
+  position: relative;
+  z-index: 500;
   color: abstracts.$clrTextLight;
   height: 100%;
   min-width: 230px;
@@ -25,7 +27,7 @@ nav {
     &.active {
         transform: translateX(-20px);
     }
-    z-index: 200;
+    // z-index: 200;
     width: 40%;
     height: calc(100% - 150px);
     background-color: abstracts.$clrMainLight;
