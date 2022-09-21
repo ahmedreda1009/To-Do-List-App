@@ -13,6 +13,16 @@
   // border: 1px solid red;
 }
 
+
+::selection {
+  background: none;
+}
+
+input::selection {
+  background-color: abstracts.$clrYellow;
+  color: abstracts.$clrBlack2;
+}
+
 html {
   scroll-behavior: smooth;
 }

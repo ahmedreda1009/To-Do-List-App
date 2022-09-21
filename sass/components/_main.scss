@@ -8,7 +8,7 @@ main {
   position: relative;
   height: 100%;
   border-radius: abstracts.$radiusLg;
-  padding: 20px;
+  padding: 20px 0px 15px 20px;
   background-color: abstracts.$clrMainDark;
   box-shadow: 1px 1px 5px 1px abstracts.$clrMainNavShadow;
   flex-basis: 65%;
@@ -27,7 +27,9 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: calc(100% - 30px);
     padding: 0;
+    margin: 0 0 20px;
     height: 67px;
     border: 3px solid transparent;
     border-radius: abstracts.$radiusLg;
@@ -43,6 +45,7 @@ main {
       border-right: none;
       border-left: none;
       border-top: none;
+	  width: 100%;
     }
 
 	&::before {
@@ -112,7 +115,7 @@ main {
     width: 100%;
     overflow-y: auto;
     padding-right: 10px;
-    padding-bottom: 110px;
+    padding-bottom: 200px;
     border-radius: abstracts.$radiusLg;
     @include abstracts.media-down(mb) {
       padding: 20px 20px 210px;
@@ -139,6 +142,17 @@ main {
       background-color: abstracts.$clrGradDark;
       border-radius: abstracts.$radiusSm;
       position: relative;
+	    cursor: default;
+      opacity: 1;
+      transition: background-color .2s ease-in-out;
+
+	  &:hover {
+		background-color: #464652;
+	  }
+
+      &.active {
+		background-color: #51515e;
+      }
 
       .content {
         position: relative;
@@ -149,7 +163,6 @@ main {
         > i {
           position: absolute;
           top: 0;
-          // margin-top: 1px;
           cursor: pointer;
           font-size: 20px;
           border-radius: 50%;
@@ -162,8 +175,6 @@ main {
           &.fa-ellipsis-vertical {
             min-width: 30px;
             height: 30px;
-            // margin-right: 5px;
-            // margin-top: -12px;
             right: -5px;
 
             &:hover {
@@ -175,7 +186,7 @@ main {
             min-width: 30px;
             height: 30px;
             left: -5px;
-			z-index: 1;
+			      z-index: 1;
 
             &.checked {
               color: abstracts.$clrBlue;
@@ -189,6 +200,7 @@ main {
 				text-decoration: line-through; 
 				opacity: .5;
 				z-index: 0;
+				color: abstracts.$clrBlue;
 			  }
             }
 
@@ -248,10 +260,10 @@ main {
             p {
               font-size: 15px;
               font-weight: bold;
-              text-transform: capitalize;
-			  padding-left: 15px;
-			  padding-right: 15px;
-			  color: abstracts.$clrText;
+              text-transform: uppercase;
+              padding-left: 15px;
+              padding-right: 15px;
+              color: abstracts.$clrText;
             }
           }
   
@@ -287,6 +299,11 @@ main {
         font-size: 10px;
         text-transform: capitalize;
         color: rgba(abstracts.$clrTextLight, .4);
+
+        i {
+          color: abstracts.$clrYellowBg;
+          font-size: 7px;
+        }
       }
     }
   }
@@ -336,8 +353,8 @@ main {
       &.active {
         // transform: translate(-50%, -50%) scale(1);
         transform: translateX(-50%) scale(1);
-        background-color: rgba(abstracts.$clrMainLight, .90);
-        box-shadow: 0px 0px 0 400px rgba(abstracts.$clrMainLight, .90);
+        background-color: rgba(abstracts.$clrMainDark, .90);
+        box-shadow: 0px 0px 0 400px rgba(abstracts.$clrMainDark, .90);
         // bottom: 30%;
         // left: 50%;
         // bottom: 0px;
@@ -357,7 +374,7 @@ main {
       width: 60%;
       min-width: 250px;
       max-width: 280px;
-      background-color: abstracts.$clrMainLight;
+      background-color: abstracts.$clrNewTaskWindow;
       display: flex;
       gap: 10px;
       flex-direction: column;
@@ -374,6 +391,7 @@ main {
       input,
       .icons {
         width: 70%;
+		border-radius: abstracts.$radiusLg;
       }
   
       input {
@@ -399,6 +417,7 @@ main {
           width: 45%;
           position: relative;
           font-size: 15px;
+		  border-radius: abstracts.$radiusSm;
           @include abstracts.media-down(mb) {
             font-size: 12px;
           }
@@ -416,11 +435,11 @@ main {
   
           &.fa-star {
             background: none;
-            border: 2px solid abstracts.$clrYellow;
+            border: 2px solid abstracts.$clrYellowBg;
   
             &:hover,
             &.active {
-              background-color: rgba(abstracts.$clrYellow, 1);
+              background-color: rgba(abstracts.$clrYellowBg, 1);
               color: abstracts.$clrBlack;
             }
           }

@@ -9,9 +9,9 @@ nav {
   z-index: 500;
   color: abstracts.$clrTextLight;
   height: 100%;
-  min-width: 230px;
+  min-width: 245px;
   border-radius: abstracts.$radiusLg;
-  padding: 20px;
+  // padding: 20px;
   background-color: abstracts.$clrMainDark;
   box-shadow: 1px 1px 5px 1px abstracts.$clrMainNavShadow;
   flex-basis: 35%;
@@ -34,6 +34,10 @@ nav {
   }
 
   header {
+    width: calc(100% - 40px);
+    max-width: 226.83px;
+    // max-width: 226.66px;
+    margin: 20px auto 20px 20px;
     background-color: abstracts.$clrYellowBg;  
     background: linear-gradient(135deg, abstracts.$clrRed 0%, abstracts.$clrYellowBg 70%);
     color: abstracts.$clrBlack;
@@ -49,11 +53,13 @@ nav {
   .nav-block {
     overflow-y: auto;
     overflow-x: hidden;
-    height: calc(100% - 80px);
+    // height: calc(100% - 130px);
+    // height: 100%;
+    height: calc(100% - 115px);
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    // gap: 20px;
     border-radius: abstracts.$radiusLg;
 
     &::-webkit-scrollbar {

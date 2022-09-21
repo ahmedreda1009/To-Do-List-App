@@ -1,57 +1,92 @@
 ////////// nav bar
-const navbar = document.querySelector("nav");
-const navToggleBtn = document.querySelector("main header > i");
-
 document.addEventListener('click', (e) => {
-    if (e.target.closest("nav")) return;
-    if (e.target !== navToggleBtn) {
+
+    let isNavBtn = e.target.matches("main header > i");
+    if (!isNavBtn && e.target.closest("nav")) return;
+    
+    const navbar = document.querySelector("nav");
+
+    if (!isNavBtn) {
         navbar.classList.remove("active");
     } else {
         navbar.classList.toggle("active");
     }
-})
+});
 
 ////////// add new task window
-const newTaskContainer = document.querySelector("main .new-task-container");
-const newTaskWindow = document.querySelector("main .new-task-window");
-const newTaskBtn = document.querySelector("main button");
-
 document.addEventListener('click', (e) => {
-    if (e.target.closest(".new-task-window")) return;
-    if (e.target !== newTaskBtn) {
+
+    let isAddBtn = e.target.matches("main button");
+    
+    if (!isAddBtn && e.target.closest(".new-task-window")) return;
+
+    const newTaskContainer = document.querySelector("main .new-task-container");
+
+    if (!isAddBtn) {
         newTaskContainer.classList.remove("active");
     } else {
         newTaskContainer.classList.toggle("active");
+        document.querySelector("main .new-task-container input").focus();
     }
 });
 
 ////////// open options btn for every task
-const optionsMenus = document.querySelectorAll(".tasks-block .task .content .options");
-const optionsBtns = document.querySelectorAll(".tasks-block .task .content .fa-ellipsis-vertical");
-
-
 document.addEventListener('click', (e) => {
-
+    
     let isOptBtn = e.target.matches(".tasks-block .task .content .fa-ellipsis-vertical");
     if (!isOptBtn && e.target.closest(".tasks-block .task .content .options") != null) return;
     // if (!isOptBtn && e.target.matches(".tasks-block .task .content .options")) return;
     
     let currrentMenu = e.target.nextElementSibling;
-    currrentMenu.classList.toggle("active");
-    // if (isOptBtn) {
-    // }
+    if (isOptBtn) {
+        currrentMenu.classList.toggle("active");
+        currrentMenu.closest('.task').classList.toggle('active');
 
+        // scroll to the beginning of the active task
+        document.querySelector('main .tasks-block').scrollTo({
+            top: (currrentMenu.closest('.task').offsetTop - 110),
+            left: 0,
+            behavior: 'smooth'
+        });
+    }
+    
+    const optionsMenus = document.querySelectorAll(".tasks-block .task .content .options");
     optionsMenus.forEach(menu => {
         if (menu === currrentMenu) return;
         menu.classList.remove("active");
+        menu.closest('.task').classList.remove('active');
     });
+
+    // if (!isOptBtn) {
+    //     document.querySelectorAll('.tasks-block .task').forEach(task => {
+    //         task.classList.remove('active');
+    //     })
+    // }
 });
 
 ////////// check the task once clicked on it
-const checkBtns = document.querySelectorAll(".tasks-block .task .content .fa-circle");
 
-checkBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        btn.classList.toggle("checked");
-    })
+document.addEventListener('click', (e) => {
+
+    let isCheckBtn = e.target.matches(".tasks-block .task .content .fa-circle");
+
+    if (isCheckBtn) {
+        e.target.classList.toggle("checked");
+    }
+});
+
+////////// nav bar list buttons
+document.addEventListener('click', e => {
+    let navListBtn = e.target.closest("nav .nav-block .lists > div");
+    if (navListBtn == null) return;
+
+    if (navListBtn != null) {
+        navListBtn.classList.toggle("active");
+    }
+
+    let navListBtns = document.querySelectorAll("nav .nav-block .lists > div");
+    navListBtns.forEach(btn => {
+        if (btn === navListBtn) return;
+        btn.classList.remove("active");
+    });
 });

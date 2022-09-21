@@ -62,6 +62,24 @@
   padding: 0;
 }
 
+::-moz-selection {
+  background: none;
+}
+
+::selection {
+  background: none;
+}
+
+input::-moz-selection {
+  background-color: #F9D879;
+  color: #282836;
+}
+
+input::selection {
+  background-color: #F9D879;
+  color: #282836;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -151,117 +169,216 @@ a {
 /*-------------------------------------------------------------------*/
 /*--buttons----------------------------------------------------------*/
 /*-------------------------------------------------------------------*/
-nav .nav-block > div {
+nav .nav-block {
+  padding-bottom: 20px;
+}
+nav .nav-block .actions > div,
+nav .nav-block .lists > div {
   display: flex;
   align-items: center;
   gap: 15px;
   background-color: #3B3B48;
   padding: 10px 20px;
+  margin: 0px auto 0 20px;
   border-radius: 10px;
-  width: 100%;
+  width: calc(100% - 40px);
+  max-width: 226.83px;
   text-transform: capitalize;
   font-size: 14px;
-  transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out, padding 0.1s ease-in-out, transform 0.1s ease-in-out, -webkit-text-decoration 0.1s ease-in-out;
-  transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out, padding 0.1s ease-in-out, transform 0.1s ease-in-out, text-decoration 0.1s ease-in-out;
-  transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out, padding 0.1s ease-in-out, transform 0.1s ease-in-out, text-decoration 0.1s ease-in-out, -webkit-text-decoration 0.1s ease-in-out;
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.12);
   cursor: pointer;
-  transform: scale(1);
 }
-nav .nav-block > div:not(.search):hover {
-  transform: scale(0.98);
+nav .nav-block .actions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
-@media screen and (max-width: 767px) {
-  nav .nav-block > div:not(.search):hover {
-    transform: scale(1);
-  }
-}
-nav .nav-block > div.search {
+nav .nav-block .actions > div.search {
   background-color: #D1D1DF;
 }
-nav .nav-block > div.search i {
+nav .nav-block .actions > div.search i {
   color: #515091;
-  transition: color 0.2s ease-in-out;
 }
-nav .nav-block > div.search input {
+nav .nav-block .actions > div.search input {
   padding: 5px;
   width: 90%;
   background: none;
   border: none;
   outline: none;
 }
-nav .nav-block > div.search input::-webkit-input-placeholder {
+nav .nav-block .actions > div.search input::-webkit-input-placeholder {
   color: #333;
   font-weight: bold;
   text-transform: capitalize;
 }
-nav .nav-block > div.search input:-webkit-autofill, nav .nav-block > div.search input:-webkit-autofill:hover, nav .nav-block > div.search input:-webkit-autofill:focus, nav .nav-block > div.search input:-webkit-autofill:active {
+nav .nav-block .actions > div.search input:-webkit-autofill, nav .nav-block .actions > div.search input:-webkit-autofill:hover, nav .nav-block .actions > div.search input:-webkit-autofill:focus, nav .nav-block .actions > div.search input:-webkit-autofill:active {
   box-shadow: 0 0 0 30px #D1D1DF inset !important;
 }
-nav .nav-block > div.clear {
-  margin-bottom: 20px;
-  border: 3px solid #af2626;
-}
-nav .nav-block > div.clear i {
-  color: #D1D1DF;
-  transition: color 0.2s ease-in-out;
-}
-nav .nav-block > div.clear h3 {
+nav .nav-block .actions > div.clear {
+  display: flex;
+  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  gap: 10px;
   text-transform: uppercase;
+  background-color: #333;
 }
-nav .nav-block > div.clear:hover, nav .nav-block > div.clear.active {
-  transform: scale(1);
-  background-color: #af2626;
+nav .nav-block .actions > div.clear > div {
+  height: 81.27px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #D1D1DF;
+  font-family: "GolosTextWebBlack";
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.2);
+  top: 182px;
+  transition: background-color 10ms ease-in-out, top 0.3s ease-in-out, width 0.3s ease-in-out 0.3s, height 0.3s ease-in-out 0.3s;
 }
-nav .nav-block > div.clear:hover i, nav .nav-block > div.clear.active i {
+nav .nav-block .actions > div.clear > div i {
+  color: #D1D1DF;
+  align-self: center;
+  font-size: 26px;
+  color: #7F1D1D;
+  font-weight: bold;
+  transition: color 10ms ease-in-out;
+}
+nav .nav-block .actions > div.clear > div h3 {
+  font-size: 11px;
+  color: #7F1D1D;
+  font-weight: bold;
+  transition: color 10ms ease-in-out;
+}
+nav .nav-block .actions > div.clear > div:not(.active):hover {
+  background-color: #7F1D1D;
+}
+nav .nav-block .actions > div.clear > div:not(.active):hover h3 {
   color: #D1D1DF;
 }
-nav .nav-block > div.all i {
-  color: #69C07B;
-  transition: color 0.2s ease-in-out;
+nav .nav-block .actions > div.clear > div:not(.active):hover i {
+  color: #D1D1DF;
 }
-nav .nav-block > div.all:hover, nav .nav-block > div.all.active {
+nav .nav-block .actions > div.clear > div.reset-all {
+  margin-right: auto;
+}
+nav .nav-block .actions > div.clear > div.clear-trash {
+  margin-left: auto;
+}
+nav .nav-block .actions > div.clear > div.active {
+  position: absolute;
+  width: calc(100% - 40px);
+  top: 106px;
+  max-width: 226.83px;
+  height: 167px;
+}
+nav .nav-block .lists {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+nav .nav-block .lists header {
+  margin-bottom: 10px;
+  border: 3px solid transparent;
+  color: #D1D1DF;
+  background-image: linear-gradient(#313138, #313138), linear-gradient(90deg, #D64942 0%, #FFA726 70%);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  padding: 0;
+  height: 67px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  width: calc(100% - 40px);
+  max-width: 226.83px;
+  position: relative;
+}
+nav .nav-block .lists header h1 {
+  letter-spacing: 0px;
+}
+nav .nav-block .lists > div {
+  background-color: #282836;
+  background-color: #3F3F46;
+}
+nav .nav-block .lists > div i {
+  font-size: 20px;
+  width: 20px;
+}
+nav .nav-block .lists > div h3 {
+  font-weight: bold;
+}
+nav .nav-block .lists > div.all i {
+  color: #69C07B;
+}
+nav .nav-block .lists > div.all.active, nav .nav-block .lists > div.all.active:hover {
   background-color: #69C07B;
   color: #333;
 }
-nav .nav-block > div.all:hover i, nav .nav-block > div.all.active i {
+nav .nav-block .lists > div.all.active i, nav .nav-block .lists > div.all.active:hover i {
   color: #333;
 }
-nav .nav-block > div.completed i {
+nav .nav-block .lists > div.all:hover {
+  background-color: rgba(105, 192, 123, 0.7);
+  color: #333;
+}
+nav .nav-block .lists > div.all:hover i {
+  color: #333;
+}
+nav .nav-block .lists > div.completed i {
   color: #1E89E3;
-  transition: color 0.2s ease-in-out;
 }
-nav .nav-block > div.completed:hover, nav .nav-block > div.completed.active {
+nav .nav-block .lists > div.completed.active, nav .nav-block .lists > div.completed.active:hover {
   background-color: #1E89E3;
-}
-nav .nav-block > div.completed:hover i, nav .nav-block > div.completed.active i {
   color: #D1D1DF;
 }
-nav .nav-block > div.important i {
-  color: #F9D879;
-  transition: color 0.2s ease-in-out;
-}
-nav .nav-block > div.important:hover, nav .nav-block > div.important.active {
-  background-color: #F9D879;
-  color: #333;
-}
-nav .nav-block > div.important:hover i, nav .nav-block > div.important.active i {
-  color: #333;
-}
-nav .nav-block > div.deleted i {
-  color: #ED603E;
-  transition: color 0.2s ease-in-out;
-}
-nav .nav-block > div.deleted h3 {
-  text-decoration: line-through;
-}
-nav .nav-block > div.deleted:hover, nav .nav-block > div.deleted.active {
-  background-color: #ED603E;
-}
-nav .nav-block > div.deleted:hover i, nav .nav-block > div.deleted.active i {
+nav .nav-block .lists > div.completed.active i, nav .nav-block .lists > div.completed.active:hover i {
   color: #D1D1DF;
 }
-nav .nav-block > div.deleted:hover h3, nav .nav-block > div.deleted.active h3 {
-  text-decoration: none;
+nav .nav-block .lists > div.completed:hover {
+  background-color: rgba(30, 137, 227, 0.7);
+  color: #D1D1DF;
+}
+nav .nav-block .lists > div.completed:hover i {
+  color: #D1D1DF;
+}
+nav .nav-block .lists > div.important i {
+  color: #FFA726;
+}
+nav .nav-block .lists > div.important.active, nav .nav-block .lists > div.important.active:hover {
+  background-color: #FFA726;
+  color: #333;
+}
+nav .nav-block .lists > div.important.active i, nav .nav-block .lists > div.important.active:hover i {
+  color: #333;
+}
+nav .nav-block .lists > div.important:hover {
+  background-color: rgba(255, 167, 38, 0.7);
+  color: #333;
+}
+nav .nav-block .lists > div.important:hover i {
+  color: #333;
+}
+nav .nav-block .lists > div.trash i {
+  color: #D1D1DF;
+  color: rgb(22, 22, 22);
+  color: #D64942;
+}
+nav .nav-block .lists > div.trash.active, nav .nav-block .lists > div.trash.active:hover {
+  background-color: rgb(29, 29, 29);
+  color: #af2626;
+  color: #D1D1DF;
+}
+nav .nav-block .lists > div.trash.active i, nav .nav-block .lists > div.trash.active:hover i {
+  color: #af2626;
+}
+nav .nav-block .lists > div.trash:hover {
+  background-color: rgb(45, 45, 45);
 }
 
 main button.new-task {
@@ -307,7 +424,7 @@ main button.new-task:hover {
 header {
   color: #D1D1DF;
   width: 100%;
-  margin-bottom: 15px;
+  margin: 20px auto;
   background-color: #313138;
   border-radius: 10px;
   padding: 15px 20px;
@@ -315,7 +432,7 @@ header {
   position: sticky;
   left: 0;
   top: 0;
-  cursor: pointer;
+  cursor: default;
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
 }
 header h1 {
@@ -332,7 +449,7 @@ main {
   position: relative;
   height: 100%;
   border-radius: 10px;
-  padding: 20px;
+  padding: 20px 0px 15px 20px;
   background-color: #2A2A38;
   box-shadow: 1px 1px 5px 1px rgba(42, 42, 56, 0.8);
   flex-basis: 65%;
@@ -352,7 +469,9 @@ main header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: calc(100% - 30px);
   padding: 0;
+  margin: 0 0 20px;
   height: 67px;
   border: 3px solid transparent;
   border-radius: 10px;
@@ -368,6 +487,7 @@ main header {
     border-right: none;
     border-left: none;
     border-top: none;
+    width: 100%;
   }
 }
 main header::before {
@@ -430,7 +550,7 @@ main .tasks-block {
   width: 100%;
   overflow-y: auto;
   padding-right: 10px;
-  padding-bottom: 110px;
+  padding-bottom: 200px;
   border-radius: 10px;
 }
 @media screen and (max-width: 767px) {
@@ -457,6 +577,15 @@ main .tasks-block .task {
   background-color: #3B3B48;
   border-radius: 8px;
   position: relative;
+  cursor: default;
+  opacity: 1;
+  transition: background-color 0.2s ease-in-out;
+}
+main .tasks-block .task:hover {
+  background-color: #464652;
+}
+main .tasks-block .task.active {
+  background-color: #51515e;
 }
 main .tasks-block .task .content {
   position: relative;
@@ -499,6 +628,7 @@ main .tasks-block .task .content > i.fa-circle.checked + P {
   text-decoration: line-through;
   opacity: 0.5;
   z-index: 0;
+  color: #1E89E3;
 }
 main .tasks-block .task .content > i.fa-circle:hover {
   color: #1E89E3;
@@ -548,7 +678,7 @@ main .tasks-block .task .content .options > div i {
 main .tasks-block .task .content .options > div p {
   font-size: 15px;
   font-weight: bold;
-  text-transform: capitalize;
+  text-transform: uppercase;
   padding-left: 15px;
   padding-right: 15px;
   color: #D1D1DF;
@@ -573,6 +703,10 @@ main .tasks-block .task .date {
   font-size: 10px;
   text-transform: capitalize;
   color: rgba(209, 209, 223, 0.4);
+}
+main .tasks-block .task .date i {
+  color: #FFA726;
+  font-size: 7px;
 }
 main .new-task-container {
   position: absolute;
@@ -604,8 +738,8 @@ main .new-task-container.active {
   }
   main .new-task-container.active {
     transform: translateX(-50%) scale(1);
-    background-color: rgba(49, 49, 56, 0.9);
-    box-shadow: 0px 0px 0 400px rgba(49, 49, 56, 0.9);
+    background-color: rgba(42, 42, 56, 0.9);
+    box-shadow: 0px 0px 0 400px rgba(42, 42, 56, 0.9);
     left: 50%;
     opacity: 1;
   }
@@ -621,7 +755,7 @@ main .new-task-container .new-task-window {
   width: 60%;
   min-width: 250px;
   max-width: 280px;
-  background-color: #313138;
+  background-color: #373748;
   display: flex;
   gap: 10px;
   flex-direction: column;
@@ -634,6 +768,7 @@ main .new-task-container .new-task-window {
 main .new-task-container .new-task-window input,
 main .new-task-container .new-task-window .icons {
   width: 70%;
+  border-radius: 10px;
 }
 main .new-task-container .new-task-window input {
   height: 50px;
@@ -656,6 +791,7 @@ main .new-task-container .new-task-window .icons i {
   width: 45%;
   position: relative;
   font-size: 15px;
+  border-radius: 8px;
   display: block;
   padding: 8px;
   display: flex;
@@ -673,10 +809,10 @@ main .new-task-container .new-task-window .icons i {
 }
 main .new-task-container .new-task-window .icons i.fa-star {
   background: none;
-  border: 2px solid #F9D879;
+  border: 2px solid #FFA726;
 }
 main .new-task-container .new-task-window .icons i.fa-star:hover, main .new-task-container .new-task-window .icons i.fa-star.active {
-  background-color: #f9d879;
+  background-color: #ffa726;
   color: #333;
 }
 main .new-task-container .new-task-window .icons i.fa-plus {
@@ -695,9 +831,8 @@ nav {
   z-index: 500;
   color: rgba(209, 209, 223, 0.7);
   height: 100%;
-  min-width: 230px;
+  min-width: 245px;
   border-radius: 10px;
-  padding: 20px;
   background-color: #2A2A38;
   box-shadow: 1px 1px 5px 1px rgba(42, 42, 56, 0.8);
   flex-basis: 35%;
@@ -720,6 +855,9 @@ nav {
   }
 }
 nav header {
+  width: calc(100% - 40px);
+  max-width: 226.83px;
+  margin: 20px auto 20px 20px;
   background-color: #FFA726;
   background: linear-gradient(135deg, #D64942 0%, #FFA726 70%);
   color: #333;
@@ -733,11 +871,10 @@ nav header h1 {
 nav .nav-block {
   overflow-y: auto;
   overflow-x: hidden;
-  height: calc(100% - 80px);
+  height: calc(100% - 115px);
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
   border-radius: 10px;
 }
 nav .nav-block::-webkit-scrollbar {

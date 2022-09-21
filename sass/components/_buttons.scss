@@ -5,158 +5,295 @@
 /*-------------------------------------------------------------------*/
 
 nav .nav-block {
+
+    // padding-bottom: 150px;
+    padding-bottom: 20px;
     
-    > div {
+    .actions > div,
+    .lists > div {
         display: flex;
         align-items: center;
         gap: 15px;
         background-color: abstracts.$clrGradDark;
         padding: 10px 20px;
+        // margin: 20px;
+        margin: 0px auto 0 20px;
         border-radius: abstracts.$radiusLg;
-        width: 100%;
+        width: calc(100% - 40px);
+        max-width: 226.83px;
+        // width: 85%;
         text-transform: capitalize;
         font-size: 14px;
-        transition: background-color .1s ease-in-out,
-                    color .1s ease-in-out,
-                    padding .1s ease-in-out,
-                    transform .1s ease-in-out,
-                    text-decoration .1s ease-in-out;
+        box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.12);
         cursor: pointer;
-        transform: scale(1);
+    }
 
-        &:not(.search):hover {
-            transform: scale(.98);
-            @include abstracts.media-down(mb) {
-                transform: scale(1);
-            }
-        }
+    .actions {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
 
-        &.search {
-            background-color: abstracts.$clrText;
-            
-            i {
-                color: abstracts.$clrPurple;
-                transition: color .2s ease-in-out;
-            }
-
-            input {
-                padding: 5px;
-                width: 90%;
-                background: none;
-                border: none;
-                outline: none;
-
-                &::-webkit-input-placeholder {
-                    color: abstracts.$clrBlack;
-                    font-weight: bold;
-                    text-transform: capitalize;
+        > div {
+            &.search {
+                background-color: abstracts.$clrText;
+                
+                i {
+                    color: abstracts.$clrPurple;
                 }
-
-                &:-webkit-autofill,
-                &:-webkit-autofill:hover, 
-                &:-webkit-autofill:focus, 
-                &:-webkit-autofill:active{
-                    -webkit-box-shadow: 0 0 0 30px abstracts.$clrText inset !important;
-                    box-shadow: 0 0 0 30px abstracts.$clrText inset !important;
+    
+                input {
+                    padding: 5px;
+                    width: 90%;
+                    background: none;
+                    border: none;
+                    outline: none;
+    
+                    &::-webkit-input-placeholder {
+                        color: abstracts.$clrBlack;
+                        font-weight: bold;
+                        text-transform: capitalize;
+                    }
+    
+                    &:-webkit-autofill,
+                    &:-webkit-autofill:hover, 
+                    &:-webkit-autofill:focus, 
+                    &:-webkit-autofill:active{
+                        -webkit-box-shadow: 0 0 0 30px abstracts.$clrText inset !important;
+                        box-shadow: 0 0 0 30px abstracts.$clrText inset !important;
+                    }
                 }
             }
-        }
-
-        &.clear {
-            // background-color: abstracts.$clrRedBlood;
-            margin-bottom: 20px;
-            border: 3px solid abstracts.$clrRedBlood;
-
-            i {
-                color: abstracts.$clrText;
-                transition: color .2s ease-in-out;
-            }
-
-            h3 {
+    
+            &.clear {
+                display: flex;
+                align-items: flex-start;
+                align-items: center;
+                justify-content: center;
+                padding: 10px;
+                gap: 10px;
                 text-transform: uppercase;
-            }
+                background-color:  abstracts.$clrBlack;
+    
+                > div {
+                    // min-height: 100%;
+                    height: 81.27px;
+                    width: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    flex-direction: column;
+                    gap: 10px;
+                    padding: 10px;
+                    border-radius: abstracts.$radiusSm;
+                    text-align: center;
+                    background-color: abstracts.$clrText;
+                    font-family: 'GolosTextWebBlack';
+                    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.2);
+                    top: 182px;
+                    transition: background-color 10ms ease-in-out,
+                                top .3s ease-in-out,
+                                // right .3s ease-in-out .6s,
+                                // left .3s ease-in-out .6s,
+                                width .3s ease-in-out .3s,
+                                height .3s ease-in-out .3s;
+    
+                    i {
+                        color: abstracts.$clrText;
+                        align-self: center;
+                        font-size: 26px;
+                        color: #7F1D1D;
+                        font-weight: bold;
+                        transition: color 10ms ease-in-out;
+                    }
+    
+                    h3 {
+                        font-size: 11px;
+                        color: #7F1D1D;
+                        font-weight: bold;
+                        transition: color 10ms ease-in-out;
+                    }
+    
+                    &:not(.active):hover {
+                        background-color: #7F1D1D;
 
-            &:hover,
-            &.active {
-                transform: scale(1);
-                background-color: abstracts.$clrRedBlood;
+                        h3 {
+                            color: abstracts.$clrText;
+                        }
+    
+                        i {
+                            color: abstracts.$clrText;
+                        }
+                    }
 
-                i {
-                    color: abstracts.$clrText;
+                    &.reset-all {
+                        margin-right: auto;
+                    }
+                    
+                    &.clear-trash {
+                        margin-left: auto;
+                    }
+
+                    &.active {
+                        position: absolute;
+                        width: calc(100% - 40px);
+                        top: 106px;
+                        // left: 20px;
+                        max-width: 226.83px;
+                        height: 167px;
+                    }
                 }
             }
         }
+    }
 
-        &.all {
-            i {
-                color: abstracts.$clrGreen;
-                transition: color .2s ease-in-out;
+    .lists {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        header {
+            margin-bottom: 10px;
+            border: 3px solid transparent;
+            color: abstracts.$clrText;
+            background-image: linear-gradient(abstracts.$clrMainLight, abstracts.$clrMainLight), 
+            linear-gradient(90deg, abstracts.$clrRed 0%, abstracts.$clrYellowBg 70%);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            padding: 0;
+            height: 67px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-style: preserve-3d;
+            width: calc(100% - 40px);
+            max-width: 226.83px;
+            position: relative;
+
+            h1 {
+                letter-spacing: 0px;
             }
 
-            &:hover,
-            &.active {
-                background-color: abstracts.$clrGreen;
-                color: abstracts.$clrBlack;
-
-                i {
-                    color: abstracts.$clrBlack;
-                }
-            }
+            // &::before {
+            //     content: '';
+            //     background-color: abstracts.$clrMainDark;
+            //     width: calc(100% + 50px);
+            //     height: calc(100% + 45px);
+            //     position: absolute;
+            //     top: -23px;
+            //     left: -25px;
+            //     transform: translateZ(-1px);
+            // }
         }
 
-        &.completed {
+        > div {
+            background-color: abstracts.$clrBlack2;
+            background-color: #3F3F46;
+
             i {
-                color: abstracts.$clrBlue;
-                transition: color .2s ease-in-out;
-            }
-
-            &:hover,
-            &.active {
-                background-color: abstracts.$clrBlue;
-
-                i {
-                    color: abstracts.$clrText;
-                }
-            }
-        }
-
-        &.important {
-            i {
-                color: abstracts.$clrYellow;
-                transition: color .2s ease-in-out;
-            }
-
-            &:hover,
-            &.active {
-                background-color: abstracts.$clrYellow;
-                color: abstracts.$clrBlack;
-
-                i {
-                    color: abstracts.$clrBlack;
-                }
-            }
-        }
-
-        &.deleted {
-            i {
-                color: abstracts.$clrRed2;
-                transition: color .2s ease-in-out;
+                font-size: 20px;
+                width: 20px;
             }
 
             h3 {
-                text-decoration: line-through;
+                font-weight: bold;
             }
 
-            &:hover,
-            &.active {
-                background-color: abstracts.$clrRed2;
+            &.all {
+                i {
+                    color: abstracts.$clrGreen;
+                }
+    
+                &.active,
+                &.active:hover {
+                    background-color: abstracts.$clrGreen;
+                    color: abstracts.$clrBlack;
+    
+                    i {
+                        color: abstracts.$clrBlack;
+                    }
+                }
+    
+                &:hover {
+                    background-color: rgba(abstracts.$clrGreen, .7);
+                    color: abstracts.$clrBlack;
+    
+                    i {
+                        color: abstracts.$clrBlack;
+                    }
+                }
+            }
+    
+            &.completed {
+                i {
+                    color: abstracts.$clrBlue;
+                }
+    
+                &.active,
+                &.active:hover {
+                    background-color: abstracts.$clrBlue;
+                    color: abstracts.$clrText;
+    
+                    i {
+                        color: abstracts.$clrText;
+                    }
+                }
+    
+                &:hover {
+                    background-color: rgba(abstracts.$clrBlue, .7);
+                    color: abstracts.$clrText;
+    
+                    i {
+                        color: abstracts.$clrText;
+                    }
+                }
+            }
+    
+            &.important {
+                i {
+                    color: abstracts.$clrYellowBg;
+                }
+    
+                &.active,
+                &.active:hover {
+                    background-color: abstracts.$clrYellowBg;
+                    color: abstracts.$clrBlack;
+    
+                    i {
+                        color: abstracts.$clrBlack;
+                    }
+                }
+    
+                &:hover {
+                    background-color: rgba(abstracts.$clrYellowBg, .7);
+                    color: abstracts.$clrBlack;
+    
+                    i {
+                        color: abstracts.$clrBlack;
+                    }
+                }
+            }
+    
+            &.trash {
 
                 i {
                     color: abstracts.$clrText;
+                    color: rgb(22, 22, 22);
+                    color: abstracts.$clrRed;
                 }
-
-                h3 {
-                    text-decoration: none;
+    
+                &.active,
+                &.active:hover {
+                    background-color: rgb(29, 29, 29);
+                    color: abstracts.$clrRedBlood;
+                    color: abstracts.$clrText;
+    
+                    i {
+                        color: abstracts.$clrRedBlood;
+                    }
+                }
+    
+                &:hover {
+                    background-color: rgb(45, 45, 45);
                 }
             }
         }
