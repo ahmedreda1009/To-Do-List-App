@@ -34,7 +34,7 @@ main {
     border: 3px solid transparent;
     border-radius: abstracts.$radiusLg;
     background-image: linear-gradient(abstracts.$clrMainLight, abstracts.$clrMainLight), 
-    linear-gradient(90deg, abstracts.$clrRed 0%, abstracts.$clrYellowBg 70%);
+    linear-gradient(90deg, abstracts.$clrRedBloodDark8b 0%, abstracts.$clrYellowBg 70%);
     background-origin: border-box;
     background-clip: content-box, border-box;
 

@@ -236,46 +236,77 @@ nav .nav-block .actions > div.clear > div {
   border-radius: 8px;
   text-align: center;
   background-color: #D1D1DF;
+  background-color: antiquewhite;
   font-family: "GolosTextWebBlack";
   box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.2);
-  top: 182px;
-  transition: background-color 10ms ease-in-out, top 0.3s ease-in-out, width 0.3s ease-in-out 0.3s, height 0.3s ease-in-out 0.3s;
+  transform: translateY(0px) scale(1);
+  transition: background-color 10ms ease-in-out, top 0.3s ease-in-out, width 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 nav .nav-block .actions > div.clear > div i {
-  color: #D1D1DF;
   align-self: center;
   font-size: 26px;
   color: #7F1D1D;
   font-weight: bold;
   transition: color 10ms ease-in-out;
+  pointer-events: none;
 }
 nav .nav-block .actions > div.clear > div h3 {
   font-size: 11px;
   color: #7F1D1D;
   font-weight: bold;
   transition: color 10ms ease-in-out;
+  pointer-events: none;
 }
 nav .nav-block .actions > div.clear > div:not(.active):hover {
   background-color: #7F1D1D;
 }
 nav .nav-block .actions > div.clear > div:not(.active):hover h3 {
   color: #D1D1DF;
+  color: antiquewhite;
 }
 nav .nav-block .actions > div.clear > div:not(.active):hover i {
   color: #D1D1DF;
-}
-nav .nav-block .actions > div.clear > div.reset-all {
-  margin-right: auto;
-}
-nav .nav-block .actions > div.clear > div.clear-trash {
-  margin-left: auto;
+  color: antiquewhite;
 }
 nav .nav-block .actions > div.clear > div.active {
   position: absolute;
-  width: calc(100% - 40px);
-  top: 106px;
-  max-width: 226.83px;
+  width: calc(100% - 60px);
+  left: 20px;
   height: 167px;
+  transform: translateY(-100px) scale(0.99999999);
+  z-index: 1000;
+}
+@media (max-width: 1120px) and (min-height: 733px) {
+  nav .nav-block .actions > div.clear > div.active {
+    width: calc(100% - 40px);
+  }
+}
+nav .nav-block .actions > div.clear .question {
+  transform: scale(0);
+  padding: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+nav .nav-block .actions > div.clear .question h4 {
+  color: #333;
+  text-transform: none;
+  margin-bottom: 10px;
+  font-weight: normal;
+  font-size: 12px;
+}
+nav .nav-block .actions > div.clear .question .buttons button {
+  background-color: #621010;
+  color: antiquewhite;
+  border: none;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
+nav .nav-block .actions > div.clear .question .buttons button:hover {
+  background-color: #8b0000;
+}
+nav .nav-block .actions > div.clear > div.active .question {
+  transform: scale(1);
 }
 nav .nav-block .lists {
   display: flex;
@@ -286,7 +317,7 @@ nav .nav-block .lists header {
   margin-bottom: 10px;
   border: 3px solid transparent;
   color: #D1D1DF;
-  background-image: linear-gradient(#313138, #313138), linear-gradient(90deg, #D64942 0%, #FFA726 70%);
+  background-image: linear-gradient(#313138, #313138), linear-gradient(90deg, #8b0000 0%, #FFA726 70%);
   background-origin: border-box;
   background-clip: content-box, border-box;
   padding: 0;
@@ -475,7 +506,7 @@ main header {
   height: 67px;
   border: 3px solid transparent;
   border-radius: 10px;
-  background-image: linear-gradient(#313138, #313138), linear-gradient(90deg, #D64942 0%, #FFA726 70%);
+  background-image: linear-gradient(#313138, #313138), linear-gradient(90deg, #8b0000 0%, #FFA726 70%);
   background-origin: border-box;
   background-clip: content-box, border-box;
 }
@@ -855,12 +886,17 @@ nav {
   }
 }
 nav header {
-  width: calc(100% - 40px);
+  width: calc(100% - 60px);
   max-width: 226.83px;
   margin: 20px auto 20px 20px;
   background-color: #FFA726;
-  background: linear-gradient(135deg, #D64942 0%, #FFA726 70%);
+  background: linear-gradient(135deg, #8b0000 0%, #FFA726 70%);
   color: #333;
+}
+@media (max-width: 1110px) and (min-height: 733px) {
+  nav header {
+    width: calc(100% - 40px);
+  }
 }
 nav header h1 {
   font-family: "GolosTextWebBlack";

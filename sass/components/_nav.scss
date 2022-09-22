@@ -34,12 +34,15 @@ nav {
   }
 
   header {
-    width: calc(100% - 40px);
+    width: calc(100% - 60px);
+    @media  (max-width:  1110px) and (min-height: 733px) {
+      width: calc(100% - 40px);
+    }
     max-width: 226.83px;
     // max-width: 226.66px;
     margin: 20px auto 20px 20px;
     background-color: abstracts.$clrYellowBg;  
-    background: linear-gradient(135deg, abstracts.$clrRed 0%, abstracts.$clrYellowBg 70%);
+    background: linear-gradient(135deg, abstracts.$clrRedBloodDark8b 0%, abstracts.$clrYellowBg 70%);
     color: abstracts.$clrBlack;
 
     h1 {

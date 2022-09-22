@@ -87,23 +87,27 @@ nav .nav-block {
                     border-radius: abstracts.$radiusSm;
                     text-align: center;
                     background-color: abstracts.$clrText;
+                    background-color: antiquewhite;
                     font-family: 'GolosTextWebBlack';
                     box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.2);
-                    top: 182px;
+                    // top: 182px;
+                    transform: translateY(0px) scale(1);
                     transition: background-color 10ms ease-in-out,
                                 top .3s ease-in-out,
                                 // right .3s ease-in-out .6s,
                                 // left .3s ease-in-out .6s,
-                                width .3s ease-in-out .3s,
-                                height .3s ease-in-out .3s;
+                                width .3s ease-in-out,
+                                // height .3s ease-in-out,
+                                transform .3s ease-in-out;
     
                     i {
-                        color: abstracts.$clrText;
+                        // color: abstracts.$clrText;
                         align-self: center;
                         font-size: 26px;
                         color: #7F1D1D;
                         font-weight: bold;
                         transition: color 10ms ease-in-out;
+                        pointer-events: none;
                     }
     
                     h3 {
@@ -111,6 +115,7 @@ nav .nav-block {
                         color: #7F1D1D;
                         font-weight: bold;
                         transition: color 10ms ease-in-out;
+                        pointer-events: none;
                     }
     
                     &:not(.active):hover {
@@ -118,29 +123,73 @@ nav .nav-block {
 
                         h3 {
                             color: abstracts.$clrText;
+                            color: antiquewhite;
                         }
     
                         i {
                             color: abstracts.$clrText;
+                            color: antiquewhite;
                         }
                     }
 
-                    &.reset-all {
-                        margin-right: auto;
-                    }
                     
-                    &.clear-trash {
-                        margin-left: auto;
-                    }
-
                     &.active {
                         position: absolute;
-                        width: calc(100% - 40px);
-                        top: 106px;
-                        // left: 20px;
-                        max-width: 226.83px;
+                        width: calc(100% - 60px);
+                        @media  (max-width:  1120px) and (min-height: 733px) {
+                            width: calc(100% - 40px);
+                        }
+                        // top: 106px;
+                        left: 20px;
+                        // max-width: 226.83px;
                         height: 167px;
+                        transform: translateY(-100px) scale(.99999999);
+                        z-index: 1000;
                     }
+
+                    // &.reset-all {
+                    //     margin-right: auto;
+                    // }
+                    
+                    // &.clear-trash {
+                    //     margin-left: auto;
+                    // }
+                }
+
+                .question {
+                    transform: scale(0);
+                    padding: 5px;
+                    transition: transform .3s ease-in-out;
+                    
+                    h4 {
+                        color: abstracts.$clrBlack;
+                        text-transform: none;
+                        margin-bottom: 10px;
+                        font: {
+                            weight: normal;
+                            size: 12px;
+                        }
+                    }
+
+                    .buttons {
+                        button {
+                            background-color: abstracts.$clrRedBloodDark;
+                            color: antiquewhite;
+                            border: none;
+                            padding: 3px 10px;
+                            border-radius: abstracts.$radiusSm;
+                            font-size: 12px;
+                            cursor: pointer;
+
+                            &:hover {
+                                background-color: abstracts.$clrRedBloodDark8b;
+                            }
+                        }
+                    }
+                }
+
+                & > div.active .question {
+                    transform: scale(1);
                 }
             }
         }
@@ -156,7 +205,7 @@ nav .nav-block {
             border: 3px solid transparent;
             color: abstracts.$clrText;
             background-image: linear-gradient(abstracts.$clrMainLight, abstracts.$clrMainLight), 
-            linear-gradient(90deg, abstracts.$clrRed 0%, abstracts.$clrYellowBg 70%);
+            linear-gradient(90deg, abstracts.$clrRedBloodDark8b 0%, abstracts.$clrYellowBg 70%);
             background-origin: border-box;
             background-clip: content-box, border-box;
             padding: 0;

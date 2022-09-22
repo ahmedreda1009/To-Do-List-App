@@ -1,5 +1,5 @@
 ////////// nav bar
-document.addEventListener('click', (e) => {
+document.addEventListener('click', e => {
 
     let isNavBtn = e.target.matches("main header > i");
     if (!isNavBtn && e.target.closest("nav")) return;
@@ -14,7 +14,7 @@ document.addEventListener('click', (e) => {
 });
 
 ////////// add new task window
-document.addEventListener('click', (e) => {
+document.addEventListener('click', e => {
 
     let isAddBtn = e.target.matches("main button");
     
@@ -31,7 +31,7 @@ document.addEventListener('click', (e) => {
 });
 
 ////////// open options btn for every task
-document.addEventListener('click', (e) => {
+document.addEventListener('click', e => {
     
     let isOptBtn = e.target.matches(".tasks-block .task .content .fa-ellipsis-vertical");
     if (!isOptBtn && e.target.closest(".tasks-block .task .content .options") != null) return;
@@ -66,7 +66,7 @@ document.addEventListener('click', (e) => {
 
 ////////// check the task once clicked on it
 
-document.addEventListener('click', (e) => {
+document.addEventListener('click', e => {
 
     let isCheckBtn = e.target.matches(".tasks-block .task .content .fa-circle");
 
@@ -89,4 +89,8 @@ document.addEventListener('click', e => {
         if (btn === navListBtn) return;
         btn.classList.remove("active");
     });
+});
+
+////////// clear buttons
+document.addEventListener('click', e => {
 });
