@@ -9,8 +9,9 @@ main {
   height: 100%;
   border-radius: abstracts.$radiusLg;
   padding: 20px 0px 15px 20px;
-  background-color: abstracts.$clrMainDark;
+  background-color: abstracts.$clrBlack;
   box-shadow: 1px 1px 5px 1px abstracts.$clrMainNavShadow;
+  box-shadow: 1px 1px 5px 1px rgb(0 0 0 / 60%);
   flex-basis: 65%;
   overflow: hidden;
 
@@ -35,8 +36,11 @@ main {
     border-radius: abstracts.$radiusLg;
     background-image: linear-gradient(abstracts.$clrMainLight, abstracts.$clrMainLight), 
     linear-gradient(90deg, abstracts.$clrRedBloodDark8b 0%, abstracts.$clrYellowBg 70%);
+    background-image: linear-gradient(#222, #222), 
+    linear-gradient(90deg, abstracts.$clrRedBloodDark8b 0%, abstracts.$clrYellowBg 70%);
     background-origin: border-box;
     background-clip: content-box, border-box;
+    transform-style: preserve-3d;
 
     @include abstracts.media-down(mb) {
       border-radius: 0 0 0 0;
@@ -48,15 +52,17 @@ main {
 	  width: 100%;
     }
 
-	&::before {
-		content: '';
-		background-color: abstracts.$clrMainDark;
-		width: 100%;
-		height: 45px;
-		position: absolute;
-		top: -48px;
-		left: 0;
-	}
+	// &::before {
+	// 	content: '';
+	// 	background-color: #333;
+	// 	width: 100%;
+	// 	height: 45px;
+	// 	position: absolute;
+	// 	top: -48px;
+	// 	left: 0;
+  //   transform: translateZ(-1px);
+  //   // box-shadow: 0px -1px 5px 1px rgba(0, 0, 0, 0.454) inset;
+	// }
 
     > i {
       font-size: 25px;
@@ -140,6 +146,8 @@ main {
       width: 100%;
       max-width: 500px; 
       background-color: abstracts.$clrGradDark;
+      background-color: #141414;
+      box-shadow: 1px 1px 5px 1px rgb(0 0 0 / 25%);
       border-radius: abstracts.$radiusSm;
       position: relative;
 	    cursor: default;
@@ -148,10 +156,17 @@ main {
 
 	  &:hover {
 		background-color: #464652;
+    background-color: rgb(74, 74, 74);
+    background-color: #202020;
 	  }
 
       &.active {
-		background-color: #51515e;
+        background-color: #51515e;
+        background-color: rgb(85, 85, 85);
+        background-color: #222;
+        background-color: #141414;
+        background-color: #444;
+        background-color: #000;
       }
 
       .content {
@@ -225,10 +240,11 @@ main {
           z-index: 100;
           flex-direction: column;
           background-color: abstracts.$clrMainLight;
+          background-color: rgb(33, 33, 33);
           border-radius: abstracts.$radiusSm;
           color: abstracts.$clrBlack;
           overflow: hidden;
-          box-shadow: 1px 1px 8px 1px abstracts.$clrOptionsShadow;
+          box-shadow: 1px 1px 20px 1px rgba(39, 39, 39, 0.791);
           pointer-events: none;
           opacity: 0;
           transform: scale(0.1);
@@ -249,6 +265,7 @@ main {
   
             &:hover {
               background-color: rgb(60, 60, 60);
+              background-color: rgb(40 40 40);
             }
   
             i {
@@ -274,7 +291,7 @@ main {
               }
             }
   
-            .star {
+            .favourite {
               border-top: 1px solid rgb(60, 60, 60);
               border-bottom: 1px solid rgb(60, 60, 60);
     
@@ -330,7 +347,9 @@ main {
     &.active {
       transform: translateX(-50%) scale(1);
       background-color: rgba(abstracts.$clrMainDark, .90);
-      box-shadow: 0px 0px 0 400px rgba(abstracts.$clrMainDark, .90);
+      background-color: rgba(abstracts.$clrBlack, .90);
+      background-color: rgba(#111, .90);
+      box-shadow: 0px 0px 0 500px rgba(#111, .90);
       opacity: 1;
       bottom: 56px;
     }
@@ -353,8 +372,8 @@ main {
       &.active {
         // transform: translate(-50%, -50%) scale(1);
         transform: translateX(-50%) scale(1);
-        background-color: rgba(abstracts.$clrMainDark, .90);
-        box-shadow: 0px 0px 0 400px rgba(abstracts.$clrMainDark, .90);
+        background-color: rgba(17, 17, 17, 0.9);
+        box-shadow: 0px 0px 0 400px rgba(17, 17, 17, 0.9);
         // bottom: 30%;
         // left: 50%;
         // bottom: 0px;
@@ -374,7 +393,9 @@ main {
       width: 60%;
       min-width: 250px;
       max-width: 280px;
-      background-color: abstracts.$clrNewTaskWindow;
+      background-color: abstracts.$clrBlack;
+      background-color: hsl(0, 0%, 17%);
+      background-color: #222;
       display: flex;
       gap: 10px;
       flex-direction: column;
@@ -433,9 +454,10 @@ main {
                       border .1s ease-in-out;
           color: abstracts.$clrTextLight;
   
-          &.fa-star {
+          &.fa-circle {
             background: none;
             border: 2px solid abstracts.$clrYellowBg;
+            color: abstracts.$clrYellowBg;
   
             &:hover,
             &.active {
@@ -447,10 +469,12 @@ main {
           &.fa-plus {
             background: none;
             border: 2px solid abstracts.$clrBlue;
+            color: abstracts.$clrBlue;
   
             &:hover,
             &.active {
               background-color: rgba(abstracts.$clrBlue, 1);
+              color: abstracts.$clrBlack;
             }
           }
         }

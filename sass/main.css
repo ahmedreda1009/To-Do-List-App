@@ -107,12 +107,15 @@ body::after {
   left: -50%;
   background-color: #333;
   background: linear-gradient(135deg, #595976 0%, #3B3B48 59%);
+  background: linear-gradient(85deg, #595976 0%, #3B3B48 59%);
+  background: linear-gradient(85deg, #666 0%, #333 59%);
   border-radius: 50%;
 }
 body::before {
   height: 100%;
   bottom: 0;
   background-color: #E0E0E0;
+  background-color: #E1D9D1;
 }
 
 ul {
@@ -144,7 +147,9 @@ a {
   border-radius: 10px;
   height: min(90vh, 700px);
   box-shadow: 1px 1px 5px 1px rgba(42, 42, 56, 0.5);
-  background: linear-gradient(135deg, #595976 0%, #3B3B48 59%);
+  background-color: rgba(153, 153, 194, 0.3);
+  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(225, 217, 209, 0.5);
 }
 @media screen and (min-width: 768px) {
   .container {
@@ -186,6 +191,7 @@ nav .nav-block .lists > div {
   text-transform: capitalize;
   font-size: 14px;
   box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
 nav .nav-block .actions {
@@ -237,6 +243,7 @@ nav .nav-block .actions > div.clear > div {
   text-align: center;
   background-color: #D1D1DF;
   background-color: antiquewhite;
+  background-color: #E1D9D1;
   font-family: "GolosTextWebBlack";
   box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.2);
   transform: translateY(0px) scale(1);
@@ -247,26 +254,32 @@ nav .nav-block .actions > div.clear > div i {
   font-size: 26px;
   color: #7F1D1D;
   font-weight: bold;
-  transition: color 10ms ease-in-out;
+  transition: color 10ms ease-in-out, font-size 0.1s ease-in-out;
   pointer-events: none;
 }
 nav .nav-block .actions > div.clear > div h3 {
   font-size: 11px;
   color: #7F1D1D;
   font-weight: bold;
-  transition: color 10ms ease-in-out;
+  transition: color 10ms ease-in-out, font-size 0.1s ease-in-out;
   pointer-events: none;
 }
 nav .nav-block .actions > div.clear > div:not(.active):hover {
   background-color: #7F1D1D;
+  background-color: #E1D9D1;
+  background-color: hsl(30deg, 21%, 80%);
 }
 nav .nav-block .actions > div.clear > div:not(.active):hover h3 {
   color: #D1D1DF;
   color: antiquewhite;
+  color: #7F1D1D;
+  font-size: 8px;
 }
 nav .nav-block .actions > div.clear > div:not(.active):hover i {
   color: #D1D1DF;
   color: antiquewhite;
+  color: #7F1D1D;
+  font-size: 35px;
 }
 nav .nav-block .actions > div.clear > div.active {
   position: absolute;
@@ -318,24 +331,35 @@ nav .nav-block .lists header {
   border: 3px solid transparent;
   color: #D1D1DF;
   background-image: linear-gradient(#313138, #313138), linear-gradient(90deg, #8b0000 0%, #FFA726 70%);
+  background-image: linear-gradient(#222, #222), linear-gradient(90deg, #8b0000 0%, #FFA726 70%);
   background-origin: border-box;
   background-clip: content-box, border-box;
   padding: 0;
   height: 67px;
   display: flex;
+  gap: 10px;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   transform-style: preserve-3d;
   width: calc(100% - 40px);
   max-width: 226.83px;
   position: relative;
+}
+nav .nav-block .lists header i {
+  padding-left: 20px;
+  font-size: 26px;
+  background: linear-gradient(270deg, #D64942 0%, #FFA726 70%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 nav .nav-block .lists header h1 {
   letter-spacing: 0px;
 }
 nav .nav-block .lists > div {
   background-color: #282836;
-  background-color: #3F3F46;
+  background-color: #222;
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.2);
 }
 nav .nav-block .lists > div i {
   font-size: 20px;
@@ -378,21 +402,21 @@ nav .nav-block .lists > div.completed:hover {
 nav .nav-block .lists > div.completed:hover i {
   color: #D1D1DF;
 }
-nav .nav-block .lists > div.important i {
+nav .nav-block .lists > div.favourites i {
   color: #FFA726;
 }
-nav .nav-block .lists > div.important.active, nav .nav-block .lists > div.important.active:hover {
+nav .nav-block .lists > div.favourites.active, nav .nav-block .lists > div.favourites.active:hover {
   background-color: #FFA726;
   color: #333;
 }
-nav .nav-block .lists > div.important.active i, nav .nav-block .lists > div.important.active:hover i {
+nav .nav-block .lists > div.favourites.active i, nav .nav-block .lists > div.favourites.active:hover i {
   color: #333;
 }
-nav .nav-block .lists > div.important:hover {
+nav .nav-block .lists > div.favourites:hover {
   background-color: rgba(255, 167, 38, 0.7);
   color: #333;
 }
-nav .nav-block .lists > div.important:hover i {
+nav .nav-block .lists > div.favourites:hover i {
   color: #333;
 }
 nav .nav-block .lists > div.trash i {
@@ -402,14 +426,22 @@ nav .nav-block .lists > div.trash i {
 }
 nav .nav-block .lists > div.trash.active, nav .nav-block .lists > div.trash.active:hover {
   background-color: rgb(29, 29, 29);
+  background-color: #D64942;
   color: #af2626;
   color: #D1D1DF;
+  color: #222;
 }
 nav .nav-block .lists > div.trash.active i, nav .nav-block .lists > div.trash.active:hover i {
   color: #af2626;
+  color: #222;
 }
 nav .nav-block .lists > div.trash:hover {
   background-color: rgb(45, 45, 45);
+  background-color: rgba(214, 73, 66, 0.5);
+  color: #222;
+}
+nav .nav-block .lists > div.trash:hover i {
+  color: #222;
 }
 
 main button.new-task {
@@ -428,19 +460,22 @@ main button.new-task {
   border: none;
   outline: none;
   box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.24);
-  transition: transform 0.2s ease-in-out, bottom 0.3s ease-in-out, left 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  transition: transform 50ms ease-in-out, bottom 0.3s ease-in-out, left 0.3s ease-in-out, background-color 0.3s ease-in-out, width 0.05s ease-in-out, height 0.05s ease-in-out;
   cursor: pointer;
   background-color: #dadada;
+  background-color: #E1D9D1;
 }
 main button.new-task i {
   font-size: 30px;
   font-weight: bold;
   color: #313138;
   pointer-events: none;
+  transition: color 0.3s ease-in-out;
 }
 main button.new-task:hover {
   background-color: #ededed;
-  transform: translateX(-50%) scale(1.07);
+  background-color: #e7d2bd;
+  transform: translate(-50%);
 }
 @media screen and (max-width: 767px) {
   main button.new-task {
@@ -465,6 +500,7 @@ header {
   top: 0;
   cursor: default;
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.3);
 }
 header h1 {
   margin: 0;
@@ -481,8 +517,9 @@ main {
   height: 100%;
   border-radius: 10px;
   padding: 20px 0px 15px 20px;
-  background-color: #2A2A38;
+  background-color: #333;
   box-shadow: 1px 1px 5px 1px rgba(42, 42, 56, 0.8);
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.6);
   flex-basis: 65%;
   overflow: hidden;
 }
@@ -507,8 +544,10 @@ main header {
   border: 3px solid transparent;
   border-radius: 10px;
   background-image: linear-gradient(#313138, #313138), linear-gradient(90deg, #8b0000 0%, #FFA726 70%);
+  background-image: linear-gradient(#222, #222), linear-gradient(90deg, #8b0000 0%, #FFA726 70%);
   background-origin: border-box;
   background-clip: content-box, border-box;
+  transform-style: preserve-3d;
 }
 @media screen and (max-width: 767px) {
   main header {
@@ -520,15 +559,6 @@ main header {
     border-top: none;
     width: 100%;
   }
-}
-main header::before {
-  content: "";
-  background-color: #2A2A38;
-  width: 100%;
-  height: 45px;
-  position: absolute;
-  top: -48px;
-  left: 0;
 }
 main header > i {
   font-size: 25px;
@@ -606,6 +636,8 @@ main .tasks-block .task {
   width: 100%;
   max-width: 500px;
   background-color: #3B3B48;
+  background-color: #141414;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   position: relative;
   cursor: default;
@@ -614,9 +646,16 @@ main .tasks-block .task {
 }
 main .tasks-block .task:hover {
   background-color: #464652;
+  background-color: rgb(74, 74, 74);
+  background-color: #202020;
 }
 main .tasks-block .task.active {
   background-color: #51515e;
+  background-color: rgb(85, 85, 85);
+  background-color: #222;
+  background-color: #141414;
+  background-color: #444;
+  background-color: #000;
 }
 main .tasks-block .task .content {
   position: relative;
@@ -678,10 +717,11 @@ main .tasks-block .task .content .options {
   z-index: 100;
   flex-direction: column;
   background-color: #313138;
+  background-color: rgb(33, 33, 33);
   border-radius: 8px;
   color: #333;
   overflow: hidden;
-  box-shadow: 1px 1px 8px 1px hsl(240deg, 18%, 20%);
+  box-shadow: 1px 1px 20px 1px rgba(39, 39, 39, 0.791);
   pointer-events: none;
   opacity: 0;
   transform: scale(0.1);
@@ -700,6 +740,7 @@ main .tasks-block .task .content .options > div {
 }
 main .tasks-block .task .content .options > div:hover {
   background-color: rgb(60, 60, 60);
+  background-color: rgb(40, 40, 40);
 }
 main .tasks-block .task .content .options > div i {
   color: #6b6b6b;
@@ -717,11 +758,11 @@ main .tasks-block .task .content .options > div p {
 main .tasks-block .task .content .options .edit i {
   color: #1E89E3;
 }
-main .tasks-block .task .content .options .star {
+main .tasks-block .task .content .options .favourite {
   border-top: 1px solid rgb(60, 60, 60);
   border-bottom: 1px solid rgb(60, 60, 60);
 }
-main .tasks-block .task .content .options .star i {
+main .tasks-block .task .content .options .favourite i {
   color: #FFA726;
 }
 main .tasks-block .task .content .options .delete i {
@@ -756,7 +797,9 @@ main .new-task-container {
 main .new-task-container.active {
   transform: translateX(-50%) scale(1);
   background-color: rgba(42, 42, 56, 0.9);
-  box-shadow: 0px 0px 0 400px rgba(42, 42, 56, 0.9);
+  background-color: rgba(51, 51, 51, 0.9);
+  background-color: rgba(17, 17, 17, 0.9);
+  box-shadow: 0px 0px 0 500px rgba(17, 17, 17, 0.9);
   opacity: 1;
   bottom: 56px;
 }
@@ -769,8 +812,8 @@ main .new-task-container.active {
   }
   main .new-task-container.active {
     transform: translateX(-50%) scale(1);
-    background-color: rgba(42, 42, 56, 0.9);
-    box-shadow: 0px 0px 0 400px rgba(42, 42, 56, 0.9);
+    background-color: rgba(17, 17, 17, 0.9);
+    box-shadow: 0px 0px 0 400px rgba(17, 17, 17, 0.9);
     left: 50%;
     opacity: 1;
   }
@@ -786,7 +829,9 @@ main .new-task-container .new-task-window {
   width: 60%;
   min-width: 250px;
   max-width: 280px;
-  background-color: #373748;
+  background-color: #333;
+  background-color: hsl(0deg, 0%, 17%);
+  background-color: #222;
   display: flex;
   gap: 10px;
   flex-direction: column;
@@ -838,20 +883,23 @@ main .new-task-container .new-task-window .icons i {
     font-size: 12px;
   }
 }
-main .new-task-container .new-task-window .icons i.fa-star {
+main .new-task-container .new-task-window .icons i.fa-circle {
   background: none;
   border: 2px solid #FFA726;
+  color: #FFA726;
 }
-main .new-task-container .new-task-window .icons i.fa-star:hover, main .new-task-container .new-task-window .icons i.fa-star.active {
+main .new-task-container .new-task-window .icons i.fa-circle:hover, main .new-task-container .new-task-window .icons i.fa-circle.active {
   background-color: #ffa726;
   color: #333;
 }
 main .new-task-container .new-task-window .icons i.fa-plus {
   background: none;
   border: 2px solid #1E89E3;
+  color: #1E89E3;
 }
 main .new-task-container .new-task-window .icons i.fa-plus:hover, main .new-task-container .new-task-window .icons i.fa-plus.active {
   background-color: #1e89e3;
+  color: #333;
 }
 
 /*-------------------------------------------------------------------*/
@@ -864,8 +912,9 @@ nav {
   height: 100%;
   min-width: 245px;
   border-radius: 10px;
-  background-color: #2A2A38;
+  background-color: #333;
   box-shadow: 1px 1px 5px 1px rgba(42, 42, 56, 0.8);
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.6);
   flex-basis: 35%;
   overflow: hidden;
 }
@@ -880,6 +929,7 @@ nav {
     width: 40%;
     height: calc(100% - 150px);
     background-color: #313138;
+    background-color: #333;
   }
   nav.active {
     transform: translateX(-20px);

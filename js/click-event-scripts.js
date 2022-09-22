@@ -81,7 +81,7 @@ document.addEventListener('click', e => {
     if (navListBtn == null) return;
 
     if (navListBtn != null) {
-        navListBtn.classList.toggle("active");
+        navListBtn.classList.add("active");
     }
 
     let navListBtns = document.querySelectorAll("nav .nav-block .lists > div");

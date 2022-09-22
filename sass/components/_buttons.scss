@@ -25,6 +25,7 @@ nav .nav-block {
         text-transform: capitalize;
         font-size: 14px;
         box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.12);
+        box-shadow: 0px 0px 4px 2px rgb(0 0 0 / 30%);
         cursor: pointer;
     }
 
@@ -88,6 +89,7 @@ nav .nav-block {
                     text-align: center;
                     background-color: abstracts.$clrText;
                     background-color: antiquewhite;
+                    background-color: #E1D9D1;
                     font-family: 'GolosTextWebBlack';
                     box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.2);
                     // top: 182px;
@@ -106,7 +108,8 @@ nav .nav-block {
                         font-size: 26px;
                         color: #7F1D1D;
                         font-weight: bold;
-                        transition: color 10ms ease-in-out;
+                        transition: color 10ms ease-in-out,
+                                    font-size .1s ease-in-out;
                         pointer-events: none;
                     }
     
@@ -114,21 +117,28 @@ nav .nav-block {
                         font-size: 11px;
                         color: #7F1D1D;
                         font-weight: bold;
-                        transition: color 10ms ease-in-out;
+                        transition: color 10ms ease-in-out,
+                                    font-size .1s ease-in-out;
                         pointer-events: none;
                     }
     
                     &:not(.active):hover {
                         background-color: #7F1D1D;
+                        background-color: #E1D9D1;
+                        background-color: hsl(30, 21%, 80%);
 
                         h3 {
                             color: abstracts.$clrText;
                             color: antiquewhite;
+                            color: #7F1D1D;
+                            font-size: 8px;
                         }
     
                         i {
                             color: abstracts.$clrText;
                             color: antiquewhite;
+                            color: #7F1D1D;
+                            font-size: 35px;
                         }
                     }
 
@@ -206,17 +216,30 @@ nav .nav-block {
             color: abstracts.$clrText;
             background-image: linear-gradient(abstracts.$clrMainLight, abstracts.$clrMainLight), 
             linear-gradient(90deg, abstracts.$clrRedBloodDark8b 0%, abstracts.$clrYellowBg 70%);
+            background-image: linear-gradient(#222, #222), 
+            linear-gradient(90deg, abstracts.$clrRedBloodDark8b 0%, abstracts.$clrYellowBg 70%);
             background-origin: border-box;
             background-clip: content-box, border-box;
             padding: 0;
             height: 67px;
             display: flex;
+            gap: 10px;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             transform-style: preserve-3d;
             width: calc(100% - 40px);
             max-width: 226.83px;
             position: relative;
+
+            i {
+                padding-left: 20px;
+                font-size: 26px;
+                background: -webkit-linear-gradient(270deg, abstracts.$clrRed 0%, abstracts.$clrYellowBg 70%);
+                background: linear-gradient(270deg, abstracts.$clrRed 0%, abstracts.$clrYellowBg 70%);
+                -webkit-background-clip: text;
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
 
             h1 {
                 letter-spacing: 0px;
@@ -236,7 +259,8 @@ nav .nav-block {
 
         > div {
             background-color: abstracts.$clrBlack2;
-            background-color: #3F3F46;
+            background-color: #222;
+            box-shadow: 0px 0px 4px 2px rgb(0 0 0 / 20%);
 
             i {
                 font-size: 20px;
@@ -297,7 +321,7 @@ nav .nav-block {
                 }
             }
     
-            &.important {
+            &.favourites {
                 i {
                     color: abstracts.$clrYellowBg;
                 }
@@ -333,16 +357,25 @@ nav .nav-block {
                 &.active,
                 &.active:hover {
                     background-color: rgb(29, 29, 29);
+                    background-color: abstracts.$clrRed;
                     color: abstracts.$clrRedBlood;
                     color: abstracts.$clrText;
+                    color: #222;
     
                     i {
                         color: abstracts.$clrRedBlood;
+                        color: #222;
                     }
                 }
     
                 &:hover {
                     background-color: rgb(45, 45, 45);
+                    background-color: rgba(abstracts.$clrRed, .5);
+                    color: #222;
+
+                    i {
+                        color: #222;
+                    }
                 }
             }
         }
@@ -367,23 +400,35 @@ main {
         border: none;
         outline: none;
         box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.24);
-        transition: transform .2s ease-in-out,
+        transition: transform 50ms ease-in-out,
                     bottom .3s ease-in-out,
                     left .3s ease-in-out,
-                    background-color .3s ease-in-out;
+                    background-color .3s ease-in-out,
+                    width .05s ease-in-out,
+                    height .05s ease-in-out;
         cursor: pointer;
         background-color: abstracts.$clrLight;
+        background-color: #E1D9D1;
 
         i {
             font-size: 30px;
             font-weight: bold;
             color: abstracts.$clrMainLight;
             pointer-events: none;
+            transition: color .3s ease-in-out;
         }
 
         &:hover {
             background-color: abstracts.$clrLightBg;
-            transform: translateX(-50%) scale(1.07);
+            background-color: #e7d2bd;
+            // transform: translateX(-50%) scale(1.02);
+            transform: translate(-50%);
+            // width: 64px;
+            // height: 64px;
+
+            // i {
+            //     color: #E1D9D1;
+            // }
         }
     }
 

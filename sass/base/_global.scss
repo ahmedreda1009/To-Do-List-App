@@ -54,6 +54,8 @@ body {
     left: -50%;
     background-color: abstracts.$clrBlack;    
     background: linear-gradient(135deg, abstracts.$clrGradLight 0%, abstracts.$clrGradDark 59%);
+    background: linear-gradient(85deg, abstracts.$clrGradLight 0%, abstracts.$clrGradDark 59%);
+    background: linear-gradient(85deg, #666 0%, #333 59%);
     border-radius: 50%;
   }
 
@@ -61,6 +63,7 @@ body {
     height: 100%;
     bottom: 0;
     background-color: #E0E0E0;
+    background-color: #E1D9D1;
   }
 }
 
@@ -97,7 +100,11 @@ a {
     width: 80%;
   }
   box-shadow: 1px 1px 5px 1px abstracts.$clrContainerShadow;
-  background: linear-gradient(135deg, abstracts.$clrGradLight 0%, abstracts.$clrGradDark 59%);
+  // background: linear-gradient(135deg, abstracts.$clrGradLight 0%, abstracts.$clrGradDark 59%);
+  // background: linear-gradient(135deg, rgb(153 153 194 / 87%) 0%, rgba(43, 43, 61, 0.87) 59%);
+  background-color: rgb(153 153 194 / 30%);
+  background-color: rgb(255 255 255 / 50%);
+  background-color: rgb(225 217 209 / 50%);
 
   @include abstracts.media-down(mb) {
     flex-direction: column;

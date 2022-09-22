@@ -12,8 +12,9 @@ nav {
   min-width: 245px;
   border-radius: abstracts.$radiusLg;
   // padding: 20px;
-  background-color: abstracts.$clrMainDark;
+  background-color: abstracts.$clrBlack;
   box-shadow: 1px 1px 5px 1px abstracts.$clrMainNavShadow;
+  box-shadow: 1px 1px 5px 1px rgb(0 0 0 / 60%);
   flex-basis: 35%;
   overflow: hidden;
 
@@ -31,6 +32,7 @@ nav {
     width: 40%;
     height: calc(100% - 150px);
     background-color: abstracts.$clrMainLight;
+    background-color: #333;
   }
 
   header {
