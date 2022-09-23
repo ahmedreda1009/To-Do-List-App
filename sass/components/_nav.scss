@@ -13,6 +13,7 @@ nav {
   border-radius: abstracts.$radiusLg;
   // padding: 20px;
   background-color: abstracts.$clrBlack;
+  background-color: #121212;
   box-shadow: 1px 1px 5px 1px abstracts.$clrMainNavShadow;
   box-shadow: 1px 1px 5px 1px rgb(0 0 0 / 60%);
   flex-basis: 35%;
@@ -46,12 +47,20 @@ nav {
     background-color: abstracts.$clrYellowBg;  
     background: linear-gradient(135deg, abstracts.$clrRedBloodDark8b 0%, abstracts.$clrYellowBg 70%);
     color: abstracts.$clrBlack;
+    color: #222;
 
     h1 {
       font-family: "GolosTextWebBlack";
       text-align: center;
-      letter-spacing: -2px;
+      letter-spacing: -1px;
       word-spacing: -1px;
+      position: relative;
+
+      sup {
+        position: absolute;
+        font-size: 11px;
+        top: 20px;
+      }
     }
   }
 

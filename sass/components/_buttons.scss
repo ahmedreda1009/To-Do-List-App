@@ -37,6 +37,7 @@ nav .nav-block {
         > div {
             &.search {
                 background-color: abstracts.$clrText;
+                background-color: #e2d2c2;
                 
                 i {
                     color: abstracts.$clrPurple;
@@ -74,6 +75,7 @@ nav .nav-block {
                 gap: 10px;
                 text-transform: uppercase;
                 background-color:  abstracts.$clrBlack;
+                background-color: #222;
     
                 > div {
                     // min-height: 100%;
@@ -83,24 +85,49 @@ nav .nav-block {
                     align-items: center;
                     justify-content: flex-start;
                     flex-direction: column;
-                    gap: 10px;
+                    gap: 15px;
                     padding: 10px;
                     border-radius: abstracts.$radiusSm;
                     text-align: center;
                     background-color: abstracts.$clrText;
                     background-color: antiquewhite;
                     background-color: #E1D9D1;
+                    background-color: #e2d2c2;
                     font-family: 'GolosTextWebBlack';
                     box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.2);
                     // top: 182px;
-                    transform: translateY(0px) scale(1);
+                    transform: translateY(0px);
+                    overflow: hidden;
                     transition: background-color 10ms ease-in-out,
-                                top .3s ease-in-out,
+                                // top .3s ease-in-out,
                                 // right .3s ease-in-out .6s,
                                 // left .3s ease-in-out .6s,
-                                width .3s ease-in-out,
+                                width .1s ease-in-out,
                                 // height .3s ease-in-out,
-                                transform .3s ease-in-out;
+                                transform .5s ease-in-out;
+
+                    &.active {
+                        position: absolute;
+                        width: calc(100% - 60px);
+                        @media  (max-width:  1120px) and (min-height: 733px) {
+                            width: calc(100% - 40px);
+                        }
+                        top: 115px;
+                        // left: 20px;
+                        // max-width: 226.83px;
+                        height: 167px;
+                        height: fit-content;
+                        transform: translateY(-100px);
+                        z-index: 1000;
+                        transition: 
+                                // background-color 10ms ease-in-out,
+                                // top .3s ease-in-out,
+                                // right .3s ease-in-out .6s,
+                                // left .3s ease-in-out .6s,
+                                // width .1s ease-in-out,
+                                // height .3s ease-in-out,
+                                transform .5s ease-in-out;
+                    }
     
                     i {
                         // color: abstracts.$clrText;
@@ -123,15 +150,16 @@ nav .nav-block {
                     }
     
                     &:not(.active):hover {
-                        background-color: #7F1D1D;
-                        background-color: #E1D9D1;
-                        background-color: hsl(30, 21%, 80%);
+                        // background-color: #7F1D1D;
+                        // background-color: #E1D9D1;
+                        // background-color: hsl(30, 21%, 80%);
 
                         h3 {
                             color: abstracts.$clrText;
                             color: antiquewhite;
                             color: #7F1D1D;
                             font-size: 8px;
+                            font-size: .6em;
                         }
     
                         i {
@@ -139,37 +167,38 @@ nav .nav-block {
                             color: antiquewhite;
                             color: #7F1D1D;
                             font-size: 35px;
+                            font-size: 2.5em;
                         }
                     }
 
+                    &.reset-all {
+                        margin-right: auto;
+                    }
                     
+                    &.clear-trash {
+                        margin-left: auto;
+                    }
+
                     &.active {
-                        position: absolute;
-                        width: calc(100% - 60px);
-                        @media  (max-width:  1120px) and (min-height: 733px) {
-                            width: calc(100% - 40px);
+                        cursor: default;
+                        .question {
+                            .close {
+                                cursor: pointer;
+                            }
                         }
-                        // top: 106px;
-                        left: 20px;
-                        // max-width: 226.83px;
-                        height: 167px;
-                        transform: translateY(-100px) scale(.99999999);
-                        z-index: 1000;
-                    }
 
-                    // &.reset-all {
-                    //     margin-right: auto;
-                    // }
-                    
-                    // &.clear-trash {
-                    //     margin-left: auto;
-                    // }
+                        .buttons {
+                            button {
+                                cursor: pointer;
+                            }
+                        }
+                    }
                 }
 
                 .question {
                     transform: scale(0);
-                    padding: 5px;
-                    transition: transform .3s ease-in-out;
+                    // padding: 5px;
+                    // transition: transform .3s ease-in-out;
                     
                     h4 {
                         color: abstracts.$clrBlack;
@@ -186,13 +215,24 @@ nav .nav-block {
                             background-color: abstracts.$clrRedBloodDark;
                             color: antiquewhite;
                             border: none;
-                            padding: 3px 10px;
+                            padding: 5px 10px;
                             border-radius: abstracts.$radiusSm;
                             font-size: 12px;
                             cursor: pointer;
+                            width: 60px;
 
                             &:hover {
                                 background-color: abstracts.$clrRedBloodDark8b;
+                            }
+                        }
+
+                        .close {
+                            position: absolute;
+                            top: -83px;
+                            right: 0px;
+
+                            &:hover i {
+                                color: abstracts.$clrRedBloodDark8b;
                             }
                         }
                     }
@@ -214,6 +254,7 @@ nav .nav-block {
             margin-bottom: 10px;
             border: 3px solid transparent;
             color: abstracts.$clrText;
+            color: #e2d2c2;
             background-image: linear-gradient(abstracts.$clrMainLight, abstracts.$clrMainLight), 
             linear-gradient(90deg, abstracts.$clrRedBloodDark8b 0%, abstracts.$clrYellowBg 70%);
             background-image: linear-gradient(#222, #222), 
@@ -409,6 +450,7 @@ main {
         cursor: pointer;
         background-color: abstracts.$clrLight;
         background-color: #E1D9D1;
+        background-color: #e2d2c2;
 
         i {
             font-size: 30px;
