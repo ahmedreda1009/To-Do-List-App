@@ -29,7 +29,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: calc(100% - 40px);
+    width: calc(100% - 30px);
     padding: 0;
     margin: 0 0 20px 10px;
     height: 67px;
@@ -123,7 +123,7 @@ main {
     height: calc(100% - 80px);
     width: 100%;
     overflow-y: auto;
-    padding-right: 10px;
+    padding-right: 20px;
     padding-left: 10px;
     padding-bottom: 200px;
     padding-top: 5px;
@@ -131,6 +131,10 @@ main {
     @include abstracts.media-down(mb) {
       padding: 20px 20px 210px;
     }
+
+    // @media screen and (min-height: 670px) {
+    //   width: calc(100% - 40px);
+    // }
 
     &::-webkit-scrollbar {
       width: 20px;
@@ -171,6 +175,7 @@ main {
     background-color: #1a1a1a;
     background-color: #282828;
     background-color: #181818;
+    background-color: #292929;
 	  }
 
       &.active {
@@ -178,10 +183,11 @@ main {
         background-color: rgb(85, 85, 85);
         background-color: #222;
         background-color: #141414;
-        background-color: #000;
-        background-color: #292929;
         background-color: #444;
+        background-color: #292929;
+        background-color: rgb(57, 57, 57);
       }
+
 
       .content {
         position: relative;
@@ -229,7 +235,7 @@ main {
 				text-decoration: line-through; 
 				opacity: .5;
 				z-index: 0;
-				color: abstracts.$clrBlue;
+				// color: abstracts.$clrBlue;
 			  }
             }
 
@@ -245,6 +251,7 @@ main {
           padding-left: 30px;
           padding-right: 30px;
           color: abstracts.$clrText;
+          color: #FFF;
         }
 
         .options {
@@ -284,6 +291,11 @@ main {
               background-color: rgb(40 40 40);
               background-color: rgb(60, 60, 60);
               background-color: #222;
+
+              p {
+                
+              color: #FFF;
+              }
             }
   
             i {
@@ -299,6 +311,7 @@ main {
               padding-left: 15px;
               padding-right: 15px;
               color: abstracts.$clrText;
+              color: #a7a7a7;
             }
           }
   
@@ -312,10 +325,20 @@ main {
             .favourite {
               border-top: 1px solid rgb(60, 60, 60);
               border-bottom: 1px solid rgb(60, 60, 60);
+
+              // &:hover {
+              //   i {
+              //     color: abstracts.$clrYellowBg;
+              //   }
+              //   p {
+              //     color: abstracts.$clrText;
+              //   }
+              // }
     
               i {
                 color: abstracts.$clrYellowBg;
               }
+
             }
   
             .delete {
@@ -430,7 +453,7 @@ main {
       input,
       .icons {
         width: 70%;
-		border-radius: abstracts.$radiusLg;
+		  border-radius: abstracts.$radiusLg;
       }
   
       .input {
@@ -456,9 +479,28 @@ main {
           border: none;
           background: none;
           height: 100%;
-          width: 90%;
+          width: 100%;
           padding-left: 15px;
           color: abstracts.$clrText;
+
+          background: none;
+          border: none;
+          outline: none;
+
+          &::-webkit-input-placeholder {
+            color: abstracts.$clrText;
+              font-weight: bold;
+              text-transform: capitalize;
+          }
+
+          &:-webkit-autofill,
+          &:-webkit-autofill:hover, 
+          &:-webkit-autofill:focus, 
+          &:-webkit-autofill:active{
+              -webkit-box-shadow: 0 0 0 30px #222 inset !important;
+              box-shadow: 0 0 0 30px #222 inset !important;
+              color: abstracts.$clrText;
+          }
         }
 
   
@@ -495,7 +537,7 @@ main {
           color: abstracts.$clrTextLight;
   
           &.fa-circle {
-            width: 35%;
+            width: 40%;
             background: none;
             border: 2px solid abstracts.$clrYellowBg;
             color: abstracts.$clrYellowBg;
@@ -519,7 +561,7 @@ main {
           }
   
           &.fa-plus {
-            width: 60%;
+            width: 55%;
             background: none;
             border: 2px solid abstracts.$clrGreen;
             color: abstracts.$clrGreen;

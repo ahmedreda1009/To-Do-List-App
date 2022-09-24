@@ -86,7 +86,7 @@ html {
 
 body {
   overflow: hidden;
-  color: #D1D1DF;
+  color: #a7a7a7;
   font-family: "GolosTextWebRegular";
   margin: 0;
   padding: 0;
@@ -101,16 +101,13 @@ body::before, body::after {
   z-index: -1;
 }
 body::after {
-  height: 100%;
+  height: 90%;
   width: 200%;
   top: -50%;
   top: -27%;
   left: -50%;
-  background-color: #333;
-  background: linear-gradient(135deg, #595976 0%, #3B3B48 59%);
-  background: linear-gradient(85deg, #595976 0%, #3B3B48 59%);
   background: linear-gradient(85deg, #444 0%, #222 59%);
-  background: linear-gradient(85deg, #333 0%, #121212 59%);
+  background: linear-gradient(85deg, #555 0%, #121212 59%);
   border-radius: 50%;
 }
 body::before {
@@ -131,6 +128,13 @@ img {
 
 a {
   text-decoration: none;
+}
+
+svg {
+  position: absolute;
+  right: 0;
+  top: 30%;
+  width: 30%;
 }
 
 .wrapper {
@@ -154,6 +158,15 @@ a {
   background-color: rgba(255, 255, 255, 0.5);
   background-color: rgba(225, 217, 209, 0.5);
   background-color: rgba(225, 217, 209, 0.33);
+  background: rgba(255, 255, 255, 0.01);
+  background-color: rgba(255, 255, 255, 0.3);
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6.9px);
+  -webkit-backdrop-filter: blur(6.9px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
 }
 @media screen and (min-width: 768px) {
   .container {
@@ -204,7 +217,7 @@ nav .nav-block .actions {
   gap: 20px;
 }
 nav .nav-block .actions > div.search {
-  background-color: #D1D1DF;
+  background-color: #a7a7a7;
   background-color: #e2d2c2;
 }
 nav .nav-block .actions > div.search i {
@@ -223,7 +236,7 @@ nav .nav-block .actions > div.search input::-webkit-input-placeholder {
   text-transform: capitalize;
 }
 nav .nav-block .actions > div.search input:-webkit-autofill, nav .nav-block .actions > div.search input:-webkit-autofill:hover, nav .nav-block .actions > div.search input:-webkit-autofill:focus, nav .nav-block .actions > div.search input:-webkit-autofill:active {
-  box-shadow: 0 0 0 30px #D1D1DF inset !important;
+  box-shadow: 0 0 0 30px #a7a7a7 inset !important;
 }
 nav .nav-block .actions > div.clear {
   display: flex;
@@ -247,7 +260,7 @@ nav .nav-block .actions > div.clear > div {
   padding: 10px;
   border-radius: 8px;
   text-align: center;
-  background-color: #D1D1DF;
+  background-color: #a7a7a7;
   background-color: antiquewhite;
   background-color: #E1D9D1;
   background-color: #e2d2c2;
@@ -290,14 +303,14 @@ nav .nav-block .actions > div.clear > div h3 {
   pointer-events: none;
 }
 nav .nav-block .actions > div.clear > div:not(.active):hover h3 {
-  color: #D1D1DF;
+  color: #a7a7a7;
   color: antiquewhite;
   color: #7F1D1D;
   font-size: 8px;
   font-size: 0.6em;
 }
 nav .nav-block .actions > div.clear > div:not(.active):hover i {
-  color: #D1D1DF;
+  color: #a7a7a7;
   color: antiquewhite;
   color: #7F1D1D;
   font-size: 35px;
@@ -360,7 +373,7 @@ nav .nav-block .lists {
 nav .nav-block .lists header {
   margin-bottom: 10px;
   border: 3px solid transparent;
-  color: #D1D1DF;
+  color: #a7a7a7;
   color: #e2d2c2;
   background-image: linear-gradient(#313138, #313138), linear-gradient(90deg, #8b0000 0%, #ffa42b 70%);
   background-image: linear-gradient(#222, #222), linear-gradient(90deg, #8b0000 0%, #ffa42b 70%);
@@ -406,53 +419,97 @@ nav .nav-block .lists > div.all i {
 nav .nav-block .lists > div.all.active, nav .nav-block .lists > div.all.active:hover {
   background-color: #1ed760;
   color: #333;
+  color: #111;
 }
 nav .nav-block .lists > div.all.active i, nav .nav-block .lists > div.all.active:hover i {
   color: #333;
+  color: #111;
 }
 nav .nav-block .lists > div.all:hover {
   background-color: rgba(30, 215, 96, 0.7);
   color: #333;
+  color: #111;
 }
 nav .nav-block .lists > div.all:hover i {
+  color: #a7a7a7;
   color: #333;
+  color: #111;
+}
+nav .nav-block .lists > div.in-progress i {
+  color: rgb(224, 75, 0);
+  -webkit-background-clip: text;
+          background-clip: text;
+  font-size: 20px;
+  font-weight: bold;
+}
+nav .nav-block .lists > div.in-progress.active, nav .nav-block .lists > div.in-progress.active:hover {
+  background-image: linear-gradient(90deg, #8b0000 0%, #ffa42b 70%);
+  color: #333;
+  color: #a7a7a7;
+  color: #111;
+}
+nav .nav-block .lists > div.in-progress.active i, nav .nav-block .lists > div.in-progress.active:hover i {
+  color: #333;
+  color: #a7a7a7;
+  color: #FFF;
+}
+nav .nav-block .lists > div.in-progress:hover {
+  background-color: rgba(224, 75, 0, 0.7);
+  background-image: linear-gradient(90deg, rgba(139, 0, 0, 0.5) 0%, rgba(255, 164, 43, 0.5) 70%);
+  color: #333;
+  color: #a7a7a7;
+  color: #111;
+}
+nav .nav-block .lists > div.in-progress:hover i {
+  color: #333;
+  color: #a7a7a7;
+  color: #FFF;
 }
 nav .nav-block .lists > div.completed i {
   color: #0d72ea;
 }
 nav .nav-block .lists > div.completed.active, nav .nav-block .lists > div.completed.active:hover {
   background-color: #0d72ea;
-  color: #D1D1DF;
+  color: #a7a7a7;
+  color: #FFF;
 }
 nav .nav-block .lists > div.completed.active i, nav .nav-block .lists > div.completed.active:hover i {
-  color: #D1D1DF;
+  color: #a7a7a7;
+  color: #FFF;
 }
 nav .nav-block .lists > div.completed:hover {
   background-color: rgba(13, 114, 234, 0.7);
-  color: #D1D1DF;
+  color: #a7a7a7;
+  color: #FFF;
 }
 nav .nav-block .lists > div.completed:hover i {
-  color: #D1D1DF;
+  color: #a7a7a7;
+  color: #FFF;
 }
-nav .nav-block .lists > div.favourites i {
+nav .nav-block .lists > div.favourite i {
   color: #ffa42b;
 }
-nav .nav-block .lists > div.favourites.active, nav .nav-block .lists > div.favourites.active:hover {
+nav .nav-block .lists > div.favourite.active, nav .nav-block .lists > div.favourite.active:hover {
   background-color: #ffa42b;
   color: #333;
 }
-nav .nav-block .lists > div.favourites.active i, nav .nav-block .lists > div.favourites.active:hover i {
+nav .nav-block .lists > div.favourite.active i, nav .nav-block .lists > div.favourite.active:hover i {
   color: #333;
+  color: #a7a7a7;
+  color: #FFF;
 }
-nav .nav-block .lists > div.favourites:hover {
+nav .nav-block .lists > div.favourite:hover {
   background-color: rgba(255, 164, 43, 0.7);
   color: #333;
+  color: #111;
 }
-nav .nav-block .lists > div.favourites:hover i {
+nav .nav-block .lists > div.favourite:hover i {
   color: #333;
+  color: #a7a7a7;
+  color: #FFF;
 }
 nav .nav-block .lists > div.trash i {
-  color: #D1D1DF;
+  color: #a7a7a7;
   color: rgb(22, 22, 22);
   color: #D64942;
 }
@@ -460,20 +517,26 @@ nav .nav-block .lists > div.trash.active, nav .nav-block .lists > div.trash.acti
   background-color: rgb(29, 29, 29);
   background-color: #D64942;
   color: #af2626;
-  color: #D1D1DF;
-  color: #222;
+  color: #a7a7a7;
+  color: #FFF;
 }
 nav .nav-block .lists > div.trash.active i, nav .nav-block .lists > div.trash.active:hover i {
   color: #af2626;
   color: #222;
+  color: #a7a7a7;
+  color: #FFF;
 }
 nav .nav-block .lists > div.trash:hover {
   background-color: rgb(45, 45, 45);
   background-color: rgba(214, 73, 66, 0.5);
   color: #222;
+  color: #a7a7a7;
+  color: #FFF;
 }
 nav .nav-block .lists > div.trash:hover i {
   color: #222;
+  color: #a7a7a7;
+  color: #FFF;
 }
 
 main button.new-task {
@@ -487,7 +550,7 @@ main button.new-task {
   z-index: 1000;
   bottom: 30px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) scale(1);
   border-radius: 50%;
   border: none;
   outline: none;
@@ -508,7 +571,7 @@ main button.new-task i {
 main button.new-task:hover {
   background-color: #ededed;
   background-color: #e7d2bd;
-  transform: translate(-50%);
+  transform: translateX(-50%) scale(1.02);
 }
 @media screen and (max-width: 767px) {
   main button.new-task {
@@ -521,7 +584,7 @@ main button.new-task:hover {
 /*--app main header--------------------------------------------------*/
 /*-------------------------------------------------------------------*/
 header {
-  color: #D1D1DF;
+  color: #a7a7a7;
   width: 100%;
   margin: 20px auto;
   background-color: #313138;
@@ -571,7 +634,7 @@ main header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: calc(100% - 40px);
+  width: calc(100% - 30px);
   padding: 0;
   margin: 0 0 20px 10px;
   height: 67px;
@@ -611,7 +674,7 @@ main header > i {
     border-radius: 50%;
     cursor: pointer;
     background-color: transparent;
-    color: #D1D1DF;
+    color: #a7a7a7;
     transform: scale(1);
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.1s ease-in-out;
   }
@@ -646,7 +709,7 @@ main .tasks-block {
   height: calc(100% - 80px);
   width: 100%;
   overflow-y: auto;
-  padding-right: 10px;
+  padding-right: 20px;
   padding-left: 10px;
   padding-bottom: 200px;
   padding-top: 5px;
@@ -693,15 +756,16 @@ main .tasks-block .task:hover {
   background-color: #1a1a1a;
   background-color: #282828;
   background-color: #181818;
+  background-color: #292929;
 }
 main .tasks-block .task.active {
   background-color: #51515e;
   background-color: rgb(85, 85, 85);
   background-color: #222;
   background-color: #141414;
-  background-color: #000;
-  background-color: #292929;
   background-color: #444;
+  background-color: #292929;
+  background-color: rgb(57, 57, 57);
 }
 main .tasks-block .task .content {
   position: relative;
@@ -744,7 +808,6 @@ main .tasks-block .task .content > i.fa-circle.checked + P {
   text-decoration: line-through;
   opacity: 0.5;
   z-index: 0;
-  color: #0d72ea;
 }
 main .tasks-block .task .content > i.fa-circle:hover {
   color: #0d72ea;
@@ -754,7 +817,8 @@ main .tasks-block .task .content > p {
   margin-top: 3px;
   padding-left: 30px;
   padding-right: 30px;
-  color: #D1D1DF;
+  color: #a7a7a7;
+  color: #FFF;
 }
 main .tasks-block .task .content .options {
   position: absolute;
@@ -792,6 +856,9 @@ main .tasks-block .task .content .options > div:hover {
   background-color: rgb(60, 60, 60);
   background-color: #222;
 }
+main .tasks-block .task .content .options > div:hover p {
+  color: #FFF;
+}
 main .tasks-block .task .content .options > div i {
   color: #6b6b6b;
   width: 15px;
@@ -803,7 +870,8 @@ main .tasks-block .task .content .options > div p {
   text-transform: uppercase;
   padding-left: 15px;
   padding-right: 15px;
-  color: #D1D1DF;
+  color: #a7a7a7;
+  color: #a7a7a7;
 }
 main .tasks-block .task .content .options .edit i {
   color: #0d72ea;
@@ -914,9 +982,21 @@ main .new-task-container .new-task-window .input input {
   border: none;
   background: none;
   height: 100%;
-  width: 90%;
+  width: 100%;
   padding-left: 15px;
-  color: #D1D1DF;
+  color: #a7a7a7;
+  background: none;
+  border: none;
+  outline: none;
+}
+main .new-task-container .new-task-window .input input::-webkit-input-placeholder {
+  color: #a7a7a7;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+main .new-task-container .new-task-window .input input:-webkit-autofill, main .new-task-container .new-task-window .input input:-webkit-autofill:hover, main .new-task-container .new-task-window .input input:-webkit-autofill:focus, main .new-task-container .new-task-window .input input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px #222 inset !important;
+  color: #a7a7a7;
 }
 main .new-task-container .new-task-window .input:focus {
   background: none;
@@ -945,7 +1025,7 @@ main .new-task-container .new-task-window .icons i {
   }
 }
 main .new-task-container .new-task-window .icons i.fa-circle {
-  width: 35%;
+  width: 40%;
   background: none;
   border: 2px solid #ffa42b;
   color: #ffa42b;
@@ -962,7 +1042,7 @@ main .new-task-container .new-task-window .icons i.fa-circle:hover {
   color: #333;
 }
 main .new-task-container .new-task-window .icons i.fa-plus {
-  width: 60%;
+  width: 55%;
   background: none;
   border: 2px solid #1ed760;
   color: #1ed760;

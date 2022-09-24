@@ -1,37 +1,22 @@
-//////////////////////////////////////////////////////////////////////////
-// nav bar
-//////////////////////////////////////////////////////////////////////////
-document.addEventListener('click', e => {
-
-    let isNavBtn = e.target.matches("main header > i");
-    if (!isNavBtn && e.target.closest("nav")) return;
-    
-    const navbar = document.querySelector("nav");
-
-    if (!isNavBtn) {
-        navbar.classList.remove("active");
-    } else {
-        navbar.classList.toggle("active");
-    }
-});
+import {openNewTaskWindow, favBtnEvent, listsBtns} from './btns-functionality.js';
 
 //////////////////////////////////////////////////////////////////////////
 // add new task window
 //////////////////////////////////////////////////////////////////////////
-document.addEventListener('click', e => {
+document.addEventListener('click', openNewTaskWindow);
 
-    let isAddBtn = e.target.matches("main button");
-    
-    if (!isAddBtn && e.target.closest(".new-task-window")) return;
+//////////////////////////////////////////////////////////////////////////
+// fav btn inside the new task window
+//////////////////////////////////////////////////////////////////////////
+let favBtn = document.querySelector('main .new-task-container .icons .fa-circle');
+favBtn.addEventListener('click', () => {favBtnEvent(favBtn)});
 
-    const newTaskContainer = document.querySelector("main .new-task-container");
-
-    if (!isAddBtn) {
-        newTaskContainer.classList.remove("active");
-    } else {
-        newTaskContainer.classList.toggle("active");
-        document.querySelector("main .new-task-container input").focus();
-    }
+//////////////////////////////////////////////////////////////////////////
+// nav bar list buttons
+//////////////////////////////////////////////////////////////////////////
+let navListBtns = document.querySelectorAll("nav .nav-block .lists > div");
+navListBtns.forEach(btn => {
+    btn.addEventListener('click', listsBtns);
 });
 
 //////////////////////////////////////////////////////////////////////////
@@ -70,68 +55,98 @@ document.addEventListener('click', e => {
     // }
 });
 
-//////////////////////////////////////////////////////////////////////////
-// check the task once clicked on it
-//////////////////////////////////////////////////////////////////////////
-document.addEventListener('click', e => {
+// //////////////////////////////////////////////////////////////////////////
+// // check the task once clicked on it
+// //////////////////////////////////////////////////////////////////////////
+// let checkButtons = document.querySelectorAll(".task .content .fa-circle");
+// checkButtons.forEach(btn => {
+//     btn.addEventListener('click', (e) => {
+//         checkBtns(e)
+//     });
+// });
 
-    let isCheckBtn = e.target.matches(".tasks-block .task .content .fa-circle");
+// //////////////////////////////////////////////////////////////////////////
+// // nav bar
+// //////////////////////////////////////////////////////////////////////////
+// document.addEventListener('click', e => {
 
-    if (isCheckBtn) {
-        e.target.classList.toggle("checked");
-    }
-});
+//     let isNavBtn = e.target.matches("main header > i");
+//     if (!isNavBtn && e.target.closest("nav")) return;
+    
+//     const navbar = document.querySelector("nav");
 
-//////////////////////////////////////////////////////////////////////////
-// nav bar list buttons
-//////////////////////////////////////////////////////////////////////////
-document.addEventListener('click', e => {
-    let navListBtn = e.target.closest("nav .nav-block .lists > div");
-    if (navListBtn == null) return;
+//     if (!isNavBtn) {
+//         navbar.classList.remove("active");
+//     } else {
+//         navbar.classList.toggle("active");
+//     }
+// });
 
-    if (navListBtn != null) {
-        navListBtn.classList.add("active");
-    }
 
-    let navListBtns = document.querySelectorAll("nav .nav-block .lists > div");
-    navListBtns.forEach(btn => {
-        if (btn === navListBtn) return;
-        btn.classList.remove("active");
-    });
-});
 
-//////////////////////////////////////////////////////////////////////////
-// clear buttons
-//////////////////////////////////////////////////////////////////////////
-document.addEventListener('click', e => {
 
-    let currentBtn = e.target.closest('nav .nav-block .actions .clear > div');
 
-    if (currentBtn == null || e.target.matches('nav .nav-block .actions .clear > div .close') || e.target.matches('nav .nav-block .actions .clear > div .no')) {
-        document.querySelectorAll('nav .nav-block .actions .clear > div').forEach(btn => {
-            btn.classList.remove('active');
-        })
-        return;
-    } else {
-        currentBtn.classList.add('active');
 
-    }
 
-    document.querySelectorAll('nav .nav-block .actions .clear > div').forEach(btn => {
-        if (currentBtn == btn) return;
-        btn.classList.remove('active');
-    });
-});
 
-//////////////////////////////////////////////////////////////////////////
-// fav btn inside the new task window
-//////////////////////////////////////////////////////////////////////////
-document.addEventListener('click', e => {
+// //////////////////////////////////////////////////////////////////////////
+// // clear buttons
+// //////////////////////////////////////////////////////////////////////////
+// document.addEventListener('click', e => {
 
-    let favBtn = e.target.closest('main .new-task-container .icons .fa-circle');
-    if (favBtn != null) favBtn.classList.toggle('active');
+//     let currentBtn = e.target.closest('nav .nav-block .actions .clear > div');
 
-    if (e.target.closest('main .new-task-container.active .new-task-window') === null) {
-        document.querySelector('main .new-task-container .icons .fa-circle').classList.remove('active');
-    }
-});
+//     if (currentBtn == null || e.target.matches('nav .nav-block .actions .clear > div .close') || e.target.matches('nav .nav-block .actions .clear > div .no')) {
+//         document.querySelectorAll('nav .nav-block .actions .clear > div').forEach(btn => {
+//             btn.classList.remove('active');
+//         })
+//         return;
+//     } else {
+//         currentBtn.classList.add('active');
+
+//     }
+
+//     document.querySelectorAll('nav .nav-block .actions .clear > div').forEach(btn => {
+//         if (currentBtn == btn) return;
+//         btn.classList.remove('active');
+//     });
+// });
+
+
+
+
+
+
+
+
+
+
+// //////////////////////////////////////////////////////////////////////////
+// // nav bar list buttons
+// //////////////////////////////////////////////////////////////////////////
+// document.addEventListener('click', e => {
+//     let navListBtn = e.target.closest("nav .nav-block .lists > div");
+//     if (navListBtn == null) return;
+
+//     if (navListBtn != null) {
+//         navListBtn.classList.add("active");
+//     }
+
+//     let navListBtns = document.querySelectorAll("nav .nav-block .lists > div");
+//     navListBtns.forEach(btn => {
+//         if (btn === navListBtn) return;
+//         btn.classList.remove("active");
+//     });
+// });
+
+// //////////////////////////////////////////////////////////////////////////
+// // check the task once clicked on it
+// //////////////////////////////////////////////////////////////////////////
+// document.addEventListener('click', e => {
+
+//     let isCheckBtn = e.target.matches(".tasks-block .task .content .fa-circle");
+
+//     if (isCheckBtn) {
+//         e.target.classList.toggle("checked");
+//     }
+// });

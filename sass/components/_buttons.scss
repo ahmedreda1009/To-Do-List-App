@@ -321,18 +321,64 @@ nav .nav-block {
                 &.active:hover {
                     background-color: abstracts.$clrGreen;
                     color: abstracts.$clrBlack;
+                    color: #111;
     
                     i {
                         color: abstracts.$clrBlack;
+                        color: #111;
                     }
                 }
     
                 &:hover {
                     background-color: rgba(abstracts.$clrGreen, .7);
                     color: abstracts.$clrBlack;
+                    color: #111;
+    
+                    i {
+                        color: abstracts.$clrText;
+                        color: abstracts.$clrBlack;
+                    color: #111;
+                    }
+                }
+            }
+
+            &.in-progress {
+                i {
+                    color: abstracts.$clrOrange;
+                    // color: transparent;
+                    // background-image: linear-gradient(90deg, rgba(abstracts.$clrRedBloodDark8b, .5) 0%, rgba(abstracts.$clrYellowBg, .5) 70%);
+                    background-clip: text;
+                    // -webkit-text-fill-color: transparent;
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+    
+                &.active,
+                &.active:hover {
+                    // background-color: abstracts.$clrOrange;
+                    background-image: linear-gradient(90deg, abstracts.$clrRedBloodDark8b 0%, abstracts.$clrYellowBg 70%);
+                    color: abstracts.$clrBlack;
+                    color: abstracts.$clrText;
+                    color: #111;
     
                     i {
                         color: abstracts.$clrBlack;
+                        color: abstracts.$clrText;
+                        color: #FFF;
+                    }
+                }
+    
+                &:hover {
+                    background-color: rgba(abstracts.$clrOrange, .7);
+                    background-image: linear-gradient(90deg, rgba(abstracts.$clrRedBloodDark8b, .5) 0%, rgba(abstracts.$clrYellowBg, .5) 70%);
+                    color: abstracts.$clrBlack;
+                    color: abstracts.$clrText;
+                    color: #111;
+    
+                    i {
+                        color: abstracts.$clrBlack;
+                        color: abstracts.$clrText;
+                        color: #FFF;
                     }
                 }
             }
@@ -346,23 +392,27 @@ nav .nav-block {
                 &.active:hover {
                     background-color: abstracts.$clrBlue;
                     color: abstracts.$clrText;
+                    color: #FFF;
     
                     i {
                         color: abstracts.$clrText;
+                        color: #FFF;
                     }
                 }
     
                 &:hover {
                     background-color: rgba(abstracts.$clrBlue, .7);
                     color: abstracts.$clrText;
+                    color: #FFF;
     
                     i {
                         color: abstracts.$clrText;
+                        color: #FFF;
                     }
                 }
             }
     
-            &.favourites {
+            &.favourite {
                 i {
                     color: abstracts.$clrYellowBg;
                 }
@@ -374,15 +424,20 @@ nav .nav-block {
     
                     i {
                         color: abstracts.$clrBlack;
+                        color: abstracts.$clrText;
+                        color: #FFF;
                     }
                 }
     
                 &:hover {
                     background-color: rgba(abstracts.$clrYellowBg, .7);
                     color: abstracts.$clrBlack;
+                    color: #111;
     
                     i {
                         color: abstracts.$clrBlack;
+                        color: abstracts.$clrText;
+                        color: #FFF;
                     }
                 }
             }
@@ -401,11 +456,14 @@ nav .nav-block {
                     background-color: abstracts.$clrRed;
                     color: abstracts.$clrRedBlood;
                     color: abstracts.$clrText;
-                    color: #222;
+                    color: #FFF;
+                    // color: #222;
     
                     i {
                         color: abstracts.$clrRedBlood;
                         color: #222;
+                        color: abstracts.$clrText;
+                        color: #FFF;
                     }
                 }
     
@@ -413,9 +471,13 @@ nav .nav-block {
                     background-color: rgb(45, 45, 45);
                     background-color: rgba(abstracts.$clrRed, .5);
                     color: #222;
+                    color: abstracts.$clrText;
+                    color: #FFF;
 
                     i {
                         color: #222;
+                        color: abstracts.$clrText;
+                        color: #FFF;
                     }
                 }
             }
@@ -436,7 +498,7 @@ main {
         z-index: 1000;
         bottom: 30px;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translateX(-50%) scale(1);
         border-radius: 50%;
         border: none;
         outline: none;
@@ -463,8 +525,8 @@ main {
         &:hover {
             background-color: abstracts.$clrLightBg;
             background-color: #e7d2bd;
-            // transform: translateX(-50%) scale(1.02);
-            transform: translate(-50%);
+            // transform: translate(-50%);
+            transform: translateX(-50%) scale(1.02);
             // width: 64px;
             // height: 64px;
 

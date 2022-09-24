@@ -10,6 +10,9 @@
 	<link rel="stylesheet" href="sass/main.css">
 </head>
 <body>
+	<!-- <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+		<path fill="#FF0066" d="M55,-60C66.4,-43.6,67.4,-21.8,68.2,0.8C69,23.4,69.6,46.7,58.1,62.5C46.7,78.2,23.4,86.3,0.4,85.9C-22.5,85.5,-45,76.5,-61.1,60.7C-77.3,45,-87,22.5,-84.6,2.5C-82.1,-17.5,-67.4,-35.1,-51.2,-51.5C-35.1,-67.9,-17.5,-83.1,2.1,-85.2C21.8,-87.4,43.6,-76.4,55,-60Z" transform="translate(100 100)" />
+  	</svg> -->
 	<div class="wrapper">
 		<div class="container">
 			<!------------------------------------------------------------------->
@@ -63,6 +66,10 @@
 							<i class="fa-solid fa-clipboard-list"></i>
 							<h1>lists</h1>
 						</header>
+						<div class="list in-progress">
+							<i class="fa-solid fa-spinner"></i>
+							<h3>in progress</h3>
+						</div>
 						<div class="list all active">
 							<!-- <i class="fa-solid fa-table-list"></i> -->
 							<i class="fa-solid fa-table-list"></i>
@@ -72,10 +79,10 @@
 							<i class="fa-solid fa-circle-check"></i>
 							<h3>completed</h3>
 						</div>
-						<div class="list favourites">
+						<div class="list favourite">
 							<!-- <i class="fa-solid fa-star"></i> -->
 							<i class="fa-solid fa-circle"></i>
-							<h3>favourites</h3>
+							<h3>favourite</h3>
 						</div>
 						<div class="list trash">
 							<i class="fa-solid fa-trash-can"></i>
@@ -433,8 +440,9 @@
 	</div>
 	
 
-	<script src="./js/click-event-scripts.js"></script>
-	<script src="./js/functions.js" type="module"></script>
+	<script src="./js/click-event-scripts.js" type="module"></script>
+	<script src="./js/btns-functionality.js" type="module"></script>
+	<script src="./js/main-functions.js" type="module"></script>
 	<script src="./js/main.js" type="module"></script>
 </body>
 </html>
