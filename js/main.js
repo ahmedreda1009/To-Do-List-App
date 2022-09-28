@@ -9,7 +9,7 @@ import { addNewTaskTo, createTasksFrom, setCarat, addToLocalStorage, getFromLoca
 let allTasks = [];
 
 // all tasks without deleted
-let notDel = [];
+let notDel = [{text: 'Be Productive, DO MORE.', id: 1212, completed: false, deleted: false, favourite: true, hour: 0, minite: 0, weekDay: 0, day: 1, month: 0, year: 2022}];
 // favourite tasks
 let favouriteTasks = [];
 // in progress tasks
@@ -29,6 +29,10 @@ if (getFromLocalStorage()) {
 	});
 	addFromActiveList();
 }
+// the very first task
+document.addEventListener('DOMContentLoaded', () => {
+	addFromActiveList();
+})
 
 console.log(allTasks);
 console.log(notDel);
