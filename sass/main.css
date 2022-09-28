@@ -188,6 +188,7 @@ svg {
     border-radius: 0 0 0 0;
     position: relative;
     overflow: hidden;
+    border: none;
   }
 }
 
