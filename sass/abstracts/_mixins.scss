@@ -16,6 +16,7 @@
 //////////////////////////////////////////////////////////////////////////
 
 $media-up: (
+    xs: "(min-width: 400px)",
     sm: "(min-width: 768px)",
     md: "(min-width: 992px)",
     lg: "(min-width: 1200px)",
@@ -100,9 +101,5 @@ $media-down: (
     .grid-#{$width} {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(#{$width}px, 1fr));
-    
-        // @include media-up(sm) {
-        //     grid-template-columns: repeat(auto-fit, minmax(#{$width}px, 1fr));
-        // }
     }
 }

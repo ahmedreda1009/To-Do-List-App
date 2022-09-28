@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
 	<link rel="stylesheet" href="sass/vendor/normalize.css">
 	<link rel="stylesheet" href="sass/main.css">
 </head>
+
 <body>
 	<!-- <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
 		<path fill="#FF0066" d="M55,-60C66.4,-43.6,67.4,-21.8,68.2,0.8C69,23.4,69.6,46.7,58.1,62.5C46.7,78.2,23.4,86.3,0.4,85.9C-22.5,85.5,-45,76.5,-61.1,60.7C-77.3,45,-87,22.5,-84.6,2.5C-82.1,-17.5,-67.4,-35.1,-51.2,-51.5C-35.1,-67.9,-17.5,-83.1,2.1,-85.2C21.8,-87.4,43.6,-76.4,55,-60Z" transform="translate(100 100)" />
@@ -27,15 +29,15 @@
 					<div class="actions">
 						<div class="search">
 							<i class="fa-solid fa-magnifying-glass"></i>
-							<input type="search" name="search" id="" placeholder="Search">
+							<input type="search" name="search" id="" placeholder="Search all">
 						</div>
 						<div class="clear">
-							<div class=" reset-all">
+							<div class="reset-all">
 								<!-- <i class="fa-solid fa-trash-arrow-up"></i> -->
 								<i class="fa-solid fa-ban"></i>
 								<h3>reset<br>all</h3>
 								<div class="question">
-									<h4>Are you sure you want to permenantly delete all tasks?</h4>
+									<h4>Are you sure you want to delete all tasks?</h4>
 									<div class="buttons">
 										<button class="yes">Yes</button>
 										<button class="no">No</button>
@@ -45,7 +47,7 @@
 									</div>
 								</div>
 							</div>
-							<div class=" clear-trash">
+							<div class="clear-trash">
 								<i class="fa-solid fa-trash-arrow-up"></i>
 								<h3>clear<br>trash</h3>
 								<div class="question">
@@ -66,22 +68,20 @@
 							<i class="fa-solid fa-clipboard-list"></i>
 							<h1>lists</h1>
 						</header>
+						<div class="list all active">
+							<i class="fa-solid fa-table-list"></i>
+							<h3>all</h3>
+						</div>
 						<div class="list in-progress">
 							<i class="fa-solid fa-spinner"></i>
 							<h3>in progress</h3>
-						</div>
-						<div class="list all active">
-							<!-- <i class="fa-solid fa-table-list"></i> -->
-							<i class="fa-solid fa-table-list"></i>
-							<h3>all</h3>
 						</div>
 						<div class="list completed">
 							<i class="fa-solid fa-circle-check"></i>
 							<h3>completed</h3>
 						</div>
 						<div class="list favourite">
-							<!-- <i class="fa-solid fa-star"></i> -->
-							<i class="fa-solid fa-circle"></i>
+							<i class="fa-solid fa-star"></i>
 							<h3>favourite</h3>
 						</div>
 						<div class="list trash">
@@ -105,19 +105,18 @@
 				</header>
 
 				<div class="tasks-block">
-					<div class="task">
+					<!-- <div class="task">
 						<div class="content">
-							<i class="fa-regular fa-circle"></i>
-							<p>this is the first task</p>
-							<i data-id="1" class="fa-solid fa-ellipsis-vertical"></i>
-
-							<div data-id="1" class="options">
+							<i class="fa-regular fa-circle ${element.completed ? 'checked' : ''}"></i>
+							<p>Be Productive, Do More.</p>
+							<i class="fa-solid fa-ellipsis-vertical"></i>
+				
+							<div class="options">
 								<div class="edit">
 									<i class="fa-solid fa-pen-to-square"></i>
 									<p>edit</p>
 								</div>
 								<div class="favourite">
-									<!-- <i class="fa-solid fa-star"></i> -->
 									<i class="fa-solid fa-circle"></i>
 									<p>favourite</p>
 								</div>
@@ -128,295 +127,15 @@
 							</div>
 						</div>
 						<div class="date">
-							<time>15:22</time>
+							<time>12:00</time>
 							-
-							<time>fri</time>&nbsp;&nbsp;&nbsp;
-							<time>28.08.2022</time>&nbsp;&nbsp;&nbsp;
-							<!-- <i class="fa-solid fa-star"></i> -->
-							<i class="fa-solid fa-circle"></i>
+							<time>Sat</time>&nbsp;&nbsp;&nbsp;
+							<time>01.01.2022</time>&nbsp;&nbsp;&nbsp;
+							<i class="fa-solid fa-circle" style="color:'#ffa42b';"></i>&nbsp;
+							<i class="fa-solid fa-circle" style="color:${element.deleted ? '#af2626' : '#373748'};"></i>-->
+					<!-- <i class="fa-solid fa-check"></i>
 						</div>
-					</div>
-
-					<div class="task">
-						<div class="content">
-							<i class="fa-regular fa-circle"></i>
-							<p>this is the second task Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et a inventore praesentium corporis ducimus! Numquam inventore debitis asperiores impedit iste maiores eius deleniti quidem maxime aut, sapiente labore! Ullam ducimus vitae corporis maxime tempore temporibus. Eos ea veniam reiciendis quidem debitis autem officia odio ipsam mollitia placeat. Eligendi ut molestias ad adipisci doloribus, exercitationem nemo est harum non quas dolorem distinctio debitis sequi ex, atque dolorum! Consequuntur maiores accusamus exercitationem cum autem ad, obcaecati, saepe nesciunt laudantium sed ipsam nobis quam, quia sit ipsum recusandae possimus esse ullam pariatur reprehenderit corrupti optio a odio ducimus. Quaerat optio itaque quasi officia!</p>
-							<i data-id="2" class="fa-solid fa-ellipsis-vertical"></i>
-
-							<div data-id="2" class="options">
-								<div class="edit">
-									<i class="fa-solid fa-pen-to-square"></i>
-									<p>edit</p>
-								</div>
-								<div class="favourite">
-									<!-- <i class="fa-solid fa-star"></i> -->
-									<i class="fa-solid fa-circle"></i>
-									<p>favourite</p>
-								</div>
-								<div class="delete">
-									<i class="fa-thin fa-trash"></i>
-									<p>delete</p>
-								</div>
-							</div>
-						</div>
-						<div class="date">
-							<time>15:22</time>
-							-
-							<time>fri</time>&nbsp;&nbsp;&nbsp;
-							<time>28.08.2022</time>&nbsp;&nbsp;&nbsp;
-							<!-- <i class="fa-solid fa-star"></i> -->
-							<i class="fa-solid fa-circle" style="color: red"></i>
-						</div>
-					</div>
-
-					<div class="task">
-						<div class="content">
-							<i class="fa-regular fa-circle"></i>
-							<p>this is the third task</p>
-							<i data-id="3" class="fa-solid fa-ellipsis-vertical"></i>
-
-							<div data-id="3" class="options">
-								<div class="edit">
-									<i class="fa-solid fa-pen-to-square"></i>
-									<p>edit</p>
-								</div>
-								<div class="favourite">
-									<!-- <i class="fa-solid fa-star"></i> -->
-									<i class="fa-solid fa-circle"></i>
-									<p>favourite</p>
-								</div>
-								<div class="delete">
-									<i class="fa-thin fa-trash"></i>
-									<p>delete</p>
-								</div>
-							</div>
-						</div>
-						<div class="date">
-							<time>15:22</time>
-							-
-							<time>fri</time>&nbsp;&nbsp;&nbsp;
-							<time>28.08.2022</time>&nbsp;&nbsp;&nbsp;
-							<!-- <i class="fa-solid fa-star"></i> -->
-							<i class="fa-solid fa-circle"></i>
-						</div>
-					</div>
-					<div class="task">
-						<div class="content">
-							<i class="fa-regular fa-circle"></i>
-							<p>this is the fourth task</p>
-							<i data-id="4" class="fa-solid fa-ellipsis-vertical"></i>
-
-							<div data-id="4" class="options">
-								<div class="edit">
-									<i class="fa-solid fa-pen-to-square"></i>
-									<p>edit</p>
-								</div>
-								<div class="favourite">
-									<!-- <i class="fa-solid fa-star"></i> -->
-									<i class="fa-solid fa-circle"></i>
-									<p>favourite</p>
-								</div>
-								<div class="delete">
-									<i class="fa-thin fa-trash"></i>
-									<p>delete</p>
-								</div>
-							</div>
-						</div>
-						<div class="date">
-							<time>15:22</time>
-							-
-							<time>fri</time>&nbsp;&nbsp;&nbsp;
-							<time>28.08.2022</time>&nbsp;&nbsp;&nbsp;
-							<!-- <i class="fa-solid fa-star"></i> -->
-							<i class="fa-solid fa-circle"></i>
-						</div>
-					</div>
-					<div class="task">
-						<div class="content">
-							<i class="fa-regular fa-circle"></i>
-							<p>this is the fifth task</p>
-							<i data-id="5" class="fa-solid fa-ellipsis-vertical"></i>
-
-							<div data-id="5" class="options">
-								<div class="edit">
-									<i class="fa-solid fa-pen-to-square"></i>
-									<p>edit</p>
-								</div>
-								<div class="favourite">
-									<!-- <i class="fa-solid fa-star"></i> -->
-									<i class="fa-solid fa-circle"></i>
-									<p>favourite</p>
-								</div>
-								<div class="delete">
-									<i class="fa-thin fa-trash"></i>
-									<p>delete</p>
-								</div>
-							</div>
-						</div>
-						<div class="date">
-							<time>15:22</time>
-							-
-							<time>fri</time>&nbsp;&nbsp;&nbsp;
-							<time>28.08.2022</time>&nbsp;&nbsp;&nbsp;
-							<!-- <i class="fa-solid fa-star"></i> -->
-							<i class="fa-solid fa-circle"></i>
-						</div>
-					</div>
-					<div class="task">
-						<div class="content">
-							<i class="fa-regular fa-circle"></i>
-							<p>this is the sixth task</p>
-							<i data-id="5" class="fa-solid fa-ellipsis-vertical"></i>
-
-							<div data-id="5" class="options">
-								<div class="edit">
-									<i class="fa-solid fa-pen-to-square"></i>
-									<p>edit</p>
-								</div>
-								<div class="favourite">
-									<!-- <i class="fa-solid fa-star"></i> -->
-									<i class="fa-solid fa-circle"></i>
-									<p>favourite</p>
-								</div>
-								<div class="delete">
-									<i class="fa-thin fa-trash"></i>
-									<p>delete</p>
-								</div>
-							</div>
-						</div>
-						<div class="date">
-							<time>15:22</time>
-							-
-							<time>fri</time>&nbsp;&nbsp;&nbsp;
-							<time>28.08.2022</time>&nbsp;&nbsp;&nbsp;
-							<!-- <i class="fa-solid fa-star"></i> -->
-							<i class="fa-solid fa-circle"></i>
-						</div>
-					</div>
-					<div class="task">
-						<div class="content">
-							<i class="fa-regular fa-circle"></i>
-							<p>this is the seventh task</p>
-							<i data-id="5" class="fa-solid fa-ellipsis-vertical"></i>
-
-							<div data-id="5" class="options">
-								<div class="edit">
-									<i class="fa-solid fa-pen-to-square"></i>
-									<p>edit</p>
-								</div>
-								<div class="favourite">
-									<!-- <i class="fa-solid fa-star"></i> -->
-									<i class="fa-solid fa-circle"></i>
-									<p>favourite</p>
-								</div>
-								<div class="delete">
-									<i class="fa-thin fa-trash"></i>
-									<p>delete</p>
-								</div>
-							</div>
-						</div>
-						<div class="date">
-							<time>15:22</time>
-							-
-							<time>fri</time>&nbsp;&nbsp;&nbsp;
-							<time>28.08.2022</time>&nbsp;&nbsp;&nbsp;
-							<!-- <i class="fa-solid fa-star"></i> -->
-							<i class="fa-solid fa-circle"></i>
-						</div>
-					</div>
-					<div class="task">
-						<div class="content">
-							<i class="fa-regular fa-circle"></i>
-							<p>this is the eigth task</p>
-							<i data-id="5" class="fa-solid fa-ellipsis-vertical"></i>
-
-							<div data-id="5" class="options">
-								<div class="edit">
-									<i class="fa-solid fa-pen-to-square"></i>
-									<p>edit</p>
-								</div>
-								<div class="favourite">
-									<!-- <i class="fa-solid fa-star"></i> -->
-									<i class="fa-solid fa-circle"></i>
-									<p>favourite</p>
-								</div>
-								<div class="delete">
-									<i class="fa-thin fa-trash"></i>
-									<p>delete</p>
-								</div>
-							</div>
-						</div>
-						<div class="date">
-							<time>15:22</time>
-							-
-							<time>fri</time>&nbsp;&nbsp;&nbsp;
-							<time>28.08.2022</time>&nbsp;&nbsp;&nbsp;
-							<!-- <i class="fa-solid fa-star"></i> -->
-							<i class="fa-solid fa-circle"></i>
-						</div>
-					</div>
-					<div class="task">
-						<div class="content">
-							<i class="fa-regular fa-circle"></i>
-							<p>this is the ninth task</p>
-							<i data-id="5" class="fa-solid fa-ellipsis-vertical"></i>
-
-							<div data-id="5" class="options">
-								<div class="edit">
-									<i class="fa-solid fa-pen-to-square"></i>
-									<p>edit</p>
-								</div>
-								<div class="favourite">
-									<!-- <i class="fa-solid fa-star"></i> -->
-									<i class="fa-solid fa-circle"></i>
-									<p>favourite</p>
-								</div>
-								<div class="delete">
-									<i class="fa-thin fa-trash"></i>
-									<p>delete</p>
-								</div>
-							</div>
-						</div>
-						<div class="date">
-							<time>15:22</time>
-							-
-							<time>fri</time>&nbsp;&nbsp;&nbsp;
-							<time>28.08.2022</time>&nbsp;&nbsp;&nbsp;
-							<!-- <i class="fa-solid fa-star"></i> -->
-							<i class="fa-solid fa-circle"></i>
-						</div>
-					</div>
-					<div class="task">
-						<div class="content">
-							<i class="fa-regular fa-circle"></i>
-							<p>this is the last task</p>
-							<i data-id="6" class="fa-solid fa-ellipsis-vertical"></i>
-
-							<div data-id="6" class="options">
-								<div class="edit">
-									<i class="fa-solid fa-pen-to-square"></i>
-									<p>edit</p>
-								</div>
-								<div class="favourite">
-									<!-- <i class="fa-solid fa-star"></i> -->
-									<i class="fa-solid fa-circle"></i>
-									<p>favourite</p>
-								</div>
-								<div class="delete">
-									<i class="fa-thin fa-trash"></i>
-									<p>delete</p>
-								</div>
-							</div>
-						</div>
-						<div class="date">
-							<time>15:22</time>
-							-
-							<time>fri</time>&nbsp;&nbsp;&nbsp;
-							<time>28.08.2022</time>&nbsp;&nbsp;&nbsp;
-							<!-- <i class="fa-solid fa-star"></i> -->
-							<i class="fa-solid fa-circle"></i>
-						</div>
-					</div>
+					</div> -->
 				</div>
 
 				<button class="new-task">
@@ -429,8 +148,7 @@
 							<input type="text" name="task-window" id="task-window" placeholder="Add New Task">
 						</div>
 						<div class="icons">
-							<!-- <i class="fa-solid fa-star">&nbsp;&nbsp;fav</i> -->
-							<i class="fa-solid fa-circle">&nbsp;&nbsp;fav</i>
+							<i class="fa-solid fa-star">&nbsp;&nbsp;fav</i>
 							<i class="fa-solid fa-plus">&nbsp;&nbsp;add</i>
 						</div>
 					</div>
@@ -438,11 +156,12 @@
 			</main>
 		</div>
 	</div>
-	
 
-	<script src="./js/click-event-scripts.js" type="module"></script>
-	<script src="./js/btns-functionality.js" type="module"></script>
+
+	<script src="./js/buttons.js" type="module"></script>
+	<script src="./js/buttons-functionality.js" type="module"></script>
 	<script src="./js/main-functions.js" type="module"></script>
 	<script src="./js/main.js" type="module"></script>
 </body>
+
 </html>

@@ -1,4 +1,4 @@
-import {openNewTaskWindow, favBtnEvent, listsBtns} from './btns-functionality.js';
+import {openNewTaskWindow, favBtnEvent, listsBtns} from './buttons-functionality.js';
 
 //////////////////////////////////////////////////////////////////////////
 // add new task window
@@ -8,7 +8,7 @@ document.addEventListener('click', openNewTaskWindow);
 //////////////////////////////////////////////////////////////////////////
 // fav btn inside the new task window
 //////////////////////////////////////////////////////////////////////////
-let favBtn = document.querySelector('main .new-task-container .icons .fa-circle');
+let favBtn = document.querySelector('main .new-task-container .icons .fa-star');
 favBtn.addEventListener('click', () => {favBtnEvent(favBtn)});
 
 //////////////////////////////////////////////////////////////////////////
@@ -55,6 +55,46 @@ document.addEventListener('click', e => {
     // }
 });
 
+//////////////////////////////////////////////////////////////////////////
+// clear buttons
+//////////////////////////////////////////////////////////////////////////
+document.addEventListener('click', e => {
+
+    let currentBtn = e.target.closest('nav .nav-block .actions .clear > div');
+
+    if (currentBtn == null || e.target.matches('nav .nav-block .actions .clear > div .close') || e.target.matches('nav .nav-block .actions .clear > div .no')) {
+        document.querySelectorAll('nav .nav-block .actions .clear > div').forEach(btn => {
+            btn.classList.remove('active');
+        })
+        return;
+    } else {
+        currentBtn.classList.add('active');
+
+    }
+
+    document.querySelectorAll('nav .nav-block .actions .clear > div').forEach(btn => {
+        if (currentBtn == btn) return;
+        btn.classList.remove('active');
+    });
+});
+
+// //////////////////////////////////////////////////////////////////////////
+// // nav bar
+// //////////////////////////////////////////////////////////////////////////
+document.addEventListener('click', e => {
+
+    let isNavBtn = e.target.matches("main header > i");
+    if (!isNavBtn && e.target.closest("nav")) return;
+    
+    const navbar = document.querySelector("nav");
+
+    if (!isNavBtn) {
+        navbar.classList.remove("active");
+    } else {
+        navbar.classList.toggle("active");
+    }
+});
+
 // //////////////////////////////////////////////////////////////////////////
 // // check the task once clicked on it
 // //////////////////////////////////////////////////////////////////////////
@@ -65,22 +105,7 @@ document.addEventListener('click', e => {
 //     });
 // });
 
-// //////////////////////////////////////////////////////////////////////////
-// // nav bar
-// //////////////////////////////////////////////////////////////////////////
-// document.addEventListener('click', e => {
 
-//     let isNavBtn = e.target.matches("main header > i");
-//     if (!isNavBtn && e.target.closest("nav")) return;
-    
-//     const navbar = document.querySelector("nav");
-
-//     if (!isNavBtn) {
-//         navbar.classList.remove("active");
-//     } else {
-//         navbar.classList.toggle("active");
-//     }
-// });
 
 
 

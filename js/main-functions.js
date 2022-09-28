@@ -5,7 +5,7 @@
 // class of task objects
 class Task {
     constructor(text, id, completed = false, deleted = false, favourite = false, hour, minite, weekDay, day, month, year) {
-        this.text = text,
+        this.text = text.trim(),
         this.id = id,
         this.completed = completed,
         this.deleted = deleted,
@@ -18,25 +18,28 @@ class Task {
         this.year = year
     }
     updateCompleted() {
-        if (this.completed == true) {
+        if (this.completed) {
             this.completed = false;
         } else {
             this.completed = true;
         }
     }
     updateFavourite() {
-        if (this.favourite == true) {
+        if (this.favourite) {
             this.favourite = false;
         } else {
             this.favourite = true;
         }
     }
     updateDeleted() {
-        if (this.deleted == true) {
+        if (this.deleted) {
             this.deleted = false;
         } else {
             this.deleted = true;
         }
+    }
+    updateText(newText) {
+        this.text = newText.trim();
     }
 }
 
@@ -47,27 +50,29 @@ export function addNewTaskTo(allTasks, inProgressTasks, completedTasks, favourit
     if (input.value == "") return;
 
     
-    let completed = false;
     let favourite = false;
+    let completed = false;
     let deleted = false;
 
-    if (document.querySelector('main .new-task-container .icons .fa-circle').classList.contains('active')) favourite = true;
+    if (document.querySelector('main .new-task-container .icons .fa-star').classList.contains('active')) favourite = true;
 
     let date = new Date();
     const newTask = new Task(input.value, date.getTime(), completed, deleted, favourite, date.getHours(), date.getMinutes(), date.getDay(), date.getDate(), date.getMonth(), date.getFullYear());
 
-    if (completed) completedTasks.push(newTask);
-    if (!completed) inProgressTasks.push(newTask);
     if (favourite) favouriteTasks.push(newTask);
-    if (deleted) deletedTasks.push(newTask);
-    if (!deleted) notDel.push(newTask);
+    inProgressTasks.push(newTask);
+    notDel.push(newTask);
+    // if (!deleted) notDel.push(newTask);
+    // if (!completed) inProgressTasks.push(newTask);
+    // if (deleted) deletedTasks.push(newTask);
+    // if (completed) completedTasks.push(newTask);
 
     console.log(newTask);
     allTasks.push(newTask);
     console.log(allTasks);
     input.value = "";
     input.focus();
-    document.querySelector('main .new-task-container .icons .fa-circle').classList.remove('active');
+    document.querySelector('main .new-task-container .icons .fa-star').classList.remove('active');
 }
 
 export function createTasksFrom(arr) {
@@ -86,7 +91,8 @@ export function createTasksFrom(arr) {
         task.innerHTML = 
         `<div class="content">
             <i class="fa-regular fa-circle ${element.completed ? 'checked' : ''}"></i>
-            <p>${element.text}</p>
+            <p contenteditable="false">${element.text}</p>
+            <button class="save" style="display: none;">Save</button>
             <i class="fa-solid fa-ellipsis-vertical"></i>
 
             <div class="options">
@@ -95,7 +101,7 @@ export function createTasksFrom(arr) {
                     <p>edit</p>
                 </div>
                 <div class="favourite">
-                    <i class="fa-solid fa-circle"></i>
+                    <i class="fa-solid ${element.favourite && !element.deleted ? 'fa-star-half-stroke' : 'fa-star'}"></i>
                     <p>${element.favourite  && !element.deleted? 'unfavorite' : 'favourite'}</p>
                 </div>
                 <div class="delete">
@@ -109,11 +115,37 @@ export function createTasksFrom(arr) {
             -
             <time>${days[element.weekDay]}</time>&nbsp;&nbsp;&nbsp;
             <time>${element.day > 9 ? element.day : '0' + element.day}.${element.month > 9 ? element.month + 1 : '0' + (element.month + 1)}.${element.year}</time>&nbsp;&nbsp;&nbsp;
-            <i class="fa-solid fa-circle" style="color:${element.favourite && !element.deleted ? '#ffa42b' : '#373748'};"></i>&nbsp;
-            <i class="fa-solid fa-circle" style="color:${element.deleted ? '#af2626' : '#373748'};"></i>
+            <i class="fa-solid ${element.favourite && !element.deleted ? 'fa-star' : 'fa-circle'}" style="color:${element.favourite && !element.deleted ? '#ffa42b' : !element.favourite && element.deleted ? '#af2626' : '#373748'}; display: ${element.favourite || element.deleted ? 'inline' : 'none'};"></i>&nbsp;
+            <i class="fa-solid fa-check"></i>
         </div>`;
                     
         tasksBlock.append(task);
     });
 }
 
+// move the caret cursor to the end of the contenteditale div or the inputs
+export function setCarat(element) {
+    // Place cursor at the end of a content editable div
+    if (element.type !== "textarea" && element.getAttribute("contenteditable") === "true") {
+        element.focus();
+        window.getSelection().selectAllChildren(element);
+        window.getSelection().collapseToEnd();
+    } else {
+        // Place cursor at the end of text areas and input elements
+        element.focus();
+        element.select();
+        window.getSelection().collapseToEnd();
+    }
+}
+
+export function addToLocalStorage(allTasks) {
+    window.localStorage.setItem('toDoTasks', JSON.stringify(allTasks));
+}
+
+export function getFromLocalStorage() {
+    return JSON.parse(window.localStorage.getItem('toDoTasks'));
+}
+
+export function clearAllTasksFromLocalStorage() {
+    window.localStorage.removeItem('toDoTasks');
+}

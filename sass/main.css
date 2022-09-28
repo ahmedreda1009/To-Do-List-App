@@ -71,13 +71,17 @@
 }
 
 input::-moz-selection {
-  background-color: #F9D879;
-  color: #282836;
+  background-color: #ff9001;
+  color: #222;
 }
 
 input::selection {
-  background-color: #F9D879;
-  color: #282836;
+  background-color: #ff9001;
+  color: #222;
+}
+
+[contenteditable=true] {
+  cursor: text;
 }
 
 html {
@@ -86,7 +90,7 @@ html {
 
 body {
   overflow: hidden;
-  color: #a7a7a7;
+  color: #c4c4c4;
   font-family: "GolosTextWebRegular";
   margin: 0;
   padding: 0;
@@ -101,21 +105,17 @@ body::before, body::after {
   z-index: -1;
 }
 body::after {
-  height: 90%;
+  height: 70%;
   width: 200%;
-  top: -50%;
   top: -27%;
   left: -50%;
-  background: linear-gradient(85deg, #444 0%, #222 59%);
-  background: linear-gradient(85deg, #555 0%, #121212 59%);
+  background-color: #424242;
   border-radius: 50%;
 }
 body::before {
   height: 100%;
   bottom: 0;
-  background-color: #E0E0E0;
-  background-color: #E1D9D1;
-  background-color: #e2d2c2;
+  background-color: #c4c4c4;
 }
 
 ul {
@@ -142,36 +142,39 @@ svg {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width: 100vw;
 }
 
 .container {
   display: flex;
   gap: 20px;
-  background-color: rgba(255, 255, 255, 0.6);
   padding: 30px;
   margin: auto;
-  transition: width 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out, padding 0.3s ease;
   border-radius: 10px;
   height: min(90vh, 700px);
-  box-shadow: 1px 1px 5px 1px rgba(42, 42, 56, 0.5);
-  background-color: rgba(153, 153, 194, 0.3);
-  background-color: rgba(255, 255, 255, 0.5);
-  background-color: rgba(225, 217, 209, 0.5);
-  background-color: rgba(225, 217, 209, 0.33);
-  background: rgba(255, 255, 255, 0.01);
-  background-color: rgba(255, 255, 255, 0.3);
-  /* From https://css.glass */
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(6.9px);
-  -webkit-backdrop-filter: blur(6.9px);
+  box-shadow: 3px 3px 20px 1px rgba(0, 0, 0, 0.3490196078);
+  backdrop-filter: blur(3.9px);
+  -webkit-backdrop-filter: blur(3.9px);
   border: 1px solid rgba(255, 255, 255, 0.04);
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 400px) {
   .container {
-    max-width: 900px;
-    width: 80%;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+    border-radius: 0px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    height: 90vh;
+    border-radius: 10px;
+    padding: 30px;
   }
 }
 @media screen and (max-width: 767px) {
@@ -199,7 +202,6 @@ nav .nav-block .lists > div {
   display: flex;
   align-items: center;
   gap: 15px;
-  background-color: #3B3B48;
   padding: 10px 20px;
   margin: 0px auto 0 20px;
   border-radius: 10px;
@@ -207,8 +209,6 @@ nav .nav-block .lists > div {
   max-width: 226.83px;
   text-transform: capitalize;
   font-size: 14px;
-  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.12);
-  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.3);
   cursor: pointer;
 }
 nav .nav-block .actions {
@@ -217,11 +217,15 @@ nav .nav-block .actions {
   gap: 20px;
 }
 nav .nav-block .actions > div.search {
-  background-color: #a7a7a7;
-  background-color: #e2d2c2;
+  background-color: #c4c4c4;
+  gap: 10px;
+  border: 1px solid transparent;
+}
+nav .nav-block .actions > div.search.active {
+  border: 1px solid red;
 }
 nav .nav-block .actions > div.search i {
-  color: #515091;
+  color: #2C2C2C;
 }
 nav .nav-block .actions > div.search input {
   padding: 5px;
@@ -231,90 +235,79 @@ nav .nav-block .actions > div.search input {
   outline: none;
 }
 nav .nav-block .actions > div.search input::-webkit-input-placeholder {
-  color: #333;
+  color: #2C2C2C;
   font-weight: bold;
   text-transform: capitalize;
 }
 nav .nav-block .actions > div.search input:-webkit-autofill, nav .nav-block .actions > div.search input:-webkit-autofill:hover, nav .nav-block .actions > div.search input:-webkit-autofill:focus, nav .nav-block .actions > div.search input:-webkit-autofill:active {
-  box-shadow: 0 0 0 30px #a7a7a7 inset !important;
+  box-shadow: 0 0 0 30px #c4c4c4 inset !important;
 }
 nav .nav-block .actions > div.clear {
   display: flex;
-  align-items: flex-start;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  padding: 0px;
   gap: 10px;
   text-transform: uppercase;
-  background-color: #333;
-  background-color: #222;
 }
 nav .nav-block .actions > div.clear > div {
-  height: 81.27px;
+  height: 60px;
   width: 50%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
-  gap: 15px;
+  gap: 5px;
   padding: 10px;
   border-radius: 8px;
   text-align: center;
-  background-color: #a7a7a7;
-  background-color: antiquewhite;
-  background-color: #E1D9D1;
-  background-color: #e2d2c2;
+  background-color: #c4c4c4;
+  color: #222;
   font-family: "GolosTextWebBlack";
-  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.2);
   transform: translateY(0px);
   overflow: hidden;
-  transition: background-color 10ms ease-in-out, width 0.1s ease-in-out, transform 0.5s ease-in-out;
+  transition: background-color 10ms ease-in-out, width 0.1s ease-in-out, transform 0.2s ease-in-out;
 }
 nav .nav-block .actions > div.clear > div.active {
   position: absolute;
+  min-width: 185px;
   width: calc(100% - 60px);
-  top: 115px;
+  top: 120px;
+  min-height: 133px;
   height: 167px;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   transform: translateY(-100px);
   z-index: 1000;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  position: absolute;
 }
-@media (max-width: 1120px) and (min-height: 733px) {
+@media (min-height: 733px) {
   nav .nav-block .actions > div.clear > div.active {
     width: calc(100% - 40px);
   }
 }
 nav .nav-block .actions > div.clear > div i {
   align-self: center;
-  font-size: 26px;
-  color: #7F1D1D;
+  font-size: 20px;
+  color: #8b0000;
   font-weight: bold;
-  transition: color 10ms ease-in-out, font-size 0.1s ease-in-out;
   pointer-events: none;
+  transition: color 10ms ease-in-out;
 }
 nav .nav-block .actions > div.clear > div h3 {
-  font-size: 11px;
-  color: #7F1D1D;
+  font-size: 8px;
+  color: #8b0000;
   font-weight: bold;
-  transition: color 10ms ease-in-out, font-size 0.1s ease-in-out;
   pointer-events: none;
+  transition: color 10ms ease-in-out;
 }
 nav .nav-block .actions > div.clear > div:not(.active):hover h3 {
-  color: #a7a7a7;
-  color: antiquewhite;
-  color: #7F1D1D;
-  font-size: 8px;
-  font-size: 0.6em;
+  display: none;
 }
 nav .nav-block .actions > div.clear > div:not(.active):hover i {
-  color: #a7a7a7;
-  color: antiquewhite;
-  color: #7F1D1D;
-  font-size: 35px;
-  font-size: 2.5em;
+  font-size: 3em;
 }
 nav .nav-block .actions > div.clear > div.reset-all {
   margin-right: auto;
@@ -335,15 +328,15 @@ nav .nav-block .actions > div.clear .question {
   transform: scale(0);
 }
 nav .nav-block .actions > div.clear .question h4 {
-  color: #333;
+  color: #222;
   text-transform: none;
   margin-bottom: 10px;
   font-weight: normal;
   font-size: 12px;
 }
 nav .nav-block .actions > div.clear .question .buttons button {
-  background-color: #621010;
-  color: antiquewhite;
+  background-color: rgba(34, 34, 34, 0.5);
+  color: #c4c4c4;
   border: none;
   padding: 5px 10px;
   border-radius: 8px;
@@ -353,14 +346,19 @@ nav .nav-block .actions > div.clear .question .buttons button {
 }
 nav .nav-block .actions > div.clear .question .buttons button:hover {
   background-color: #8b0000;
+  color: #c4c4c4;
 }
 nav .nav-block .actions > div.clear .question .buttons .close {
   position: absolute;
-  top: -83px;
-  right: 0px;
+  top: -51px;
+  right: -2px;
+}
+nav .nav-block .actions > div.clear .question .buttons .close i {
+  font-size: 20px;
 }
 nav .nav-block .actions > div.clear .question .buttons .close:hover i {
   color: #8b0000;
+  opacity: 0.8;
 }
 nav .nav-block .actions > div.clear > div.active .question {
   transform: scale(1);
@@ -373,10 +371,8 @@ nav .nav-block .lists {
 nav .nav-block .lists header {
   margin-bottom: 10px;
   border: 3px solid transparent;
-  color: #a7a7a7;
-  color: #e2d2c2;
-  background-image: linear-gradient(#313138, #313138), linear-gradient(90deg, #8b0000 0%, #ffa42b 70%);
-  background-image: linear-gradient(#222, #222), linear-gradient(90deg, #8b0000 0%, #ffa42b 70%);
+  color: #c4c4c4;
+  background-image: linear-gradient(#121212, #121212), linear-gradient(90deg, #8b0000 0%, #ff9001 70%);
   background-origin: border-box;
   background-clip: content-box, border-box;
   padding: 0;
@@ -393,7 +389,7 @@ nav .nav-block .lists header {
 nav .nav-block .lists header i {
   padding-left: 20px;
   font-size: 26px;
-  background: linear-gradient(270deg, #D64942 0%, #ffa42b 70%);
+  background: linear-gradient(270deg, #8b0000 0%, #ff9001 70%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -402,141 +398,44 @@ nav .nav-block .lists header h1 {
   letter-spacing: 0px;
 }
 nav .nav-block .lists > div {
-  background-color: #282836;
-  background-color: #222;
-  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.2);
-}
-nav .nav-block .lists > div i {
-  font-size: 20px;
-  width: 20px;
+  background-color: #181818;
 }
 nav .nav-block .lists > div h3 {
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: normal;
 }
-nav .nav-block .lists > div.all i {
-  color: #1ed760;
+nav .nav-block .lists > div.active:hover, nav .nav-block .lists > div.active {
+  background-color: rgba(24, 24, 24, 0.9);
 }
-nav .nav-block .lists > div.all.active, nav .nav-block .lists > div.all.active:hover {
-  background-color: #1ed760;
-  color: #333;
-  color: #111;
+nav .nav-block .lists > div.active:hover h3, nav .nav-block .lists > div.active h3 {
+  color: #c4c4c4;
+}
+nav .nav-block .lists > div:hover {
+  background-color: rgba(24, 24, 24, 0.5);
+}
+nav .nav-block .lists > div i {
+  font-size: 18px;
+  width: 20px;
 }
 nav .nav-block .lists > div.all.active i, nav .nav-block .lists > div.all.active:hover i {
-  color: #333;
-  color: #111;
-}
-nav .nav-block .lists > div.all:hover {
-  background-color: rgba(30, 215, 96, 0.7);
-  color: #333;
-  color: #111;
-}
-nav .nav-block .lists > div.all:hover i {
-  color: #a7a7a7;
-  color: #333;
-  color: #111;
+  color: #1ed760;
 }
 nav .nav-block .lists > div.in-progress i {
-  color: rgb(224, 75, 0);
   -webkit-background-clip: text;
           background-clip: text;
-  font-size: 20px;
   font-weight: bold;
 }
-nav .nav-block .lists > div.in-progress.active, nav .nav-block .lists > div.in-progress.active:hover {
-  background-image: linear-gradient(90deg, #8b0000 0%, #ffa42b 70%);
-  color: #333;
-  color: #a7a7a7;
-  color: #111;
-}
 nav .nav-block .lists > div.in-progress.active i, nav .nav-block .lists > div.in-progress.active:hover i {
-  color: #333;
-  color: #a7a7a7;
-  color: #FFF;
-}
-nav .nav-block .lists > div.in-progress:hover {
-  background-color: rgba(224, 75, 0, 0.7);
-  background-image: linear-gradient(90deg, rgba(139, 0, 0, 0.5) 0%, rgba(255, 164, 43, 0.5) 70%);
-  color: #333;
-  color: #a7a7a7;
-  color: #111;
-}
-nav .nav-block .lists > div.in-progress:hover i {
-  color: #333;
-  color: #a7a7a7;
-  color: #FFF;
-}
-nav .nav-block .lists > div.completed i {
-  color: #0d72ea;
-}
-nav .nav-block .lists > div.completed.active, nav .nav-block .lists > div.completed.active:hover {
-  background-color: #0d72ea;
-  color: #a7a7a7;
-  color: #FFF;
+  color: #ff4200;
 }
 nav .nav-block .lists > div.completed.active i, nav .nav-block .lists > div.completed.active:hover i {
-  color: #a7a7a7;
-  color: #FFF;
-}
-nav .nav-block .lists > div.completed:hover {
-  background-color: rgba(13, 114, 234, 0.7);
-  color: #a7a7a7;
-  color: #FFF;
-}
-nav .nav-block .lists > div.completed:hover i {
-  color: #a7a7a7;
-  color: #FFF;
-}
-nav .nav-block .lists > div.favourite i {
-  color: #ffa42b;
-}
-nav .nav-block .lists > div.favourite.active, nav .nav-block .lists > div.favourite.active:hover {
-  background-color: #ffa42b;
-  color: #333;
+  color: #0d72ea;
 }
 nav .nav-block .lists > div.favourite.active i, nav .nav-block .lists > div.favourite.active:hover i {
-  color: #333;
-  color: #a7a7a7;
-  color: #FFF;
-}
-nav .nav-block .lists > div.favourite:hover {
-  background-color: rgba(255, 164, 43, 0.7);
-  color: #333;
-  color: #111;
-}
-nav .nav-block .lists > div.favourite:hover i {
-  color: #333;
-  color: #a7a7a7;
-  color: #FFF;
-}
-nav .nav-block .lists > div.trash i {
-  color: #a7a7a7;
-  color: rgb(22, 22, 22);
-  color: #D64942;
-}
-nav .nav-block .lists > div.trash.active, nav .nav-block .lists > div.trash.active:hover {
-  background-color: rgb(29, 29, 29);
-  background-color: #D64942;
-  color: #af2626;
-  color: #a7a7a7;
-  color: #FFF;
+  color: #ff9001;
 }
 nav .nav-block .lists > div.trash.active i, nav .nav-block .lists > div.trash.active:hover i {
   color: #af2626;
-  color: #222;
-  color: #a7a7a7;
-  color: #FFF;
-}
-nav .nav-block .lists > div.trash:hover {
-  background-color: rgb(45, 45, 45);
-  background-color: rgba(214, 73, 66, 0.5);
-  color: #222;
-  color: #a7a7a7;
-  color: #FFF;
-}
-nav .nav-block .lists > div.trash:hover i {
-  color: #222;
-  color: #a7a7a7;
-  color: #FFF;
 }
 
 main button.new-task {
@@ -550,28 +449,27 @@ main button.new-task {
   z-index: 1000;
   bottom: 30px;
   left: 50%;
-  transform: translateX(-50%) scale(1);
+  transform: translateX(-50%);
   border-radius: 50%;
   border: none;
   outline: none;
   box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.24);
-  transition: transform 50ms ease-in-out, bottom 0.3s ease-in-out, left 0.3s ease-in-out, background-color 0.3s ease-in-out, width 0.05s ease-in-out, height 0.05s ease-in-out;
   cursor: pointer;
-  background-color: #dadada;
-  background-color: #E1D9D1;
-  background-color: #e2d2c2;
+  background-color: #c4c4c4;
+  transition: transform 50ms ease-in-out, bottom 50ms ease-in-out, left 250ms ease-in-out, background-color 50ms ease-in-out, width 50ms ease-in-out, height 50ms ease-in-out;
 }
 main button.new-task i {
   font-size: 30px;
   font-weight: bold;
-  color: #313138;
+  color: #2C2C2C;
   pointer-events: none;
-  transition: color 0.3s ease-in-out;
+  transition: color 50ms ease-in-out;
 }
-main button.new-task:hover {
-  background-color: #ededed;
-  background-color: #e7d2bd;
-  transform: translateX(-50%) scale(1.02);
+main button.new-task:hover, main button.new-task.active, main button.new-task.active:hover {
+  background-color: rgba(196, 196, 196, 0.8);
+  width: 70px;
+  height: 70px;
+  bottom: 25px;
 }
 @media screen and (max-width: 767px) {
   main button.new-task {
@@ -584,10 +482,9 @@ main button.new-task:hover {
 /*--app main header--------------------------------------------------*/
 /*-------------------------------------------------------------------*/
 header {
-  color: #a7a7a7;
+  color: #222;
   width: 100%;
   margin: 20px auto;
-  background-color: #313138;
   border-radius: 10px;
   padding: 15px 20px;
   position: -webkit-sticky;
@@ -595,8 +492,6 @@ header {
   left: 0;
   top: 0;
   cursor: default;
-  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.3);
 }
 header h1 {
   margin: 0;
@@ -613,18 +508,15 @@ main {
   height: 100%;
   border-radius: 10px;
   padding: 20px 0px 15px 10px;
-  background-color: #333;
-  background-color: #121212;
-  box-shadow: 1px 1px 5px 1px rgba(42, 42, 56, 0.8);
-  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.6);
-  flex-basis: 65%;
+  background-color: #222;
+  box-shadow: 3px 3px 20px 1px rgba(0, 0, 0, 0.3490196078);
+  flex-basis: 100%;
   overflow: hidden;
 }
 @media screen and (max-width: 767px) {
   main {
     flex-basis: 100%;
     border-radius: 0 0 0 0;
-    box-shadow: 0 0 0 0;
     padding: 0px;
   }
 }
@@ -639,9 +531,9 @@ main header {
   margin: 0 0 20px 10px;
   height: 67px;
   border: 3px solid transparent;
+  color: #c4c4c4;
   border-radius: 10px;
-  background-image: linear-gradient(#313138, #313138), linear-gradient(90deg, #8b0000 0%, #ffa42b 70%);
-  background-image: linear-gradient(#222, #222), linear-gradient(90deg, #8b0000 0%, #ffa42b 70%);
+  background-image: linear-gradient(#121212, #121212), linear-gradient(90deg, #8b0000 0%, #ff9001 70%);
   background-origin: border-box;
   background-clip: content-box, border-box;
   transform-style: preserve-3d;
@@ -674,19 +566,18 @@ main header > i {
     border-radius: 50%;
     cursor: pointer;
     background-color: transparent;
-    color: #a7a7a7;
+    color: #c4c4c4;
     transform: scale(1);
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.1s ease-in-out;
   }
   main header > i:hover {
-    background-color: rgba(209, 209, 209, 0.123);
+    background-color: #4b4b4b;
   }
 }
 main header .title {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: #e2d2c2;
 }
 @media screen and (max-width: 767px) {
   main header .title {
@@ -696,7 +587,7 @@ main header .title {
 main header .title i {
   font-size: 30px;
   padding-left: 20px;
-  background: linear-gradient(270deg, #D64942 0%, #ffa42b 70%);
+  background: linear-gradient(270deg, #8b0000 0%, #ff9001 70%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -724,7 +615,7 @@ main .tasks-block::-webkit-scrollbar {
   width: 20px;
 }
 main .tasks-block::-webkit-scrollbar-thumb {
-  background-color: rgba(209, 209, 209, 0.194);
+  background-color: #4b4b4b;
   border: 6px solid transparent;
   border-radius: 10px;
   background-clip: padding-box;
@@ -735,36 +626,19 @@ main .tasks-block .task {
   flex-direction: column;
   gap: 5px;
   width: 100%;
-  max-width: 500px;
-  background-color: #3B3B48;
-  background-color: rgb(33, 33, 33);
-  background-color: #181818;
-  background-color: #282828;
-  background-color: #252525;
-  background-color: #222;
-  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
+  background-color: #121212;
+  border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 8px;
   position: relative;
   cursor: default;
   opacity: 1;
-  transition: background-color 0.2s ease-in-out;
+  transition: background-color 5ms ease;
 }
 main .tasks-block .task:hover {
-  background-color: #464652;
-  background-color: rgb(74, 74, 74);
-  background-color: rgb(40, 40, 40);
-  background-color: #1a1a1a;
-  background-color: #282828;
-  background-color: #181818;
-  background-color: #292929;
+  background-color: rgba(24, 24, 24, 0.5);
 }
 main .tasks-block .task.active {
-  background-color: #51515e;
-  background-color: rgb(85, 85, 85);
-  background-color: #222;
-  background-color: #141414;
-  background-color: #444;
-  background-color: #292929;
+  position: relative;
   background-color: rgb(57, 57, 57);
 }
 main .tasks-block .task .content {
@@ -790,7 +664,7 @@ main .tasks-block .task .content > i.fa-ellipsis-vertical {
   right: -5px;
 }
 main .tasks-block .task .content > i.fa-ellipsis-vertical:hover {
-  background-color: rgba(209, 209, 209, 0.123);
+  background-color: #4b4b4b;
 }
 main .tasks-block .task .content > i.fa-circle {
   min-width: 30px;
@@ -813,33 +687,58 @@ main .tasks-block .task .content > i.fa-circle:hover {
   color: #0d72ea;
 }
 main .tasks-block .task .content > p {
+  flex-basis: 100%;
   margin-right: auto;
   margin-top: 3px;
   padding-left: 30px;
   padding-right: 30px;
-  color: #a7a7a7;
-  color: #FFF;
+  color: #dcdcdc;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  width: 100%;
+  word-break: break-all;
+}
+main .tasks-block .task .content > p::-moz-selection {
+  background-color: #fff;
+  color: #111;
+}
+main .tasks-block .task .content > p::selection {
+  background-color: #fff;
+  color: #111;
+}
+main .tasks-block .task .content > p:focus {
+  cursor: text;
+}
+main .tasks-block .task .content button {
+  margin-right: 30px;
+  margin-top: 3px;
+  background-color: #ffa42b;
+  color: #222;
+  border: 2px solid #222;
+  outline: none;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+main .tasks-block .task .content button:hover {
+  opacity: 0.8;
 }
 main .tasks-block .task .content .options {
   position: absolute;
-  right: 25px;
-  top: 5px;
+  right: -5px;
+  top: 0px;
   z-index: 100;
   flex-direction: column;
-  background-color: #313138;
-  background-color: rgb(33, 33, 33);
-  background-color: #2a2a2a;
-  border-radius: 8px;
-  border-radius: 5px;
-  color: #333;
   overflow: hidden;
-  box-shadow: 1px 1px 20px 1px rgba(39, 39, 39, 0.791);
-  box-shadow: 0 16px 24px rgba(0, 0, 0, 0.3), 0 6px 8px rgba(0, 0, 0, 0.2);
+  background-color: #2a2a2a;
+  border-radius: 5px;
+  box-shadow: 3px 3px 20px 1px rgba(0, 0, 0, 0.3490196078);
+  color: #2C2C2C;
   pointer-events: none;
   opacity: 0;
   transform: scale(0.1);
   transform-origin: top right;
-  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  transition: transform 130ms ease-in-out, opacity 150ms ease-in-out;
 }
 main .tasks-block .task .content .options.active {
   opacity: 1;
@@ -852,25 +751,23 @@ main .tasks-block .task .content .options > div {
   cursor: pointer;
 }
 main .tasks-block .task .content .options > div:hover {
-  background-color: rgb(40, 40, 40);
-  background-color: rgb(60, 60, 60);
   background-color: #222;
 }
 main .tasks-block .task .content .options > div:hover p {
-  color: #FFF;
+  color: rgba(167, 167, 167, 0.9);
 }
 main .tasks-block .task .content .options > div i {
-  color: #6b6b6b;
+  color: rgba(209, 209, 223, 0.7);
   width: 15px;
   font-size: 15px;
 }
 main .tasks-block .task .content .options > div p {
   font-size: 15px;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: capitalize;
   padding-left: 15px;
   padding-right: 15px;
-  color: #a7a7a7;
+  color: #c4c4c4;
   color: #a7a7a7;
 }
 main .tasks-block .task .content .options .edit i {
@@ -881,12 +778,12 @@ main .tasks-block .task .content .options .favourite {
   border-bottom: 1px solid rgb(60, 60, 60);
 }
 main .tasks-block .task .content .options .favourite i {
-  color: #ffa42b;
+  color: #ff9001;
 }
 main .tasks-block .task .content .options .delete i {
   font-family: "FontAwesome";
   font-weight: 400;
-  color: #D64942;
+  color: #af2626;
 }
 main .tasks-block .task .date {
   padding-left: 31px;
@@ -895,8 +792,25 @@ main .tasks-block .task .date {
   color: rgba(209, 209, 223, 0.4);
 }
 main .tasks-block .task .date i {
-  color: #ffa42b;
+  color: #ff9001;
   font-size: 7px;
+}
+main .tasks-block .task .date i.fa-check {
+  display: none;
+  position: absolute;
+  right: 36px;
+  top: 18px;
+  font-size: 16px;
+  padding: 3px 5px;
+  color: #222;
+  border-radius: 5px;
+  background-color: #ffa42b;
+  transition: background-color 30ms ease, color 30ms ease;
+}
+main .tasks-block .task .date i.fa-check:hover {
+  background-color: #111;
+  color: #ffa42b;
+  cursor: pointer;
 }
 main .new-task-container {
   position: absolute;
@@ -908,30 +822,24 @@ main .new-task-container {
   width: 100%;
   height: 100%;
   opacity: 0;
-  box-shadow: 0px 0px 0 400px transparent;
   background-color: transparent;
-  transition: transform 0.4s ease-in-out, bottom 0.3s ease-in-out, left 0.3s ease-in-out, opacity 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  transition: transform 150ms ease-in-out, bottom 50ms ease-in-out, left 250ms ease-in-out, opacity 50ms ease-in-out;
 }
 main .new-task-container.active {
   transform: translateX(-50%) scale(1);
-  background-color: rgba(42, 42, 56, 0.9);
-  background-color: rgba(51, 51, 51, 0.9);
   background-color: rgba(17, 17, 17, 0.7);
-  box-shadow: 0px 0px 0 500px rgba(17, 17, 17, 0.7);
   opacity: 1;
-  bottom: 56px;
+  bottom: 0vh;
 }
 @media screen and (max-width: 767px) {
   main .new-task-container {
     bottom: 30px;
     left: 60px;
     opacity: 0;
-    transition: transform 0.3s ease-in-out, bottom 0.3s ease-in-out, left 0.3s ease-in-out, opacity 0.3s ease-in-out, background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   }
   main .new-task-container.active {
     transform: translateX(-50%) scale(1);
     background-color: rgba(17, 17, 17, 0.7);
-    box-shadow: 0px 0px 0 400px rgba(17, 17, 17, 0.7);
     left: 50%;
     opacity: 1;
   }
@@ -941,14 +849,12 @@ main .new-task-container .new-task-window {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  height: 50%;
+  height: 60%;
   min-height: 180px;
-  max-height: 200px;
+  max-height: 250px;
   width: 60%;
   min-width: 250px;
-  max-width: 280px;
-  background-color: #333;
-  background-color: hsl(0deg, 0%, 17%);
+  max-width: 350px;
   background-color: #222;
   display: flex;
   gap: 10px;
@@ -957,9 +863,7 @@ main .new-task-container .new-task-window {
   justify-content: center;
   border-radius: 10px;
   box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease-in-out, bottom 0.3s ease-in-out, left 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
-main .new-task-container .new-task-window input,
 main .new-task-container .new-task-window .icons {
   width: 70%;
   border-radius: 10px;
@@ -967,15 +871,14 @@ main .new-task-container .new-task-window .icons {
 main .new-task-container .new-task-window .input {
   width: 70%;
   height: 50px;
-  caret-color: #595976;
-  caret-color: #ffa42b;
+  caret-color: #ff9001;
   border: none;
   box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
-  background-image: linear-gradient(#222, #222), linear-gradient(90deg, #8b0000 0%, #ffa42b 70%);
+  background-image: linear-gradient(#222, #222), linear-gradient(90deg, #8b0000 0%, #ff9001 70%);
   background-origin: border-box;
   background-clip: content-box, border-box;
   border: 3px solid transparent;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 main .new-task-container .new-task-window .input input {
   outline: none;
@@ -984,19 +887,20 @@ main .new-task-container .new-task-window .input input {
   height: 100%;
   width: 100%;
   padding-left: 15px;
-  color: #a7a7a7;
+  padding-right: 15px;
+  color: #c4c4c4;
   background: none;
   border: none;
   outline: none;
 }
 main .new-task-container .new-task-window .input input::-webkit-input-placeholder {
-  color: #a7a7a7;
-  font-weight: bold;
+  color: #c4c4c4;
+  font-weight: normal;
   text-transform: capitalize;
 }
 main .new-task-container .new-task-window .input input:-webkit-autofill, main .new-task-container .new-task-window .input input:-webkit-autofill:hover, main .new-task-container .new-task-window .input input:-webkit-autofill:focus, main .new-task-container .new-task-window .input input:-webkit-autofill:active {
   box-shadow: 0 0 0 30px #222 inset !important;
-  color: #a7a7a7;
+  color: #c4c4c4;
 }
 main .new-task-container .new-task-window .input:focus {
   background: none;
@@ -1008,8 +912,7 @@ main .new-task-container .new-task-window .icons {
 main .new-task-container .new-task-window .icons i {
   position: relative;
   font-size: 15px;
-  border-radius: 8px;
-  display: block;
+  border-radius: 5px;
   padding: 8px;
   display: flex;
   align-items: center;
@@ -1024,22 +927,22 @@ main .new-task-container .new-task-window .icons i {
     font-size: 12px;
   }
 }
-main .new-task-container .new-task-window .icons i.fa-circle {
+main .new-task-container .new-task-window .icons i.fa-star {
   width: 40%;
   background: none;
-  border: 2px solid #ffa42b;
-  color: #ffa42b;
+  border: 2px solid #ff9001;
+  color: #ff9001;
 }
-main .new-task-container .new-task-window .icons i.fa-circle.active {
-  background-color: #ffa42b;
-  color: #333;
+main .new-task-container .new-task-window .icons i.fa-star.active {
+  background-color: #ff9001;
+  color: #2C2C2C;
 }
-main .new-task-container .new-task-window .icons i.fa-circle.active:hover {
+main .new-task-container .new-task-window .icons i.fa-star.active:hover {
   opacity: 0.6;
 }
-main .new-task-container .new-task-window .icons i.fa-circle:hover {
-  background-color: #ffa42b;
-  color: #333;
+main .new-task-container .new-task-window .icons i.fa-star:hover {
+  background-color: #ff9001;
+  color: #2C2C2C;
 }
 main .new-task-container .new-task-window .icons i.fa-plus {
   width: 55%;
@@ -1049,7 +952,7 @@ main .new-task-container .new-task-window .icons i.fa-plus {
 }
 main .new-task-container .new-task-window .icons i.fa-plus:hover, main .new-task-container .new-task-window .icons i.fa-plus.active {
   background-color: #1ed760;
-  color: #333;
+  color: #2C2C2C;
 }
 
 /*-------------------------------------------------------------------*/
@@ -1058,15 +961,12 @@ main .new-task-container .new-task-window .icons i.fa-plus:hover, main .new-task
 nav {
   position: relative;
   z-index: 500;
-  color: rgba(209, 209, 223, 0.7);
+  color: #c4c4c4;
   height: 100%;
   min-width: 245px;
   border-radius: 10px;
-  background-color: #333;
-  background-color: #121212;
-  box-shadow: 1px 1px 5px 1px rgba(42, 42, 56, 0.8);
-  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.6);
-  flex-basis: 35%;
+  background-color: #222;
+  box-shadow: 3px 3px 20px 1px rgba(0, 0, 0, 0.3490196078);
   overflow: hidden;
 }
 @media screen and (max-width: 767px) {
@@ -1079,7 +979,6 @@ nav {
     transition: transform 0.3s ease-in-out;
     width: 40%;
     height: calc(100% - 150px);
-    background-color: #313138;
     background-color: #333;
   }
   nav.active {
@@ -1090,12 +989,9 @@ nav header {
   width: calc(100% - 60px);
   max-width: 226.83px;
   margin: 20px auto 20px 20px;
-  background-color: #ffa42b;
-  background: linear-gradient(135deg, #8b0000 0%, #ffa42b 70%);
-  color: #333;
-  color: #222;
+  background: linear-gradient(135deg, #8b0000 0%, #ff9001 70%);
 }
-@media (max-width: 1110px) and (min-height: 733px) {
+@media (min-height: 733px) {
   nav header {
     width: calc(100% - 40px);
   }
@@ -1125,7 +1021,7 @@ nav .nav-block::-webkit-scrollbar {
   width: 20px;
 }
 nav .nav-block::-webkit-scrollbar-thumb {
-  background-color: rgba(209, 209, 209, 0.194);
+  background-color: #4b4b4b;
   border: 6px solid transparent;
   border-radius: 10px;
   background-clip: padding-box;

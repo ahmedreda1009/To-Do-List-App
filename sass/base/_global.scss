@@ -7,146 +7,131 @@
 *,
 *::before,
 *::after {
-  @include abstracts.prefixer(box-sizing, border-box, webkit moz o);
-  margin: 0;
-  padding: 0;
-  // border: 1px solid red;
+	@include abstracts.prefixer(box-sizing, border-box, webkit moz o);
+	margin: 0;
+	padding: 0;
+	// border: 1px solid red;
 }
 
-
 ::selection {
-  background: none;
+	background: none;
 }
 
 input::selection {
-  background-color: abstracts.$clrYellow;
-  color: abstracts.$clrBlack2;
+	background-color: abstracts.$clr-gradient-yellow;
+	color: abstracts.$clr-main-dark;
+}
+
+[contenteditable="true"] {
+	cursor: text;
 }
 
 html {
-  scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 body {
-  overflow: hidden;
-  color: abstracts.$clrText;
-  font: {
-    family: "GolosTextWebRegular";
-  }
-  margin: 0;
-  padding: 0;
-  position: relative;
-  height: 100vh;
+	overflow: hidden;
+	color: abstracts.$clr-main-text;
+	font: {
+		family: "GolosTextWebRegular";
+	}
+	margin: 0;
+	padding: 0;
+	position: relative;
+	height: 100vh;
 
-  &::before,
-  &::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    width: 100%;
-    z-index: -1;
-    // filter: blur(50px);
-  }
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		left: 0;
+		width: 100%;
+		z-index: -1;
+	}
 
-  &::after {
-    height: 90%;
-    width: 200%;
-    top: -50%;
-    top: -27%;
-    left: -50%;
-    // background-color: abstracts.$clrBlack;    
-    // background: linear-gradient(135deg, abstracts.$clrGradLight 0%, abstracts.$clrGradDark 59%);
-    // background: linear-gradient(85deg, abstracts.$clrGradLight 0%, abstracts.$clrGradDark 59%);
-    background: linear-gradient(85deg, #444 0%, #222 59%);
-    background: linear-gradient(85deg, #555 0%, #121212 59%);
-    // background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-    // background-image: linear-gradient(147deg, #e2d2c2 0%, #121212 60%);
-    
+	&::after {
+		height: 70%;
+		width: 200%;
+		top: -27%;
+		left: -50%;
+		background-color: abstracts.$clr-bg;
+		border-radius: 50%;
+	}
 
-
-
-    // background-color: #121212;
-    border-radius: 50%;
-    // filter: blur(3px);
-  }
-
-  &::before {
-    height: 100%;
-    bottom: 0;
-    background-color: #E0E0E0;
-    background-color: #E1D9D1;
-    background-color: #e2d2c2;
-  }
+	&::before {
+		height: 100%;
+		bottom: 0;
+		background-color: abstracts.$clr-main-text;
+	}
 }
 
 ul {
-  list-style-type: none;
+	list-style-type: none;
 }
 
 img {
-  max-width: 100%;
+	max-width: 100%;
 }
 
 a {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 svg {
-  position: absolute;
-  right: 0;
-  top: 30%;
-  width: 30%;
+	position: absolute;
+	right: 0;
+	top: 30%;
+	width: 30%;
 }
 
 .wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100vw;
 }
 
 .container {
-  display: flex;
-  gap: 20px;
-  background-color: abstracts.$clrContainer;
-  padding: 30px;
-  margin: auto;
-  transition: width 0.3s ease-in-out;
-  border-radius: abstracts.$radiusLg;
-  height: min(90vh, 700px);
-  @include abstracts.media-up(sm) {
-    max-width: 900px;
-    width: 80%;
-  }
-  box-shadow: 1px 1px 5px 1px abstracts.$clrContainerShadow;
-  // background: linear-gradient(135deg, abstracts.$clrGradLight 0%, abstracts.$clrGradDark 59%);
-  // background: linear-gradient(135deg, rgb(153 153 194 / 87%) 0%, rgba(43, 43, 61, 0.87) 59%);
-  background-color: rgb(153 153 194 / 30%);
-  background-color: rgb(255 255 255 / 50%);
-  background-color: rgb(225 217 209 / 50%);
-  background-color: rgb(225 217 209 / 33%);
-  
-  background: rgba(255, 255, 255, 0.01);
-  background-color: rgba(255, 255, 255, 0.3);
-  
-/* From https://css.glass */
-background: rgba(255, 255, 255, 0.3);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(6.9px);
--webkit-backdrop-filter: blur(6.9px);
-border: 1px solid rgba(255, 255, 255, 0.04);
+	display: flex;
+	gap: 20px;
+	padding: 30px;
+	margin: auto;
+	transition: width 0.3s ease-in-out, padding 0.3s ease;
+	border-radius: abstracts.$radiusLg;
+	height: min(90vh, 700px);
+	background: rgba(255, 255, 255, 0.2);
+	border-radius: 16px;
+	box-shadow: 3px 3px 20px 1px abstracts.$clr-main-shadow;
+	backdrop-filter: blur(3.9px);
+	-webkit-backdrop-filter: blur(3.9px);
+	border: 1px solid rgba(255, 255, 255, 0.04);
 
+	@include abstracts.media-up(xs) {
+		width: 100vw;
+		height: 100vh;
+		padding: 20px;
+		border-radius: 0px;
+	}
 
-  @include abstracts.media-down(mb) {
-    flex-direction: column;
-    gap: 0px;
-    padding: 0;
-    margin: 0;
-    height: 100vh;
-    width: 100%;
-    border-radius: 0 0 0 0;
-    position: relative;
-    overflow: hidden;
-  }
+	@include abstracts.media-up(lg) {
+		width: 90%;
+		max-width: 1200px;
+		height: 90vh;
+		border-radius: abstracts.$radiusLg;
+		padding: 30px;
+	}
+
+	@include abstracts.media-down(mb) {
+		flex-direction: column;
+		gap: 0px;
+		padding: 0;
+		margin: 0;
+		height: 100vh;
+		width: 100%;
+		border-radius: 0 0 0 0;
+		position: relative;
+		overflow: hidden;
+	}
 }
