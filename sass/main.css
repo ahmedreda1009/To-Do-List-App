@@ -412,6 +412,7 @@ nav .nav-block .lists header h1 {
 }
 nav .nav-block .lists > div {
   background-color: #181818;
+  display: flex;
 }
 nav .nav-block .lists > div h3 {
   font-size: 14px;
@@ -429,6 +430,11 @@ nav .nav-block .lists > div:hover {
 nav .nav-block .lists > div i {
   font-size: 18px;
   width: 20px;
+}
+nav .nav-block .lists > div span {
+  margin-left: auto;
+  font-size: 12px;
+  color: rgba(196, 196, 196, 0.4);
 }
 nav .nav-block .lists > div.all.active i, nav .nav-block .lists > div.all.active:hover i {
   color: #1ed760;

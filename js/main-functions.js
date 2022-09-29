@@ -6,16 +6,16 @@
 class Task {
     constructor(text, id, completed = false, deleted = false, favourite = false, hour, minite, weekDay, day, month, year) {
         this.text = text.trim(),
-        this.id = id,
-        this.completed = completed,
-        this.deleted = deleted,
-        this.favourite = favourite,
-        this.hour = hour,
-        this.minite = minite,
-        this.weekDay = weekDay,
-        this.day = day,
-        this.month = month,
-        this.year = year
+            this.id = id,
+            this.completed = completed,
+            this.deleted = deleted,
+            this.favourite = favourite,
+            this.hour = hour,
+            this.minite = minite,
+            this.weekDay = weekDay,
+            this.day = day,
+            this.month = month,
+            this.year = year
     }
     updateCompleted() {
         if (this.completed) {
@@ -44,12 +44,12 @@ class Task {
 }
 
 
-export function addNewTaskTo(allTasks, inProgressTasks, completedTasks, favouriteTasks, deletedTasks, notDel) {
+export function addNewTaskTo(allTasks, favouriteTasks) {
 
     const input = document.querySelector("main .new-task-container input");
     if (input.value == "") return;
 
-    
+
     let favourite = false;
     let completed = false;
     let deleted = false;
@@ -60,23 +60,17 @@ export function addNewTaskTo(allTasks, inProgressTasks, completedTasks, favourit
     const newTask = new Task(input.value, date.getTime(), completed, deleted, favourite, date.getHours(), date.getMinutes(), date.getDay(), date.getDate(), date.getMonth(), date.getFullYear());
 
     if (favourite) favouriteTasks.push(newTask);
-    inProgressTasks.push(newTask);
-    notDel.push(newTask);
-    // if (!deleted) notDel.push(newTask);
-    // if (!completed) inProgressTasks.push(newTask);
-    // if (deleted) deletedTasks.push(newTask);
-    // if (completed) completedTasks.push(newTask);
+    // inProgressTasks.push(newTask);
+    // notDel.push(newTask);
 
-    // console.log(newTask);
     allTasks.push(newTask);
-    // console.log(allTasks);
     input.value = "";
     input.focus();
     document.querySelector('main .new-task-container .icons .fa-star').classList.remove('active');
 }
 
 export function createTasksFrom(arr) {
-    
+
     let tasksBlock = document.querySelector('main .tasks-block');
 
     tasksBlock.innerHTML = '';
@@ -84,12 +78,12 @@ export function createTasksFrom(arr) {
     let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
     arr.forEach(element => {
-        
+
         let task = document.createElement('div');
         task.classList.add('task');
         task.dataset.id = element.id;
-        task.innerHTML = 
-        `<div class="content">
+        task.innerHTML =
+            `<div class="content">
             <i class="fa-regular fa-circle ${element.completed ? 'checked' : ''}"></i>
             <p contenteditable="false">${element.text}</p>
             <button class="save" style="display: none;">Save</button>
@@ -102,7 +96,7 @@ export function createTasksFrom(arr) {
                 </div>
                 <div class="favourite">
                     <i class="fa-solid ${element.favourite && !element.deleted ? 'fa-star-half-stroke' : 'fa-star'}"></i>
-                    <p>${element.favourite  && !element.deleted? 'unfavorite' : 'favourite'}</p>
+                    <p>${element.favourite && !element.deleted ? 'unfavorite' : 'favourite'}</p>
                 </div>
                 <div class="delete">
                     <i class="fa-thin fa-trash"></i>
@@ -118,7 +112,7 @@ export function createTasksFrom(arr) {
             <i class="fa-solid ${element.favourite && !element.deleted ? 'fa-star' : 'fa-circle'}" style="color:${element.favourite && !element.deleted ? '#ffa42b' : !element.favourite && element.deleted ? '#af2626' : '#373748'}; display: ${element.favourite || element.deleted ? 'inline' : 'none'};"></i>&nbsp;
             <i class="fa-solid fa-check"></i>
         </div>`;
-                    
+
         tasksBlock.append(task);
     });
 }
@@ -138,14 +132,13 @@ export function setCarat(element) {
     }
 }
 
+// alocal storage functions
 export function addToLocalStorage(allTasks) {
     window.localStorage.setItem('toDoTasks', JSON.stringify(allTasks));
 }
-
 export function getFromLocalStorage() {
     return JSON.parse(window.localStorage.getItem('toDoTasks'));
 }
-
 export function clearAllTasksFromLocalStorage() {
     window.localStorage.removeItem('toDoTasks');
 }

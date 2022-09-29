@@ -273,6 +273,7 @@ nav .nav-block {
 
 		> div {
 			background-color: abstracts.$clr-task;
+			display: flex;
 
 			h3 {
 				font-size: 14px;
@@ -295,6 +296,12 @@ nav .nav-block {
 			i {
 				font-size: 18px;
 				width: 20px;
+			}
+
+			span {
+				margin-left: auto;
+				font-size: 12px;
+				color: rgba(abstracts.$clr-main-text, 0.4);
 			}
 
 			&.all {

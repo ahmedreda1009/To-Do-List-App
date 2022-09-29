@@ -1,7 +1,4 @@
 import { addNewTaskTo, createTasksFrom, setCarat, addToLocalStorage, getFromLocalStorage, clearAllTasksFromLocalStorage } from "./main-functions.js";
-// import {checkBtns} from './btns-functionality.js';
-
-// {text: 'Be Productive, DO MORE.', id: 1212, completed: false, deleted: false, favourite: true, hour: 0, minite: 0, weekDay: 0, day: 1, month: 0, year: 2022}
 
 ////////////////////////
 // main array of tasks
@@ -21,27 +18,64 @@ let deletedTasks = [];
 // searched tasks
 let searchResult = [];
 
-// get tasks from local storage
-if (getFromLocalStorage()) {
-	allTasks = getFromLocalStorage();
+
+// update arrays
+function updateArrays(allTasks) {
 	notDel = allTasks.filter((task) => {
 		return !task.deleted;
 	});
+
+	inProgressTasks = allTasks.filter((element) => {
+		return !element.completed && !element.deleted;
+	});
+
+	completedTasks = allTasks.filter((element) => {
+		return element.completed && !element.deleted;
+	});
+
+	favouriteTasks = allTasks.filter((element) => {
+		return element.favourite && !element.deleted;
+	});
+
+	deletedTasks = allTasks.filter((element) => {
+		return element.deleted;
+	});
+}
+
+// the length of each array
+function getArraysLength() {
+	document.querySelector('nav .nav-block .lists .all span').innerHTML = notDel.length;
+	document.querySelector('nav .nav-block .lists .in-progress span').innerHTML = inProgressTasks.length;
+	document.querySelector('nav .nav-block .lists .completed span').innerHTML = completedTasks.length;
+	document.querySelector('nav .nav-block .lists .favourite span').innerHTML = favouriteTasks.length;
+	document.querySelector('nav .nav-block .lists .trash span').innerHTML = deletedTasks.length;
+}
+
+// get tasks from local storage
+if (getFromLocalStorage()) {
+	allTasks = getFromLocalStorage();
+	// notDel = allTasks.filter((task) => {
+	// 	return !task.deleted;
+	// });
+	updateArrays(allTasks);
 	addFromActiveList();
+	getArraysLength();
 }
 // the very first task
 document.addEventListener('DOMContentLoaded', () => {
 	addFromActiveList();
-})
-
-// console.log(allTasks);
-// console.log(notDel);
+});
 
 // function to be called when clicking on the add task btn
 function addBtnClick() {
-	addNewTaskTo(allTasks, inProgressTasks, completedTasks, favouriteTasks, deletedTasks, notDel);
+	addNewTaskTo(allTasks, favouriteTasks);
+	// notDel = allTasks.filter((task) => {
+	// 	return !task.deleted;
+	// });
+	updateArrays(allTasks);
 	addFromActiveList();
 	addToLocalStorage(allTasks);
+	getArraysLength();
 }
 
 // add task to the allTasks array when click on add button
@@ -60,45 +94,50 @@ input.addEventListener("keypress", (e) => {
 let allBtn = document.querySelector("nav .lists .all");
 allBtn.addEventListener("click", () => {
 
-	notDel = allTasks.filter((task) => {
-		return !task.deleted;
-	});
+	// notDel = allTasks.filter((task) => {
+	// 	return !task.deleted;
+	// });
+	updateArrays(allTasks);
 	createTasksFrom(notDel);
 });
 
 // show in progress tasks
 let inProgressBtn = document.querySelector("nav .lists .in-progress");
 inProgressBtn.addEventListener("click", () => {
-	inProgressTasks = allTasks.filter((element) => {
-		return !element.completed && !element.deleted;
-	});
+	// inProgressTasks = allTasks.filter((element) => {
+	// 	return !element.completed && !element.deleted;
+	// });
+	updateArrays(allTasks);
 	createTasksFrom(inProgressTasks);
 });
 
 // show completed tasks
 let completedBtn = document.querySelector("nav .lists .completed");
 completedBtn.addEventListener("click", () => {
-	completedTasks = allTasks.filter((element) => {
-		return element.completed && !element.deleted;
-	});
+	// completedTasks = allTasks.filter((element) => {
+	// 	return element.completed && !element.deleted;
+	// });
+	updateArrays(allTasks);
 	createTasksFrom(completedTasks);
 });
 
 // show the favourite tasks
 let favouriteBtn = document.querySelector("nav .lists .favourite");
 favouriteBtn.addEventListener("click", () => {
-	favouriteTasks = allTasks.filter((element) => {
-		return element.favourite && !element.deleted;
-	});
+	// favouriteTasks = allTasks.filter((element) => {
+	// 	return element.favourite && !element.deleted;
+	// });
+	updateArrays(allTasks);
 	createTasksFrom(favouriteTasks);
 });
 
 // show the deleted tasks
 let deletedBtn = document.querySelector("nav .lists .trash");
 deletedBtn.addEventListener("click", () => {
-	deletedTasks = allTasks.filter((element) => {
-		return element.deleted;
-	});
+	// deletedTasks = allTasks.filter((element) => {
+	// 	return element.deleted;
+	// });
+	updateArrays(allTasks);
 	createTasksFrom(deletedTasks);
 });
 
@@ -160,20 +199,22 @@ document.addEventListener("click", (e) => {
 			}
 		});
 
-		notDel = allTasks.filter((task) => {
-			return !task.deleted;
-		});
+		// notDel = allTasks.filter((task) => {
+		// 	return !task.deleted;
+		// });
 
-		completedTasks = allTasks.filter((element) => {
-			return element.completed && !element.deleted;
-		});
+		// completedTasks = allTasks.filter((element) => {
+		// 	return element.completed && !element.deleted;
+		// });
 
-		inProgressTasks = allTasks.filter((element) => {
-			return !element.completed && !element.deleted;
-		});
+		// inProgressTasks = allTasks.filter((element) => {
+		// 	return !element.completed && !element.deleted;
+		// });
+		updateArrays(allTasks);
 
 		addFromActiveList();
 		addToLocalStorage(allTasks);
+		getArraysLength();
 
 		// console.log(allTasks);
 		// console.log(completedTasks);
@@ -204,16 +245,18 @@ document.addEventListener("click", (e) => {
 			}
 		});
 
-		notDel = allTasks.filter((task) => {
-			return !task.deleted;
-		});
+		// notDel = allTasks.filter((task) => {
+		// 	return !task.deleted;
+		// });
 
-		favouriteTasks = allTasks.filter((element) => {
-			return element.favourite && !element.deleted;
-		});
+		// favouriteTasks = allTasks.filter((element) => {
+		// 	return element.favourite && !element.deleted;
+		// });
+		updateArrays(allTasks);
 
 		addFromActiveList();
 		addToLocalStorage(allTasks);
+		getArraysLength();
 
 		// console.log(allTasks);
 	}
@@ -238,28 +281,30 @@ document.addEventListener("click", (e) => {
 			}
 		});
 
-		notDel = allTasks.filter((task) => {
-			return !task.deleted;
-		});
+		// notDel = allTasks.filter((task) => {
+		// 	return !task.deleted;
+		// });
 
-		deletedTasks = allTasks.filter((task) => {
-			return task.deleted && !notDel;
-		});
+		// deletedTasks = allTasks.filter((task) => {
+		// 	return task.deleted && !notDel;
+		// });
 
-		favouriteTasks = favouriteTasks.filter((task) => {
-			return !task.deleted && task.favourite;
-		});
+		// favouriteTasks = favouriteTasks.filter((task) => {
+		// 	return !task.deleted && task.favourite;
+		// });
 
-		inProgressTasks = inProgressTasks.filter((task) => {
-			return !task.deleted && !task.completed;
-		});
+		// inProgressTasks = inProgressTasks.filter((task) => {
+		// 	return !task.deleted && !task.completed;
+		// });
 
-		completedTasks = completedTasks.filter((task) => {
-			return !task.deleted && task.completed;
-		});
+		// completedTasks = completedTasks.filter((task) => {
+		// 	return !task.deleted && task.completed;
+		// });
+		updateArrays(allTasks);
 
 		addFromActiveList();
 		addToLocalStorage(allTasks);
+		getArraysLength();
 	}
 });
 
@@ -285,7 +330,7 @@ document.addEventListener('click', (e) => {
 				if (obj.id == editOpt.closest(".task").dataset.id) {
 					// obj.updateText(currentParagraph.textContent);
 
-					obj.text = currentParagraph.textContent;
+					obj.text = currentParagraph.textContent.trim();
 					// console.log(allTasks);
 				}
 			});
@@ -316,6 +361,7 @@ document.querySelector(".nav-block .clear .reset-all .yes").addEventListener("cl
 	deletedTasks = [];
 	addFromActiveList();
 	clearAllTasksFromLocalStorage();
+	getArraysLength();
 	document.querySelector("nav .nav-block .actions .clear .reset-all").classList.remove("active");
 });
 
@@ -330,6 +376,7 @@ document.querySelector(".nav-block .clear .clear-trash .yes").addEventListener("
 
 	addFromActiveList();
 	addToLocalStorage(allTasks);
+	getArraysLength();
 	document.querySelector("nav .nav-block .actions .clear .clear-trash").classList.remove("active");
 });
 
