@@ -80,8 +80,21 @@ input::selection {
   color: #222;
 }
 
+:root {
+  --doc-height: 100%;
+}
+
 [contenteditable=true] {
   cursor: text;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100vh; /* fallback for Js load */
+  height: var(--doc-height);
+  overflow-x: hidden;
 }
 
 html {
@@ -89,15 +102,12 @@ html {
 }
 
 body {
-  overflow: hidden;
   color: #c4c4c4;
   font-family: "GolosTextWebRegular";
   margin: 0;
   padding: 0;
   position: relative;
   height: 100vh;
-  position: absolute;
-  height: 100%;
 }
 body::before, body::after {
   content: "";

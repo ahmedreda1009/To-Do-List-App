@@ -67,9 +67,9 @@ export function addNewTaskTo(allTasks, inProgressTasks, completedTasks, favourit
     // if (deleted) deletedTasks.push(newTask);
     // if (completed) completedTasks.push(newTask);
 
-    console.log(newTask);
+    // console.log(newTask);
     allTasks.push(newTask);
-    console.log(allTasks);
+    // console.log(allTasks);
     input.value = "";
     input.focus();
     document.querySelector('main .new-task-container .icons .fa-star').classList.remove('active');

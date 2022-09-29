@@ -1,4 +1,4 @@
-import { addNewTaskTo, createTasksFrom, setCarat, addToLocalStorage, getFromLocalStorage, clearAllTasksFromLocalStorage} from "./main-functions.js";
+import { addNewTaskTo, createTasksFrom, setCarat, addToLocalStorage, getFromLocalStorage, clearAllTasksFromLocalStorage } from "./main-functions.js";
 // import {checkBtns} from './btns-functionality.js';
 
 // {text: 'Be Productive, DO MORE.', id: 1212, completed: false, deleted: false, favourite: true, hour: 0, minite: 0, weekDay: 0, day: 1, month: 0, year: 2022}
@@ -9,7 +9,7 @@ import { addNewTaskTo, createTasksFrom, setCarat, addToLocalStorage, getFromLoca
 let allTasks = [];
 
 // all tasks without deleted
-let notDel = [{text: 'Be Productive, DO MORE.', id: 1212, completed: false, deleted: false, favourite: true, hour: 0, minite: 0, weekDay: 0, day: 1, month: 0, year: 2022}];
+let notDel = [{ text: 'Be Productive, DO MORE.', id: 1212, completed: false, deleted: false, favourite: true, hour: 0, minite: 0, weekDay: 0, day: 1, month: 0, year: 2022 }];
 // favourite tasks
 let favouriteTasks = [];
 // in progress tasks
@@ -34,8 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	addFromActiveList();
 })
 
-console.log(allTasks);
-console.log(notDel);
+// console.log(allTasks);
+// console.log(notDel);
 
 // function to be called when clicking on the add task btn
 function addBtnClick() {
@@ -175,8 +175,8 @@ document.addEventListener("click", (e) => {
 		addFromActiveList();
 		addToLocalStorage(allTasks);
 
-		console.log(allTasks);
-		console.log(completedTasks);
+		// console.log(allTasks);
+		// console.log(completedTasks);
 	}
 });
 
@@ -215,7 +215,7 @@ document.addEventListener("click", (e) => {
 		addFromActiveList();
 		addToLocalStorage(allTasks);
 
-		console.log(allTasks);
+		// console.log(allTasks);
 	}
 });
 
@@ -267,12 +267,12 @@ document.addEventListener("click", (e) => {
 
 // edit button in options
 document.addEventListener('click', (e) => {
-    let editOpt = e.target.closest('.task .content .options .edit');
-    let currentParagraph = document.querySelector('.task.active .content p');
+	let editOpt = e.target.closest('.task .content .options .edit');
+	let currentParagraph = document.querySelector('.task.active .content p');
 	let currentSaveBtn = document.querySelector(".tasks-block > .task.active > .content > button.save");
 	let options = document.querySelector('.task.active .content .options');
 
-    if (editOpt != null) {
+	if (editOpt != null) {
 		currentParagraph.setAttribute('contenteditable', 'true');
 		currentSaveBtn.style.display = "block";
 		options.classList.remove('active');
@@ -301,7 +301,7 @@ document.addEventListener('click', (e) => {
 			}
 		});
 
-    }
+	}
 });
 
 // reset button in options
@@ -332,3 +332,11 @@ document.querySelector(".nav-block .clear .clear-trash .yes").addEventListener("
 	addToLocalStorage(allTasks);
 	document.querySelector("nav .nav-block .actions .clear .clear-trash").classList.remove("active");
 });
+
+// viewport problem on mobile
+const documentHeight = () => {
+	const doc = document.documentElement
+	doc.style.setProperty('--doc-height', `${window.innerHeight}px`)
+}
+window.addEventListener('resize', documentHeight)
+documentHeight()

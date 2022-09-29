@@ -22,8 +22,21 @@ input::selection {
 	color: abstracts.$clr-main-dark;
 }
 
+:root {
+	--doc-height: 100%;
+}
+
 [contenteditable="true"] {
 	cursor: text;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0;
+	height: 100vh; /* fallback for Js load */
+	height: var(--doc-height);
+	overflow-x: hidden;
 }
 
 html {
@@ -31,7 +44,6 @@ html {
 }
 
 body {
-	overflow: hidden;
 	color: abstracts.$clr-main-text;
 	font: {
 		family: "GolosTextWebRegular";
@@ -40,8 +52,6 @@ body {
 	padding: 0;
 	position: relative;
 	height: 100vh;
-	position: absolute;
-	height: 100%;
 
 	&::before,
 	&::after {
