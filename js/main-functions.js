@@ -60,8 +60,6 @@ export function addNewTaskTo(allTasks, favouriteTasks) {
     const newTask = new Task(input.value, date.getTime(), completed, deleted, favourite, date.getHours(), date.getMinutes(), date.getDay(), date.getDate(), date.getMonth(), date.getFullYear());
 
     if (favourite) favouriteTasks.push(newTask);
-    // inProgressTasks.push(newTask);
-    // notDel.push(newTask);
 
     allTasks.push(newTask);
     input.value = "";

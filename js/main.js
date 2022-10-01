@@ -18,8 +18,9 @@ let deletedTasks = [];
 // searched tasks
 let searchResult = [];
 
-
+//////////////////////////////////////////////////////////////////////////
 // update arrays
+//////////////////////////////////////////////////////////////////////////
 function updateArrays(allTasks) {
 	notDel = allTasks.filter((task) => {
 		return !task.deleted;
@@ -42,7 +43,9 @@ function updateArrays(allTasks) {
 	});
 }
 
-// the length of each array
+//////////////////////////////////////////////////////////////////////////
+// get the length of each array and put it besides its name
+//////////////////////////////////////////////////////////////////////////
 function getArraysLength() {
 	document.querySelector('nav .nav-block .lists .all span').innerHTML = notDel.length;
 	document.querySelector('nav .nav-block .lists .in-progress span').innerHTML = inProgressTasks.length;
@@ -51,38 +54,43 @@ function getArraysLength() {
 	document.querySelector('nav .nav-block .lists .trash span').innerHTML = deletedTasks.length;
 }
 
+//////////////////////////////////////////////////////////////////////////
 // get tasks from local storage
+//////////////////////////////////////////////////////////////////////////
 if (getFromLocalStorage()) {
 	allTasks = getFromLocalStorage();
-	// notDel = allTasks.filter((task) => {
-	// 	return !task.deleted;
-	// });
 	updateArrays(allTasks);
 	addFromActiveList();
 	getArraysLength();
 }
-// the very first task
+
+//////////////////////////////////////////////////////////////////////////
+// the default task
+//////////////////////////////////////////////////////////////////////////
 document.addEventListener('DOMContentLoaded', () => {
 	addFromActiveList();
 });
 
+//////////////////////////////////////////////////////////////////////////
 // function to be called when clicking on the add task btn
+//////////////////////////////////////////////////////////////////////////
 function addBtnClick() {
 	addNewTaskTo(allTasks, favouriteTasks);
-	// notDel = allTasks.filter((task) => {
-	// 	return !task.deleted;
-	// });
 	updateArrays(allTasks);
 	addFromActiveList();
 	addToLocalStorage(allTasks);
 	getArraysLength();
 }
 
+//////////////////////////////////////////////////////////////////////////
 // add task to the allTasks array when click on add button
+//////////////////////////////////////////////////////////////////////////
 const addBtn = document.querySelector("main .new-task-window .icons .fa-plus");
 addBtn.addEventListener("click", addBtnClick);
 
+//////////////////////////////////////////////////////////////////////////
 // add task to the allTasks array when click enter
+//////////////////////////////////////////////////////////////////////////
 const input = document.querySelector("main .new-task-container input");
 input.addEventListener("keypress", (e) => {
 	if (e.keyCode === 13) {
@@ -90,57 +98,54 @@ input.addEventListener("keypress", (e) => {
 	}
 });
 
-// show all tasks
+//////////////////////////////////////////////////////////////////////////
+// all tasks btn
+//////////////////////////////////////////////////////////////////////////
 let allBtn = document.querySelector("nav .lists .all");
 allBtn.addEventListener("click", () => {
-
-	// notDel = allTasks.filter((task) => {
-	// 	return !task.deleted;
-	// });
 	updateArrays(allTasks);
 	createTasksFrom(notDel);
 });
 
-// show in progress tasks
+//////////////////////////////////////////////////////////////////////////
+// in progress tasks btn
+//////////////////////////////////////////////////////////////////////////
 let inProgressBtn = document.querySelector("nav .lists .in-progress");
 inProgressBtn.addEventListener("click", () => {
-	// inProgressTasks = allTasks.filter((element) => {
-	// 	return !element.completed && !element.deleted;
-	// });
 	updateArrays(allTasks);
 	createTasksFrom(inProgressTasks);
 });
 
-// show completed tasks
+//////////////////////////////////////////////////////////////////////////
+// completed tasks btn
+//////////////////////////////////////////////////////////////////////////
 let completedBtn = document.querySelector("nav .lists .completed");
 completedBtn.addEventListener("click", () => {
-	// completedTasks = allTasks.filter((element) => {
-	// 	return element.completed && !element.deleted;
-	// });
 	updateArrays(allTasks);
 	createTasksFrom(completedTasks);
 });
 
-// show the favourite tasks
+//////////////////////////////////////////////////////////////////////////
+// the favourite tasks btn
+//////////////////////////////////////////////////////////////////////////
 let favouriteBtn = document.querySelector("nav .lists .favourite");
 favouriteBtn.addEventListener("click", () => {
-	// favouriteTasks = allTasks.filter((element) => {
-	// 	return element.favourite && !element.deleted;
-	// });
 	updateArrays(allTasks);
 	createTasksFrom(favouriteTasks);
 });
 
-// show the deleted tasks
+//////////////////////////////////////////////////////////////////////////
+// the deleted tasks btn
+//////////////////////////////////////////////////////////////////////////
 let deletedBtn = document.querySelector("nav .lists .trash");
 deletedBtn.addEventListener("click", () => {
-	// deletedTasks = allTasks.filter((element) => {
-	// 	return element.deleted;
-	// });
 	updateArrays(allTasks);
 	createTasksFrom(deletedTasks);
 });
 
+//////////////////////////////////////////////////////////////////////////
+// determine the active array and show its tasks
+//////////////////////////////////////////////////////////////////////////
 function addFromActiveList() {
 	let navListBtns = document.querySelectorAll("nav .nav-block .lists > div");
 	navListBtns.forEach((btn) => {
@@ -162,27 +167,18 @@ function addFromActiveList() {
 	});
 }
 
+//////////////////////////////////////////////////////////////////////////
 // search input
+//////////////////////////////////////////////////////////////////////////
 document.querySelector("nav .nav-block .actions .search input").addEventListener('input', (e) => {
-
-	// document.querySelector("nav .nav-block .actions .search").classList.add('active');
-
 	searchResult = notDel.filter((task) => {
 		return task.text.toLowerCase().includes(e.target.value.toLowerCase());
 	});
 	createTasksFrom(searchResult);
 });
 
-// document.querySelector("nav .nav-block .actions .search input").addEventListener('focus', (e) => {
-// 	if (e.target.value != '') {
-// 		document.querySelector('main .tasks-block') = '';
-// 	}
-// })
-
-
-
 //////////////////////////////////////////////////////////////////////////
-// check the task once clicked on it
+// check btn
 //////////////////////////////////////////////////////////////////////////
 document.addEventListener("click", (e) => {
 	if (e.target.matches(".tasks-block .task .content > .fa-circle")) {
@@ -198,71 +194,44 @@ document.addEventListener("click", (e) => {
 				}
 			}
 		});
-
-		// notDel = allTasks.filter((task) => {
-		// 	return !task.deleted;
-		// });
-
-		// completedTasks = allTasks.filter((element) => {
-		// 	return element.completed && !element.deleted;
-		// });
-
-		// inProgressTasks = allTasks.filter((element) => {
-		// 	return !element.completed && !element.deleted;
-		// });
 		updateArrays(allTasks);
 
 		addFromActiveList();
 		addToLocalStorage(allTasks);
 		getArraysLength();
-
-		// console.log(allTasks);
-		// console.log(completedTasks);
 	}
 });
 
+//////////////////////////////////////////////////////////////////////////
 // fav button in options
+//////////////////////////////////////////////////////////////////////////
 document.addEventListener("click", (e) => {
 	let favOpt = e.target.closest(".tasks-block .content .options .favourite");
 
 	if (favOpt != null) {
-		// favOpt.classList.remove("active");
-		// console.log(favOpt.closest('.task').dataset.id);
-
 		allTasks.forEach((obj) => {
 			if (obj.id == favOpt.closest(".task").dataset.id) {
 				if (!obj.deleted) {
-					// obj.updateFavourite();
 					if (obj.favourite === true) {
 						obj.favourite = false;
 					} else {
 						obj.favourite = true;
 					}
 				}
-				// else {
-				// 	favOpt.classList.remove("active");
-				// }
 			}
 		});
-
-		// notDel = allTasks.filter((task) => {
-		// 	return !task.deleted;
-		// });
-
-		// favouriteTasks = allTasks.filter((element) => {
-		// 	return element.favourite && !element.deleted;
-		// });
 		updateArrays(allTasks);
 
 		addFromActiveList();
 		addToLocalStorage(allTasks);
 		getArraysLength();
-
-		// console.log(allTasks);
 	}
 });
 
+
+//////////////////////////////////////////////////////////////////////////
 // delete button in options
+//////////////////////////////////////////////////////////////////////////
 document.addEventListener("click", (e) => {
 	let delOpt = e.target.closest(".task .options .delete");
 
@@ -280,26 +249,6 @@ document.addEventListener("click", (e) => {
 				obj.completed = false;
 			}
 		});
-
-		// notDel = allTasks.filter((task) => {
-		// 	return !task.deleted;
-		// });
-
-		// deletedTasks = allTasks.filter((task) => {
-		// 	return task.deleted && !notDel;
-		// });
-
-		// favouriteTasks = favouriteTasks.filter((task) => {
-		// 	return !task.deleted && task.favourite;
-		// });
-
-		// inProgressTasks = inProgressTasks.filter((task) => {
-		// 	return !task.deleted && !task.completed;
-		// });
-
-		// completedTasks = completedTasks.filter((task) => {
-		// 	return !task.deleted && task.completed;
-		// });
 		updateArrays(allTasks);
 
 		addFromActiveList();
@@ -308,9 +257,9 @@ document.addEventListener("click", (e) => {
 	}
 });
 
-
-
+//////////////////////////////////////////////////////////////////////////
 // edit button in options
+//////////////////////////////////////////////////////////////////////////
 document.addEventListener('click', (e) => {
 	let editOpt = e.target.closest('.task .content .options .edit');
 	let currentParagraph = document.querySelector('.task.active .content p');
@@ -328,10 +277,7 @@ document.addEventListener('click', (e) => {
 		function edit() {
 			allTasks.forEach((obj) => {
 				if (obj.id == editOpt.closest(".task").dataset.id) {
-					// obj.updateText(currentParagraph.textContent);
-
 					obj.text = currentParagraph.textContent.trim();
-					// console.log(allTasks);
 				}
 			});
 			currentSaveBtn.style.display = "none";
@@ -349,7 +295,9 @@ document.addEventListener('click', (e) => {
 	}
 });
 
-// reset button in options
+//////////////////////////////////////////////////////////////////////////
+// reset button
+//////////////////////////////////////////////////////////////////////////
 document.querySelector(".nav-block .clear .reset-all .yes").addEventListener("click", (e) => {
 	e.stopPropagation();
 
@@ -365,7 +313,9 @@ document.querySelector(".nav-block .clear .reset-all .yes").addEventListener("cl
 	document.querySelector("nav .nav-block .actions .clear .reset-all").classList.remove("active");
 });
 
-// clear trash button in options
+//////////////////////////////////////////////////////////////////////////
+// clear trash button
+//////////////////////////////////////////////////////////////////////////
 document.querySelector(".nav-block .clear .clear-trash .yes").addEventListener("click", (e) => {
 	e.stopPropagation();
 
@@ -380,7 +330,9 @@ document.querySelector(".nav-block .clear .clear-trash .yes").addEventListener("
 	document.querySelector("nav .nav-block .actions .clear .clear-trash").classList.remove("active");
 });
 
-// viewport problem on mobile
+//////////////////////////////////////////////////////////////////////////
+// viewport problem when using the app on mobile
+//////////////////////////////////////////////////////////////////////////
 const documentHeight = () => {
 	const doc = document.documentElement
 	doc.style.setProperty('--doc-height', `${window.innerHeight}px`)

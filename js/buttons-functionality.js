@@ -5,7 +5,6 @@ export function openNewTaskWindow(e) {
 	let isAddBtn = e.target.matches("main button.new-task");
 
 	if (!isAddBtn && e.target.closest(".new-task-window")) return;
-	// document.querySelector('main .new-task-container .icons .fa-circle').classList.remove('active');
 
 	const newTaskContainer = document.querySelector("main .new-task-container");
 
