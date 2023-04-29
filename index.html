@@ -12,12 +12,16 @@
 	<link rel="stylesheet" href="sass/all.min.css">
 	<link rel="stylesheet" href="sass/vendor/normalize.css">
 	<link rel="stylesheet" href="sass/main.css">
+
+	<script type="module" src="js/Todo.js" defer></script>
+	<script type="module" src="js/LocalStorage.js" defer></script>
+	<script type="module" src="js/Lists.js" defer></script>
+	<script type="module" src="js/functions.js" defer></script>
+	<script type="module" src="js/index.js" defer></script>
+	<script type="module" src="js/events.js" defer></script>
 </head>
 
 <body>
-	<!-- <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-		<path fill="#FF0066" d="M55,-60C66.4,-43.6,67.4,-21.8,68.2,0.8C69,23.4,69.6,46.7,58.1,62.5C46.7,78.2,23.4,86.3,0.4,85.9C-22.5,85.5,-45,76.5,-61.1,60.7C-77.3,45,-87,22.5,-84.6,2.5C-82.1,-17.5,-67.4,-35.1,-51.2,-51.5C-35.1,-67.9,-17.5,-83.1,2.1,-85.2C21.8,-87.4,43.6,-76.4,55,-60Z" transform="translate(100 100)" />
-  	</svg> -->
 	<div class="wrapper">
 		<div class="container">
 			<!------------------------------------------------------------------->
@@ -71,27 +75,27 @@
 							<i class="fa-solid fa-clipboard-list"></i>
 							<h1>lists</h1>
 						</header>
-						<div class="list all active">
+						<div class="list all active" id="list-all">
 							<i class="fa-solid fa-table-list"></i>
 							<h3>all</h3>
 							<span>0</span>
 						</div>
-						<div class="list in-progress">
+						<div class="list in-progress" id="list-progress">
 							<i class="fa-solid fa-spinner"></i>
 							<h3>in progress</h3>
 							<span>0</span>
 						</div>
-						<div class="list completed">
+						<div class="list completed" id="list-completed">
 							<i class="fa-solid fa-circle-check"></i>
 							<h3>completed</h3>
 							<span>0</span>
 						</div>
-						<div class="list favourite">
+						<div class="list favourite" id="list-favourite">
 							<i class="fa-solid fa-star"></i>
 							<h3>favourite</h3>
 							<span>0</span>
 						</div>
-						<div class="list trash">
+						<div class="list trash" id="list-trash">
 							<i class="fa-solid fa-trash-can"></i>
 							<h3>trash</h3>
 							<span>0</span>
@@ -112,39 +116,7 @@
 					<i class="fa-solid fa-ellipsis-vertical"></i>
 				</header>
 
-				<div class="tasks-block">
-					<!-- <div class="task">
-						<div class="content">
-							<i class="fa-regular fa-circle ${element.completed ? 'checked' : ''}"></i>
-							<p>Be Productive, Do More.</p>
-							<i class="fa-solid fa-ellipsis-vertical"></i>
-				
-							<div class="options">
-								<div class="edit">
-									<i class="fa-solid fa-pen-to-square"></i>
-									<p>edit</p>
-								</div>
-								<div class="favourite">
-									<i class="fa-solid fa-circle"></i>
-									<p>favourite</p>
-								</div>
-								<div class="delete">
-									<i class="fa-thin fa-trash"></i>
-									<p>delete</p>
-								</div>
-							</div>
-						</div>
-						<div class="date">
-							<time>12:00</time>
-							-
-							<time>Sat</time>&nbsp;&nbsp;&nbsp;
-							<time>01.01.2022</time>&nbsp;&nbsp;&nbsp;
-							<i class="fa-solid fa-circle" style="color:'#ffa42b';"></i>&nbsp;
-							<i class="fa-solid fa-circle" style="color:${element.deleted ? '#af2626' : '#373748'};"></i>-->
-					<!-- <i class="fa-solid fa-check"></i>
-						</div>
-					</div> -->
-				</div>
+				<div class="tasks-block"></div>
 
 				<button class="new-task">
 					<i class="fa-solid fa-plus"></i>
@@ -153,23 +125,17 @@
 				<div class="new-task-container">
 					<div class="new-task-window">
 						<div class="input">
-							<input type="text" name="task-window" id="task-window" placeholder="Add New Task">
+							<input type="text" name="task-window" id="task-window" placeholder="Write new Todo...">
 						</div>
 						<div class="icons">
-							<i class="fa-solid fa-star">&nbsp;&nbsp;fav</i>
-							<i class="fa-solid fa-plus">&nbsp;&nbsp;add</i>
+							<i class="fa-solid fa-star"></i>
+							<i class="fa-solid fa-plus">&nbsp;&nbsp;</i>
 						</div>
 					</div>
 				</div>
 			</main>
 		</div>
 	</div>
-
-
-	<!-- <script src="./js/buttons.js" type="module"></script>
-	<script src="./js/buttons-functionality.js" type="module"></script>
-	<script src="./js/main-functions.js" type="module"></script>
-	<script src="./js/main.js" type="module"></script> -->
 </body>
 
 </html>

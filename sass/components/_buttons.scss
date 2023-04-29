@@ -283,6 +283,14 @@ nav .nav-block {
 			&.active:hover,
 			&.active {
 				background-color: rgba(abstracts.$clr-task, 0.9);
+				box-sizing: border-box;
+				border: 1px solid rgba(255, 255, 255, 0.1);
+
+				@media (max-width: 768px) {
+					& {
+						border: 1px solid rgba(255, 255, 255, 0.2);
+					}
+				}
 
 				h3 {
 					color: abstracts.$clr-main-text;
@@ -304,14 +312,15 @@ nav .nav-block {
 				color: rgba(abstracts.$clr-main-text, 0.4);
 			}
 
-			&.all {
-				&.active,
-				&.active:hover {
-					i {
-						color: abstracts.$clr-list-all;
-					}
-				}
-			}
+			// &.all {
+			// 	&.active,
+			// 	&.active:hover {
+			// 		i {
+			// 			color: abstracts.$clr-list-all;
+			// 			color: abstracts.$clr-gradient-yellow;
+			// 		}
+			// 	}
+			// }
 
 			&.in-progress {
 				i {
