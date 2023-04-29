@@ -227,6 +227,18 @@ nav .nav-block {
 		display: flex;
 		flex-direction: column;
 		gap: 10px;
+		overflow-y: auto;
+
+		&::-webkit-scrollbar {
+			width: 20px;
+		}
+
+		&::-webkit-scrollbar-thumb {
+			background-color: abstracts.$clr-main-lightest;
+			border: 6px solid transparent;
+			border-radius: abstracts.$radiusLg;
+			background-clip: padding-box;
+		}
 
 		header {
 			margin-bottom: 10px;
@@ -245,6 +257,7 @@ nav .nav-block {
 			background-clip: content-box, border-box;
 			padding: 0;
 			height: 67px;
+			min-height: 67px;
 			display: flex;
 			gap: 10px;
 			align-items: center;

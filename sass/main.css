@@ -376,6 +376,16 @@ nav .nav-block .lists {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  overflow-y: auto;
+}
+nav .nav-block .lists::-webkit-scrollbar {
+  width: 20px;
+}
+nav .nav-block .lists::-webkit-scrollbar-thumb {
+  background-color: #4b4b4b;
+  border: 6px solid transparent;
+  border-radius: 10px;
+  background-clip: padding-box;
 }
 nav .nav-block .lists header {
   margin-bottom: 10px;
@@ -386,6 +396,7 @@ nav .nav-block .lists header {
   background-clip: content-box, border-box;
   padding: 0;
   height: 67px;
+  min-height: 67px;
   display: flex;
   gap: 10px;
   align-items: center;
