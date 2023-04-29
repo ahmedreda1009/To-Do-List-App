@@ -31,10 +31,11 @@ nav {
 	}
 
 	header {
-		width: calc(100% - 60px);
-		@media (min-height: 733px) {
-			width: calc(100% - 40px);
-		}
+		// width: calc(100% - 60px);
+		width: calc(100% - 40px);
+		// @media (min-height: 733px) {
+		// 	width: calc(100% - 40px);
+		// }
 		max-width: 226.83px;
 		margin: 20px auto 20px 20px;
 		background: linear-gradient(

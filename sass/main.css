@@ -302,11 +302,15 @@ nav .nav-block .actions > div.clear > div i {
   transition: color 10ms ease-in-out;
 }
 nav .nav-block .actions > div.clear > div h3 {
-  font-size: 8px;
+  font-size: 10px;
   color: #8b0000;
   font-weight: bold;
   pointer-events: none;
   transition: color 10ms ease-in-out;
+}
+nav .nav-block .actions > div.clear > div.reset-all h3 {
+  font-size: 11px;
+  margin-bottom: 10px;
 }
 nav .nav-block .actions > div.clear > div:not(.active):hover h3 {
   display: none;
@@ -1014,15 +1018,10 @@ nav {
   }
 }
 nav header {
-  width: calc(100% - 60px);
+  width: calc(100% - 40px);
   max-width: 226.83px;
   margin: 20px auto 20px 20px;
   background: linear-gradient(135deg, #8b0000 0%, #ff9001 70%);
-}
-@media (min-height: 733px) {
-  nav header {
-    width: calc(100% - 40px);
-  }
 }
 nav header h1 {
   font-family: "GolosTextWebBlack";

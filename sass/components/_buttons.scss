@@ -120,11 +120,16 @@ nav .nav-block {
 					}
 
 					h3 {
-						font-size: 8px;
+						font-size: 10px;
 						color: abstracts.$clr-gradient-red;
 						font-weight: bold;
 						pointer-events: none;
 						transition: color 10ms ease-in-out;
+					}
+
+					&.reset-all h3 {
+						font-size: 11px;
+						margin-bottom: 10px;
 					}
 
 					&:not(.active):hover {
