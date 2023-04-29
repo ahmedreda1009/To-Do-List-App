@@ -160,7 +160,8 @@ main {
 
 			&.active {
 				position: relative;
-				background-color: rgb(57, 57, 57);
+				// background-color: rgb(57, 57, 57);
+				background-color: rgba(abstracts.$clr-task, 0.5);
 			}
 
 			.content {
@@ -207,6 +208,12 @@ main {
 							& + P {
 								text-decoration: line-through;
 								opacity: 0.5;
+								z-index: 0;
+							}
+
+							&.checked.hover + P {
+								text-decoration: none;
+								opacity: 1;
 								z-index: 0;
 							}
 						}
@@ -260,7 +267,7 @@ main {
 				.options {
 					position: absolute;
 					right: -5px;
-					top: 0px;
+					top: 30px;
 					z-index: 100;
 					flex-direction: column;
 					overflow: hidden;
@@ -274,6 +281,7 @@ main {
 					transform-origin: top right;
 					transition: transform 130ms ease-in-out,
 						opacity 150ms ease-in-out;
+					min-width: 180px;
 
 					&.active {
 						opacity: 1;
@@ -285,6 +293,10 @@ main {
 						display: flex;
 						padding: 13px 20px;
 						cursor: pointer;
+
+						&.deleted:hover {
+							cursor: no-drop;
+						}
 
 						&:hover {
 							background-color: #222;
@@ -347,6 +359,7 @@ main {
 				i {
 					color: abstracts.$clr-gradient-yellow;
 					font-size: 7px;
+					display: none;
 
 					&.fa-check {
 						display: none;
@@ -367,6 +380,14 @@ main {
 						}
 					}
 				}
+			}
+
+			&.favourite .date i.fa-star {
+				display: inline;
+			}
+
+			&.deleted .date i.fa-circle {
+				display: inline;
 			}
 		}
 	}
@@ -511,16 +532,20 @@ main {
 					&.fa-star {
 						width: 40%;
 						background: none;
-						border: 2px solid abstracts.$clr-gradient-yellow;
+						// border: 2px solid abstracts.$clr-gradient-yellow;
 						color: abstracts.$clr-gradient-yellow;
+						color: abstracts.$clr-text-light;
+						border: 2px solid abstracts.$clr-text-light;
 
 						// &:hover,
 						&.active {
-							background-color: rgba(
-								abstracts.$clr-gradient-yellow,
-								1
-							);
-							color: abstracts.$clr-task-hover;
+							// background-color: rgba(
+							// 	abstracts.$clr-gradient-yellow,
+							// 	0.5
+							// );
+							// color: abstracts.$clr-task-hover;
+							// color: abstracts.$clr-text-light;
+							color: abstracts.$clr-gradient-yellow;
 
 							&:hover {
 								opacity: 0.6;
@@ -528,24 +553,29 @@ main {
 						}
 
 						&:hover {
-							background-color: rgba(
-								abstracts.$clr-gradient-yellow,
-								1
-							);
-							color: abstracts.$clr-task-hover;
+							// background-color: rgba(
+							// 	abstracts.$clr-gradient-yellow,
+							// 	1
+							// );
+							// color: abstracts.$clr-task-hover;
+							// border: 2px solid #fff;
+							color: abstracts.$clr-gradient-yellow;
 						}
 					}
 
 					&.fa-plus {
 						width: 55%;
 						background: none;
-						border: 2px solid abstracts.$clr-list-all;
-						color: abstracts.$clr-list-all;
+						// border: 2px solid abstracts.$clr-list-all;
+						border: 2px solid abstracts.$clr-text-light;
+						// color: abstracts.$clr-list-all;
 
 						&:hover,
 						&.active {
-							background-color: rgba(abstracts.$clr-list-all, 1);
-							color: abstracts.$clr-task-hover;
+							// background-color: rgba(abstracts.$clr-list-all, 1);
+							// color: abstracts.$clr-task-hover;
+							color: #fff;
+							border: 2px solid #fff;
 						}
 					}
 				}
