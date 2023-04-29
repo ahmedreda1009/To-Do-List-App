@@ -277,6 +277,7 @@ nav .nav-block .actions > div.clear > div.active {
   position: absolute;
   min-width: 185px;
   width: calc(100% - 60px);
+  width: calc(100% - 40px);
   top: 120px;
   min-height: 133px;
   height: 167px;
@@ -1036,7 +1037,6 @@ nav header h1 sup {
   top: 20px;
 }
 nav .nav-block {
-  overflow-x: hidden;
   height: calc(100% - 115px);
   width: 100%;
   display: flex;
