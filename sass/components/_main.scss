@@ -58,7 +58,7 @@ main {
 		}
 
 		> i {
-			font-size: 25px;
+			font-size: 30px;
 			visibility: hidden;
 
 			@include abstracts.media-down(mb) {
@@ -76,6 +76,7 @@ main {
 				transform: scale(1);
 				transition: background-color 0.3s ease-in-out,
 					color 0.3s ease-in-out, transform 0.1s ease-in-out;
+				padding: 25px;
 
 				&:hover {
 					background-color: abstracts.$clr-main-lightest;
@@ -403,9 +404,11 @@ main {
 		height: 100%;
 		opacity: 0;
 		// box-shadow: 0px 0px 0 400px transparent;
-		background-color: transparent;
-		transition: transform 150ms ease-in-out, bottom 50ms ease-in-out,
-			left 250ms ease-in-out, opacity 50ms ease-in-out;
+		// background-color: transparent;
+		// transition: transform 150ms ease-in-out, bottom 50ms ease-in-out,
+		// 	left 250ms ease-in-out, opacity 50ms ease-in-out;
+		transition: transform 50ms ease-in-out, bottom 50ms ease-in-out,
+			left 50ms ease-in-out;
 
 		&.active {
 			transform: translateX(-50%) scale(1);

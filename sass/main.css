@@ -84,44 +84,27 @@ html,
 body {
   padding: 0;
   margin: 0;
-  height: 100vh; /* fallback for Js load */
-  height: var(--doc-height);
   overflow-x: hidden;
 }
 
 html {
   scroll-behavior: smooth;
+  height: -moz-available;
+  height: fill-available;
   height: -webkit-fill-available;
 }
 
 body {
   color: #c4c4c4;
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
+  background-color: #121212;
   font-family: "GolosTextWebRegular";
   margin: 0;
   padding: 0;
   position: relative;
-}
-body::before, body::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  width: 100%;
-  z-index: -1;
-}
-body::after {
-  height: 70%;
-  width: 200%;
-  top: -27%;
-  left: -50%;
-  background-color: #121212;
-  border-radius: 50%;
-}
-body::before {
-  height: 100%;
-  bottom: 0;
-  background-color: #c4c4c4;
+  min-height: 100vh;
+  min-height: -moz-available;
+  min-height: fill-available;
+  min-height: -webkit-fill-available;
 }
 
 ul {
@@ -147,7 +130,7 @@ svg {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
 }
 
@@ -159,13 +142,15 @@ svg {
   border-radius: 10px;
   height: min(90vh, 700px);
   background: rgb(82, 80, 75);
+  background: rgb(139, 136, 127);
+  background: rgb(184, 183, 178);
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.04);
 }
 @media screen and (min-width: 400px) {
   .container {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     padding: 20px;
     border-radius: 0px;
   }
@@ -185,7 +170,7 @@ svg {
     gap: 0px;
     padding: 0;
     margin: 0;
-    height: 100vh;
+    height: 100dvh;
     width: 100%;
     border-radius: 0 0 0 0;
     position: relative;
@@ -229,7 +214,7 @@ nav .nav-block .actions > div.search.active {
   border: 1px solid red;
 }
 nav .nav-block .actions > div.search i {
-  color: #2C2C2C;
+  color: #2c2c2c;
 }
 nav .nav-block .actions > div.search input {
   padding: 5px;
@@ -239,7 +224,7 @@ nav .nav-block .actions > div.search input {
   outline: none;
 }
 nav .nav-block .actions > div.search input::-webkit-input-placeholder {
-  color: #2C2C2C;
+  color: #2c2c2c;
   font-weight: bold;
   text-transform: capitalize;
 }
@@ -483,15 +468,16 @@ main button.new-task {
   box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.24);
   cursor: pointer;
   background-color: #c4c4c4;
+  transition: transform 50ms ease-in-out, bottom 50ms ease-in-out, left 250ms ease-in-out, background-color 50ms ease-in-out, width 50ms ease-in-out, height 50ms ease-in-out;
 }
 main button.new-task i {
-  font-size: 30px;
+  font-size: 35px;
   font-weight: bold;
-  color: #2C2C2C;
+  color: #2c2c2c;
   pointer-events: none;
 }
 main button.new-task:hover, main button.new-task.active, main button.new-task.active:hover {
-  background-color: rgba(196, 196, 196, 0.8);
+  background-color: #c4c4c4;
   width: 70px;
   height: 70px;
   bottom: 25px;
@@ -532,9 +518,9 @@ header h1 div {
   background-color: #af2626;
   padding: 2px;
   border-radius: 15px;
-  width: 30px;
-  height: 22px;
-  border: 3px solid #121212;
+  width: 28px;
+  height: 20px;
+  outline: 3px solid #121212;
   font-family: "GolosTextWebRegular";
   display: flex;
   align-items: center;
@@ -595,7 +581,7 @@ main header {
   }
 }
 main header > i {
-  font-size: 25px;
+  font-size: 30px;
   visibility: hidden;
 }
 @media screen and (max-width: 767px) {
@@ -613,6 +599,7 @@ main header > i {
     color: #c4c4c4;
     transform: scale(1);
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, transform 0.1s ease-in-out;
+    padding: 25px;
   }
   main header > i:hover {
     background-color: #4b4b4b;
@@ -782,7 +769,7 @@ main .tasks-block .task .content .options {
   background-color: #2a2a2a;
   border-radius: 5px;
   box-shadow: 3px 3px 20px 1px rgba(0, 0, 0, 0.3490196078);
-  color: #2C2C2C;
+  color: #2c2c2c;
   pointer-events: none;
   opacity: 0;
   transform: scale(0.1);
@@ -882,8 +869,7 @@ main .new-task-container {
   width: 100%;
   height: 100%;
   opacity: 0;
-  background-color: transparent;
-  transition: transform 150ms ease-in-out, bottom 50ms ease-in-out, left 250ms ease-in-out, opacity 50ms ease-in-out;
+  transition: transform 50ms ease-in-out, bottom 50ms ease-in-out, left 50ms ease-in-out;
 }
 main .new-task-container.active {
   transform: translateX(-50%) scale(1);
@@ -1033,6 +1019,7 @@ nav {
     right: 0;
     top: 115px;
     transform: translateX(100%);
+    transition: transform 0.2s ease-in-out;
     width: 40%;
     height: calc(100% - 150px);
     background-color: #333;

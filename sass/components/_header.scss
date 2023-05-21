@@ -30,10 +30,10 @@ header {
 			background-color: abstracts.$clr-list-trash;
 			padding: 2px;
 			border-radius: 15px;
-			width: 30px;
-			height: 22px;
+			width: 28px;
+			height: 20px;
 			// aspect-ratio: 1/1;
-			border: 3px solid abstracts.$clr-main-darkest;
+			outline: 3px solid abstracts.$clr-main-darkest;
 			font-family: "GolosTextWebRegular";
 			display: flex;
 			align-items: center;

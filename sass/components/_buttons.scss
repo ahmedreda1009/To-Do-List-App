@@ -407,12 +407,12 @@ main {
 		box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.24);
 		cursor: pointer;
 		background-color: abstracts.$clr-main-text;
-		// transition: transform 50ms ease-in-out, bottom 50ms ease-in-out,
-		// 	left 250ms ease-in-out, background-color 50ms ease-in-out,
-		// 	width 50ms ease-in-out, height 50ms ease-in-out;
+		transition: transform 50ms ease-in-out, bottom 50ms ease-in-out,
+			left 250ms ease-in-out, background-color 50ms ease-in-out,
+			width 50ms ease-in-out, height 50ms ease-in-out;
 
 		i {
-			font-size: 30px;
+			font-size: 35px;
 			font-weight: bold;
 			color: abstracts.$clr-task-hover;
 			pointer-events: none;
@@ -422,7 +422,7 @@ main {
 		&:hover,
 		&.active,
 		&.active:hover {
-			background-color: rgba(abstracts.$clr-main-text, 0.8);
+			background-color: rgba(abstracts.$clr-main-text, 1);
 			width: 70px;
 			height: 70px;
 			bottom: 25px;

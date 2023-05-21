@@ -25,7 +25,6 @@ export default class TodoList {
 	}
 
 	static add(todo) {
-		console.log(TodoList.todos);
 		TodoList.todos.push(todo);
 		Storage.update();
 	}
