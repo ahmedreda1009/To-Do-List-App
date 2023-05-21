@@ -1,278 +1,300 @@
-import Lists from "./Lists.js";
-import LocalStorage from "./LocalStorage.js";
-import { setCarat } from "./functions.js";
+import TodoList from "./classes/TodoList";
+import { SearchSpecification, TodosFilter } from "./classes/TodoSpecification";
+import { setCaret, renderTodos } from "./helperFunctions.js";
+
+let tasksBlock = document.querySelector("main .tasks-block");
 
 // open new task window.
-document.addEventListener('click', e => {
-    let isAddBtn = e.target.matches("main button.new-task");
+document.addEventListener("click", (e) => {
+	let isAddBtn = e.target.matches("main button.new-task");
 
-    if (!isAddBtn && e.target.closest(".new-task-window")) return;
+	if (!isAddBtn && e.target.closest(".new-task-window")) return;
 
-    const newTaskContainer = document.querySelector("main .new-task-container");
+	const newTaskContainer = document.querySelector("main .new-task-container");
 
-    if (!isAddBtn) {
-        newTaskContainer.classList.remove("active");
-        document.querySelector("main button.new-task").classList.remove("active");
-        document.querySelector("main .new-task-container input").value = "";
-        document.querySelector("main .new-task-container .icons .fa-star").classList.remove("active");
-    } else {
-        newTaskContainer.classList.toggle("active");
-        document.querySelector("main button.new-task").classList.toggle("active");
-        document.querySelector("main .new-task-container input").focus();
-    }
+	if (!isAddBtn) {
+		newTaskContainer.classList.remove("active");
+		document
+			.querySelector("main button.new-task")
+			.classList.remove("active");
+		document.querySelector("main .new-task-container input").value = "";
+		document
+			.querySelector("main .new-task-container .icons .fa-star")
+			.classList.remove("active");
+	} else {
+		newTaskContainer.classList.toggle("active");
+		document
+			.querySelector("main button.new-task")
+			.classList.toggle("active");
+		document.querySelector("main .new-task-container input").focus();
+	}
 });
 
 // nav list buttons.
 let navListBtns = document.querySelectorAll("nav .nav-block .lists > div");
-navListBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
+navListBtns.forEach((btn) => {
+	btn.addEventListener("click", () => {
+		navListBtns.forEach((btn) => {
+			if (btn === this) return;
+			btn.classList.remove("active");
+		});
 
-        navListBtns.forEach((btn) => {
-            if (btn === this) return;
-            btn.classList.remove("active");
-        });
-
-        btn.classList.add("active");
-    });
+		btn.classList.add("active");
+	});
 });
 
 // clear and reset buttons
-document.addEventListener('click', e => {
+document.addEventListener("click", (e) => {
+	let currentBtn = e.target.closest("nav .nav-block .actions .clear > div");
+	let close = e.target.matches("nav .nav-block .actions .clear > div .close");
+	let no = e.target.matches("nav .nav-block .actions .clear > div .no");
 
-    let currentBtn = e.target.closest('nav .nav-block .actions .clear > div');
-    let close = e.target.matches('nav .nav-block .actions .clear > div .close');
-    let no = e.target.matches('nav .nav-block .actions .clear > div .no');
+	let closeAndClearBtns = document.querySelectorAll(
+		"nav .nav-block .actions .clear > div"
+	);
 
-    let closeAndClearBtns = document.querySelectorAll('nav .nav-block .actions .clear > div');
+	if (currentBtn == null || close || no) {
+		closeAndClearBtns.forEach((btn) => {
+			btn.classList.remove("active");
+		});
+		return;
+	} else {
+		currentBtn.classList.add("active");
+	}
 
-    if (currentBtn == null || close || no) {
-        closeAndClearBtns.forEach(btn => {
-            btn.classList.remove('active');
-        });
-        return;
-    } else {
-        currentBtn.classList.add('active');
-    }
-
-    closeAndClearBtns.forEach(btn => {
-        if (currentBtn == btn) return;
-        btn.classList.remove('active');
-    });
+	closeAndClearBtns.forEach((btn) => {
+		if (currentBtn == btn) return;
+		btn.classList.remove("active");
+	});
 });
 
-// todo option button
-document.addEventListener('click', (e) => {
-    let isOptBtn = e.target.matches(".tasks-block .task .content .fa-ellipsis-vertical");
-    if (!isOptBtn && e.target.closest(".tasks-block .task .content .options") != null) return;
+// .todo option button
+document.addEventListener("click", (e) => {
+	let isOptBtn = e.target.matches(
+		".tasks-block .task .content .fa-ellipsis-vertical"
+	);
+	if (
+		!isOptBtn &&
+		e.target.closest(".tasks-block .task .content .options") != null
+	)
+		return;
 
-    let currrentMenu = e.target.nextElementSibling;
-    if (isOptBtn) {
-        currrentMenu.classList.toggle("active");
-        currrentMenu.closest('.task').classList.toggle('active');
+	let currrentMenu = e.target.nextElementSibling;
+	if (isOptBtn) {
+		currrentMenu.classList.toggle("active");
+		currrentMenu.closest(".task").classList.toggle("active");
 
-        // scroll to the beginning of the active task
-        document.querySelector('main .tasks-block').scrollTo({
-            top: (currrentMenu.closest('.task').offsetTop - 110),
-            left: 0,
-            behavior: 'smooth'
-        });
-    }
+		// scroll to the beginning of the active task
+		document.querySelector("main .tasks-block").scrollTo({
+			top: currrentMenu.closest(".task").offsetTop - 110,
+			left: 0,
+			behavior: "smooth",
+		});
+	}
 
-    const optionsMenus = document.querySelectorAll(".tasks-block .task .content .options");
-    optionsMenus.forEach(menu => {
-        if (menu === currrentMenu) return;
-        menu.classList.remove("active");
-        menu.closest('.task').classList.remove('active');
-    });
+	const optionsMenus = document.querySelectorAll(
+		".tasks-block .task .content .options"
+	);
+	optionsMenus.forEach((menu) => {
+		if (menu === currrentMenu) return;
+		menu.classList.remove("active");
+		menu.closest(".task").classList.remove("active");
+	});
 });
 
 // favourite button inside new task window
-let favBtn = document.querySelector('main .new-task-container .icons .fa-star');
-favBtn.addEventListener('click', () => favBtn.classList.toggle("active"));
+let favBtn = document.querySelector("main .new-task-container .icons .fa-star");
+favBtn.addEventListener("click", () => favBtn.classList.toggle("active"));
 
 // favourite button inside todo options window
-document.addEventListener('click', e => {
-    let favOpt = e.target.closest(".tasks-block .content .options .favourite");
-    if (!favOpt) return;
+document.addEventListener("click", (e) => {
+	let favOpt = e.target.closest(".tasks-block .content .options .favourite");
+	if (!favOpt) return;
 
-    let todo = favOpt.closest(".task");
-    if (todo.classList.contains('deleted')) return;
+	let todo = favOpt.closest(".task");
+	const todoObj = TodoList.find(todo.dataset.id);
 
-    let fav = todo.querySelector(".content .options .favourite p");
+	if (todo.classList.contains("deleted")) return;
 
-    if (todo.classList.contains('favourite')) {
-        fav.innerHTML = 'Favourite';
-        LocalStorage.unFav(todo.dataset.id);
-        todo.classList.remove('favourite');
-        fav.previousElementSibling.classList.remove('fa-star-half-stroke');
-        fav.previousElementSibling.classList.add('fa-star');
-    } else {
-        LocalStorage.fav(todo.dataset.id);
-        fav.innerHTML = 'Unfavourite';
-        todo.classList.add('favourite');
-        fav.previousElementSibling.classList.add('fa-star-half-stroke');
-    }
-    if (navListBtns[3].classList.contains('active')) Lists.renderFavourite();
+	let fav = todo.querySelector(".content .options .favourite p");
 
-    LocalStorage.calculateListsItems();
+	if (todo.classList.contains("favourite")) {
+		todoObj.unFavourite();
+
+		fav.innerHTML = "Favourite";
+		todo.classList.remove("favourite");
+		fav.previousElementSibling.classList.remove("fa-star-half-stroke");
+		fav.previousElementSibling.classList.add("fa-star");
+	} else {
+		todoObj.favourite();
+
+		fav.innerHTML = "Unfavourite";
+		todo.classList.add("favourite");
+		fav.previousElementSibling.classList.add("fa-star-half-stroke");
+	}
+	renderTodos(TodoList.activeList);
 });
 
 // delete button inside todo options window
-document.addEventListener('click', e => {
-    let delOpt = e.target.closest(".tasks-block .content .options .delete");
-    if (!delOpt) return;
+document.addEventListener("click", (e) => {
+	let delOpt = e.target.closest(".tasks-block .content .options .delete");
+	if (!delOpt) return;
 
-    let todo = delOpt.closest(".task");
+	let todo = delOpt.closest(".task");
+	const todoObj = TodoList.find(todo.dataset.id);
 
-    let del = todo.querySelector(".content .options .delete p");
+	let del = todo.querySelector(".content .options .delete p");
 
-    if (todo.classList.contains('deleted')) {
-        LocalStorage.restore(todo.dataset.id);
-        todo.classList.remove('deleted');
-        del.innerHTML = 'Restore';
-    } else {
-        LocalStorage.delete(todo.dataset.id);
-        todo.classList.add('deleted');
-        del.innerHTML = 'Delete';
-    }
-    if (todo.classList.contains('favourite') && todo.classList.contains('deleted')) todo.classList.remove('favourite');
-    if (navListBtns[4].classList.contains('active')) Lists.renderTrash();
-    if (navListBtns[0].classList.contains('active')) Lists.renderAll();
+	if (todo.classList.contains("deleted")) {
+		todoObj.restore();
 
-    LocalStorage.calculateListsItems();
+		todo.classList.remove("deleted");
+		del.innerHTML = "Restore";
+	} else {
+		todoObj.delete();
+
+		todo.classList.add("deleted");
+		del.innerHTML = "Delete";
+	}
+
+	if (
+		todo.classList.contains("favourite") &&
+		todo.classList.contains("deleted")
+	)
+		todo.classList.remove("favourite");
+	renderTodos(TodoList.activeList);
 });
 
 // edit button inside todo options window
-document.addEventListener('click', (e) => {
-    let editOpt = e.target.closest('.task .content .options .edit');
-    let currentParagraph = document.querySelector('.task.active .content p');
-    let currentSaveBtn = document.querySelector(".tasks-block > .task.active > .content > button.save");
-    let options = document.querySelector('.task.active .content .options');
+document.addEventListener("click", (e) => {
+	let editOpt = e.target.closest(".task .content .options .edit");
+	if (!editOpt) return;
 
-    if (editOpt == null) return;
+	let currentParagraph = document.querySelector(".task.active .content p");
+	let currentSaveBtn = document.querySelector(
+		".tasks-block > .task.active > .content > button.save"
+	);
+	let options = document.querySelector(".task.active .content .options");
 
-    currentParagraph.setAttribute('contenteditable', 'true');
-    currentSaveBtn.style.display = "block";
-    options.classList.remove('active');
-    currentParagraph.focus();
-    // set the caret cursor to the end of the line
-    setCarat(currentParagraph);
+	if (editOpt == null) return;
 
-    function edit() {
-        LocalStorage.get().forEach((todo) => {
-            if (todo.id == editOpt.closest(".task").dataset.id) {
-                LocalStorage.editTodo(todo.id, currentParagraph.textContent.trim());
-            }
-        });
-        currentSaveBtn.style.display = "none";
-        currentParagraph.setAttribute('contenteditable', 'false');
-    }
+	currentParagraph.setAttribute("contenteditable", "true");
+	currentSaveBtn.style.display = "block";
+	options.classList.remove("active");
+	currentParagraph.focus();
+	// set the caret cursor to the end of the line
+	setCaret(currentParagraph);
 
-    currentSaveBtn.addEventListener('click', edit);
-    currentParagraph.addEventListener('keypress', (e) => {
-        if (e.key === "Enter") {
-            edit();
-        }
-    });
+	function edit() {
+		let todo = editOpt.closest(".task");
+		const todoObj = TodoList.find(todo.dataset.id);
+
+		todoObj.edit(currentParagraph.textContent.trim());
+
+		currentSaveBtn.style.display = "none";
+		currentParagraph.setAttribute("contenteditable", "false");
+	}
+
+	currentSaveBtn.addEventListener("click", edit);
+	currentParagraph.addEventListener("keypress", (e) => {
+		if (e.key === "Enter") {
+			edit();
+		}
+	});
 });
 
 // check todo button
 document.addEventListener("click", (e) => {
-    if (!e.target.matches(".tasks-block .task .content > .fa-circle")) return;
+	if (!e.target.matches(".tasks-block .task .content > .fa-circle")) return;
 
-    let checkBtn = e.target;
-    let todo = checkBtn.closest('.task');
+	let checkBtn = e.target;
+	let todo = checkBtn.closest(".task");
+	const todoObj = TodoList.find(todo.dataset.id);
 
-    if (todo.classList.contains('checked')) {
-        checkBtn.classList.remove("checked");
-        todo.classList.remove('checked');
-    } else {
-        checkBtn.classList.add("checked");
-        todo.classList.add('checked');
-    }
+	if (todo.classList.contains("checked")) {
+		todoObj.unCheck();
 
-    LocalStorage.get().forEach((obj) => {
-        if (obj.id == checkBtn.closest(".task").dataset.id) {
-            if (checkBtn.classList.contains("checked")) {
-                LocalStorage.check(obj.id);
-            } else {
-                LocalStorage.unCheck(obj.id);
-            }
-        }
-    });
+		checkBtn.classList.remove("checked");
+		todo.classList.remove("checked");
+	} else {
+		todoObj.check();
 
-    if (navListBtns[1].classList.contains('active')) Lists.renderInProgress();
-    if (navListBtns[2].classList.contains('active')) Lists.renderCompleted();
-
-    LocalStorage.calculateListsItems();
+		checkBtn.classList.add("checked");
+		todo.classList.add("checked");
+	}
+	renderTodos(TodoList.activeList);
 });
 
 // lists
 navListBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-        switch (btn.id) {
-            case 'list-all':
-                Lists.renderAll();
-                break;
-            case 'list-progress':
-                Lists.renderInProgress();
-                break;
-            case 'list-completed':
-                Lists.renderCompleted();
-                break;
-            case 'list-favourite':
-                Lists.renderFavourite();
-                break;
-            case 'list-trash':
-                Lists.renderTrash();
-                break;
-            default:
-                Lists.renderAll();
-                break;
-        }
-    });
+	btn.addEventListener("click", () => {
+		TodoList.updateActiveList(btn.id);
+		renderTodos(btn.id);
+	});
 });
 
 // clear trash button
-document.querySelector(".nav-block .clear .clear-trash .yes").addEventListener("click", (e) => {
-    e.stopPropagation();
+document
+	.querySelector(".nav-block .clear .clear-trash .yes")
+	.addEventListener("click", (e) => {
+		e.stopPropagation();
 
-    LocalStorage.clearTrash();
+		TodoList.deleteTrash();
+		renderTodos(TodoList.activeList);
 
-    document.querySelector("nav .nav-block .actions .clear .clear-trash").classList.remove("active");
-    document.querySelector("#list-trash > span").innerHTML = '0';
-});
+		document
+			.querySelector("nav .nav-block .actions .clear .clear-trash")
+			.classList.remove("active");
+		document.querySelector("#list-trash > span").innerHTML = "0";
+	});
 
 // reset button
-document.querySelector(".nav-block .clear .reset-all .yes").addEventListener("click", (e) => {
-    e.stopPropagation();
+document
+	.querySelector(".nav-block .clear .reset-all .yes")
+	.addEventListener("click", (e) => {
+		e.stopPropagation();
 
-    LocalStorage.reset();
-    document.querySelector("nav .nav-block .actions .clear .reset-all").classList.remove("active");
-    document.querySelectorAll('.lists .list').forEach(list => {
-        list.querySelector('span').innerHTML = '0';
-    });
-    document.querySelector("body > div > div > main > div.tasks-block").innerHTML = '';
-});
+		TodoList.clear();
+
+		document
+			.querySelector("nav .nav-block .actions .clear .reset-all")
+			.classList.remove("active");
+		document.querySelectorAll(".lists .list").forEach((list) => {
+			list.querySelector("span").innerHTML = "0";
+		});
+
+		renderTodos(TodoList.activeList);
+	});
 
 // search button
-document.querySelector("nav .nav-block .actions .search input").addEventListener('input', (e) => {
-    Lists.renderFiltered(e.target.value);
-    if (e.target.value === '') {
-        Lists[Lists.getActiveList()]();
-    }
-});
+document
+	.querySelector("nav .nav-block .actions .search input")
+	.addEventListener("input", (e) => {
+		let filter = new TodosFilter();
+
+		let todos = filter.filter(
+			TodoList.todos,
+			new SearchSpecification(e.target.value)
+		);
+
+		tasksBlock.innerHTML = "";
+		todos.forEach((todo) => tasksBlock.append(todo.render()));
+
+		if (e.target.value === "") {
+			renderTodos(TodoList.activeList);
+		}
+	});
 
 // mobile nav button
-document.addEventListener('click', e => {
-    let isNavBtn = e.target.matches("main header > i");
-    if (!isNavBtn && e.target.closest("nav")) return;
+document.addEventListener("click", (e) => {
+	let isNavBtn = e.target.matches("main header > i");
+	if (!isNavBtn && e.target.closest("nav")) return;
 
-    const navbar = document.querySelector("nav");
+	const navbar = document.querySelector("nav");
 
-    if (!isNavBtn) {
-        navbar.classList.remove("active");
-    } else {
-        navbar.classList.toggle("active");
-    }
+	if (!isNavBtn) {
+		navbar.classList.remove("active");
+	} else {
+		navbar.classList.toggle("active");
+	}
 });

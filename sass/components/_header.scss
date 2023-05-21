@@ -20,5 +20,30 @@ header {
 		text-transform: uppercase;
 		font-weight: normal;
 		font-family: "GolosTextWebBlack";
+		position: relative;
+
+		div {
+			position: absolute;
+			right: -14px;
+			top: -5px;
+			font-size: 12px;
+			background-color: abstracts.$clr-list-trash;
+			padding: 2px;
+			border-radius: 15px;
+			width: 30px;
+			height: 22px;
+			// aspect-ratio: 1/1;
+			border: 3px solid abstracts.$clr-main-darkest;
+			font-family: "GolosTextWebRegular";
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			&.hidden {
+				display: none;
+			}
+
+			color: #fff;
+		}
 	}
 }
