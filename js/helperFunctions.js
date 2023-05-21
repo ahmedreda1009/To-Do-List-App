@@ -23,6 +23,9 @@ export function addNewTodo() {
 	// add todo to html
 	tasksBlock.append(todo.render());
 
+	// render todos from active list.
+	renderTodos(TodoList.activeList);
+
 	// clear input field
 	input.value = "";
 	input.focus();

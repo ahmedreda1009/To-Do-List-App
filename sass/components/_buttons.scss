@@ -89,7 +89,7 @@ nav .nav-block {
 					transform: translateY(0px);
 					overflow: hidden;
 					transition: background-color 10ms ease-in-out,
-						width 0.1s ease-in-out, transform 0.2s ease-in-out;
+						width 100ms ease-in-out, transform 100ms ease-in-out;
 
 					&.active {
 						position: absolute;
@@ -102,7 +102,7 @@ nav .nav-block {
 						height: fit-content;
 						transform: translateY(-100px);
 						z-index: 1000;
-						transition: transform 0.2s ease-in-out;
+						// transition: transform 0.2s ease-in-out;
 						position: absolute;
 						// width: calc(100% - 40px);
 
@@ -117,7 +117,7 @@ nav .nav-block {
 						color: abstracts.$clr-gradient-red;
 						font-weight: bold;
 						pointer-events: none;
-						transition: color 10ms ease-in-out;
+						// transition: color 10ms ease-in-out;
 					}
 
 					h3 {
@@ -125,7 +125,7 @@ nav .nav-block {
 						color: abstracts.$clr-gradient-red;
 						font-weight: bold;
 						pointer-events: none;
-						transition: color 10ms ease-in-out;
+						// transition: color 10ms ease-in-out;
 					}
 
 					&.reset-all h3 {
@@ -407,16 +407,16 @@ main {
 		box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.24);
 		cursor: pointer;
 		background-color: abstracts.$clr-main-text;
-		transition: transform 50ms ease-in-out, bottom 50ms ease-in-out,
-			left 250ms ease-in-out, background-color 50ms ease-in-out,
-			width 50ms ease-in-out, height 50ms ease-in-out;
+		// transition: transform 50ms ease-in-out, bottom 50ms ease-in-out,
+		// 	left 250ms ease-in-out, background-color 50ms ease-in-out,
+		// 	width 50ms ease-in-out, height 50ms ease-in-out;
 
 		i {
 			font-size: 30px;
 			font-weight: bold;
 			color: abstracts.$clr-task-hover;
 			pointer-events: none;
-			transition: color 50ms ease-in-out;
+			// transition: color 50ms ease-in-out;
 		}
 
 		&:hover,

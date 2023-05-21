@@ -91,15 +91,17 @@ body {
 
 html {
   scroll-behavior: smooth;
+  height: -webkit-fill-available;
 }
 
 body {
   color: #c4c4c4;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
   font-family: "GolosTextWebRegular";
   margin: 0;
   padding: 0;
   position: relative;
-  height: 100vh;
 }
 body::before, body::after {
   content: "";
@@ -113,7 +115,7 @@ body::after {
   width: 200%;
   top: -27%;
   left: -50%;
-  background-color: #424242;
+  background-color: #121212;
   border-radius: 50%;
 }
 body::before {
@@ -154,14 +156,10 @@ svg {
   gap: 20px;
   padding: 30px;
   margin: auto;
-  transition: width 0.3s ease-in-out, padding 0.3s ease;
   border-radius: 10px;
   height: min(90vh, 700px);
-  background: rgba(255, 255, 255, 0.2);
+  background: rgb(82, 80, 75);
   border-radius: 16px;
-  box-shadow: 3px 3px 20px 1px rgba(0, 0, 0, 0.3490196078);
-  backdrop-filter: blur(3.9px);
-  -webkit-backdrop-filter: blur(3.9px);
   border: 1px solid rgba(255, 255, 255, 0.04);
 }
 @media screen and (min-width: 400px) {
@@ -272,7 +270,7 @@ nav .nav-block .actions > div.clear > div {
   font-family: "GolosTextWebBlack";
   transform: translateY(0px);
   overflow: hidden;
-  transition: background-color 10ms ease-in-out, width 0.1s ease-in-out, transform 0.2s ease-in-out;
+  transition: background-color 10ms ease-in-out, width 100ms ease-in-out, transform 100ms ease-in-out;
 }
 nav .nav-block .actions > div.clear > div.active {
   position: absolute;
@@ -286,7 +284,6 @@ nav .nav-block .actions > div.clear > div.active {
   height: fit-content;
   transform: translateY(-100px);
   z-index: 1000;
-  transition: transform 0.2s ease-in-out;
   position: absolute;
 }
 @media (min-height: 733px) {
@@ -300,14 +297,12 @@ nav .nav-block .actions > div.clear > div i {
   color: #8b0000;
   font-weight: bold;
   pointer-events: none;
-  transition: color 10ms ease-in-out;
 }
 nav .nav-block .actions > div.clear > div h3 {
   font-size: 10px;
   color: #8b0000;
   font-weight: bold;
   pointer-events: none;
-  transition: color 10ms ease-in-out;
 }
 nav .nav-block .actions > div.clear > div.reset-all h3 {
   font-size: 11px;
@@ -488,14 +483,12 @@ main button.new-task {
   box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.24);
   cursor: pointer;
   background-color: #c4c4c4;
-  transition: transform 50ms ease-in-out, bottom 50ms ease-in-out, left 250ms ease-in-out, background-color 50ms ease-in-out, width 50ms ease-in-out, height 50ms ease-in-out;
 }
 main button.new-task i {
   font-size: 30px;
   font-weight: bold;
   color: #2C2C2C;
   pointer-events: none;
-  transition: color 50ms ease-in-out;
 }
 main button.new-task:hover, main button.new-task.active, main button.new-task.active:hover {
   background-color: rgba(196, 196, 196, 0.8);
@@ -561,7 +554,6 @@ main {
   border-radius: 10px;
   padding: 20px 0px 15px 10px;
   background-color: #222;
-  box-shadow: 3px 3px 20px 1px rgba(0, 0, 0, 0.3490196078);
   flex-basis: 100%;
   overflow: hidden;
 }
@@ -1032,7 +1024,6 @@ nav {
   min-width: 245px;
   border-radius: 10px;
   background-color: #222;
-  box-shadow: 3px 3px 20px 1px rgba(0, 0, 0, 0.3490196078);
   overflow: hidden;
 }
 @media screen and (max-width: 767px) {
@@ -1042,7 +1033,6 @@ nav {
     right: 0;
     top: 115px;
     transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
     width: 40%;
     height: calc(100% - 150px);
     background-color: #333;

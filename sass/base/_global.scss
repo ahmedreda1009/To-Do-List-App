@@ -41,17 +41,20 @@ body {
 
 html {
 	scroll-behavior: smooth;
+	height: -webkit-fill-available;
 }
 
 body {
 	color: abstracts.$clr-main-text;
+	min-height: 100vh;
+	min-height: -webkit-fill-available;
 	font: {
 		family: "GolosTextWebRegular";
 	}
 	margin: 0;
 	padding: 0;
 	position: relative;
-	height: 100vh;
+	// height: 100vh;
 
 	&::before,
 	&::after {
@@ -67,7 +70,7 @@ body {
 		width: 200%;
 		top: -27%;
 		left: -50%;
-		background-color: abstracts.$clr-bg;
+		background-color: abstracts.$clr-main-darkest;
 		border-radius: 50%;
 	}
 
@@ -110,14 +113,15 @@ svg {
 	gap: 20px;
 	padding: 30px;
 	margin: auto;
-	transition: width 0.3s ease-in-out, padding 0.3s ease;
+	// transition: width 0.3s ease-in-out, padding 0.3s ease;
 	border-radius: abstracts.$radiusLg;
 	height: min(90vh, 700px);
-	background: rgba(255, 255, 255, 0.2);
+	// background: rgba(255, 255, 255, 0.2);
+	background: rgb(82 80 75);
 	border-radius: 16px;
-	box-shadow: 3px 3px 20px 1px abstracts.$clr-main-shadow;
-	backdrop-filter: blur(3.9px);
-	-webkit-backdrop-filter: blur(3.9px);
+	// box-shadow: 3px 3px 20px 1px abstracts.$clr-main-shadow;
+	// backdrop-filter: blur(3.9px);
+	// -webkit-backdrop-filter: blur(3.9px);
 	border: 1px solid rgba(255, 255, 255, 0.04);
 
 	@include abstracts.media-up(xs) {

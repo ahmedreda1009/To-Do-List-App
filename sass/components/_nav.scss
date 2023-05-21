@@ -12,7 +12,7 @@ nav {
 	min-width: 245px;
 	border-radius: abstracts.$radiusLg;
 	background-color: abstracts.$clr-main-dark;
-	box-shadow: 3px 3px 20px 1px abstracts.$clr-main-shadow;
+	// box-shadow: 3px 3px 20px 1px abstracts.$clr-main-shadow;
 	overflow: hidden;
 
 	@include abstracts.media-down(mb) {
@@ -21,7 +21,7 @@ nav {
 		right: 0;
 		top: 115px;
 		transform: translateX(100%);
-		transition: transform 0.3s ease-in-out;
+		// transition: transform 0.3s ease-in-out;
 		&.active {
 			transform: translateX(-20px);
 		}
