@@ -429,6 +429,7 @@ main {
 		cursor: pointer;
 		background-color: abstracts.$clr-main-text;
 		background-color: abstracts.$light;
+		color: abstracts.$black;
 		transition: transform 50ms ease-in-out, bottom 50ms ease-in-out,
 			left 250ms ease-in-out, background-color 50ms ease-in-out,
 			width 50ms ease-in-out, height 50ms ease-in-out;

@@ -472,6 +472,7 @@ main button.new-task {
   cursor: pointer;
   background-color: #c4c4c4;
   background-color: #ffffff;
+  color: #15161a;
   transition: transform 50ms ease-in-out, bottom 50ms ease-in-out, left 250ms ease-in-out, background-color 50ms ease-in-out, width 50ms ease-in-out, height 50ms ease-in-out;
 }
 main button.new-task i {
