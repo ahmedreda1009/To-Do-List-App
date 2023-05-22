@@ -1,4 +1,4 @@
-import TodoList from "./classes/TodoList";
+import TodoList, { ListsNames } from "./classes/TodoList";
 import { SearchSpecification, TodosFilter } from "./classes/TodoSpecification";
 import { setCaret, renderTodos } from "./helperFunctions.js";
 
@@ -73,11 +73,12 @@ document.addEventListener("click", (e) => {
 	let isOptBtn = e.target.matches(
 		".tasks-block .task .content .fa-ellipsis-vertical"
 	);
-	if (
-		!isOptBtn &&
-		e.target.closest(".tasks-block .task .content .options") != null
-	)
-		return;
+	// if (
+	// 	!isOptBtn &&
+	// 	e.target.closest(".tasks-block .task .content .options") != null
+	// )
+	// 	return;
+	if (e.target.closest(".tasks-block .task .content .options")) return;
 
 	let currrentMenu = e.target.nextElementSibling;
 	if (isOptBtn) {
@@ -85,13 +86,14 @@ document.addEventListener("click", (e) => {
 		currrentMenu.closest(".task").classList.toggle("active");
 
 		// scroll to the beginning of the active task
-		document.querySelector("main .tasks-block").scrollTo({
-			top: currrentMenu.closest(".task").offsetTop - 110,
-			left: 0,
-			behavior: "smooth",
-		});
+		// document.querySelector("main .tasks-block").scrollTo({
+		// 	top: currrentMenu.closest(".task").offsetTop - 110,
+		// 	left: 0,
+		// 	behavior: "smooth",
+		// });
 	}
 
+	// close all other option lists.
 	const optionsMenus = document.querySelectorAll(
 		".tasks-block .task .content .options"
 	);
@@ -118,6 +120,8 @@ document.addEventListener("click", (e) => {
 
 	let fav = todo.querySelector(".content .options .favourite p");
 
+	let options = favOpt.closest(".options");
+
 	if (todo.classList.contains("favourite")) {
 		todoObj.unFavourite();
 
@@ -132,7 +136,9 @@ document.addEventListener("click", (e) => {
 		todo.classList.add("favourite");
 		fav.previousElementSibling.classList.add("fa-star-half-stroke");
 	}
-	renderTodos(TodoList.activeList);
+	// renderTodos(TodoList.activeList);
+	options.classList.remove("active");
+	options.closest('.task').classList.remove("active");
 });
 
 // delete button inside todo options window
@@ -162,7 +168,8 @@ document.addEventListener("click", (e) => {
 		todo.classList.contains("deleted")
 	)
 		todo.classList.remove("favourite");
-	renderTodos(TodoList.activeList);
+	// renderTodos(TodoList.activeList);
+	todo.remove();
 });
 
 // edit button inside todo options window
@@ -222,7 +229,7 @@ document.addEventListener("click", (e) => {
 		checkBtn.classList.add("checked");
 		todo.classList.add("checked");
 	}
-	renderTodos(TodoList.activeList);
+	// renderTodos(TodoList.activeList);
 });
 
 // lists
@@ -240,7 +247,9 @@ document
 		e.stopPropagation();
 
 		TodoList.deleteTrash();
-		renderTodos(TodoList.activeList);
+		// renderTodos(TodoList.activeList);
+
+		if (TodoList.activeList === ListsNames.trash) tasksBlock.innerHTML = ''
 
 		document
 			.querySelector("nav .nav-block .actions .clear .clear-trash")
@@ -263,7 +272,8 @@ document
 			list.querySelector("span").innerHTML = "0";
 		});
 
-		renderTodos(TodoList.activeList);
+		// renderTodos(TodoList.activeList);
+		tasksBlock.innerHTML = ''
 	});
 
 // search button
