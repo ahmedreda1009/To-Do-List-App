@@ -720,8 +720,10 @@ main .tasks-block .task .content > i.fa-circle.checked.checked.hover + P {
   opacity: 1;
   z-index: 0;
 }
-main .tasks-block .task .content > i.fa-circle:hover {
-  color: #0d72ea;
+@media screen and (min-width: 768px) {
+  main .tasks-block .task .content > i.fa-circle:hover {
+    color: #0d72ea;
+  }
 }
 main .tasks-block .task .content > p {
   flex-basis: 100%;

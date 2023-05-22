@@ -219,8 +219,10 @@ main {
 							}
 						}
 
-						&:hover {
-							color: abstracts.$clr-list-completed;
+						@include abstracts.media-up(sm) {
+							&:hover {
+								color: abstracts.$clr-list-completed;
+							}
 						}
 					}
 				}
