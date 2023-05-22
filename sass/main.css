@@ -96,7 +96,7 @@ html {
 
 body {
   color: #c4c4c4;
-  background-color: #121212;
+  background-color: #282a2f;
   font-family: "GolosTextWebRegular";
   margin: 0;
   padding: 0;
@@ -142,9 +142,7 @@ svg {
   transition: width 0.3s ease-in-out, padding 0.3s ease;
   border-radius: 10px;
   height: min(90vh, 700px);
-  background: rgb(82, 80, 75);
-  background: rgb(139, 136, 127);
-  background: rgb(184, 183, 178);
+  background: #15161a;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.04);
 }
@@ -207,7 +205,7 @@ nav .nav-block .actions {
   margin-bottom: 20px;
 }
 nav .nav-block .actions > div.search {
-  background-color: #c4c4c4;
+  background-color: #ffffff;
   gap: 10px;
   border: 1px solid transparent;
 }
@@ -251,7 +249,7 @@ nav .nav-block .actions > div.clear > div {
   padding: 10px;
   border-radius: 8px;
   text-align: center;
-  background-color: #c4c4c4;
+  background-color: #ffffff;
   color: #222;
   font-family: "GolosTextWebBlack";
   transform: translateY(0px);
@@ -280,13 +278,13 @@ nav .nav-block .actions > div.clear > div.active {
 nav .nav-block .actions > div.clear > div i {
   align-self: center;
   font-size: 20px;
-  color: #8b0000;
+  color: #222;
   font-weight: bold;
   pointer-events: none;
 }
 nav .nav-block .actions > div.clear > div h3 {
   font-size: 10px;
-  color: #8b0000;
+  color: #222;
   font-weight: bold;
   pointer-events: none;
 }
@@ -335,8 +333,8 @@ nav .nav-block .actions > div.clear .question .buttons button {
   cursor: pointer;
   width: 60px;
 }
-nav .nav-block .actions > div.clear .question .buttons button:hover {
-  background-color: #8b0000;
+nav .nav-block .actions > div.clear .question .buttons button.no:hover {
+  background-color: #731702;
   color: #c4c4c4;
 }
 nav .nav-block .actions > div.clear .question .buttons .close {
@@ -348,8 +346,7 @@ nav .nav-block .actions > div.clear .question .buttons .close i {
   font-size: 20px;
 }
 nav .nav-block .actions > div.clear .question .buttons .close:hover i {
-  color: #8b0000;
-  opacity: 0.8;
+  color: #731702;
 }
 nav .nav-block .actions > div.clear > div.active .question {
   transform: scale(1);
@@ -374,7 +371,7 @@ nav .nav-block .lists header {
   margin-top: 0px;
   border: 3px solid transparent;
   color: #c4c4c4;
-  background-image: linear-gradient(#121212, #121212), linear-gradient(90deg, #8b0000 0%, #ff9001 70%);
+  background-image: linear-gradient(#121212, #121212), linear-gradient(-45deg, #f49c04 0%, #f0363b 80%);
   background-origin: border-box;
   background-clip: content-box, border-box;
   padding: 0;
@@ -541,6 +538,7 @@ main {
   border-radius: 10px;
   padding: 20px 0px 15px 10px;
   background-color: #222;
+  background-color: #282a2f;
   flex-basis: 100%;
   overflow: hidden;
 }
@@ -564,7 +562,7 @@ main header {
   border: 3px solid transparent;
   color: #c4c4c4;
   border-radius: 10px;
-  background-image: linear-gradient(#121212, #121212), linear-gradient(90deg, #8b0000 0%, #ff9001 70%);
+  background-image: linear-gradient(#121212, #121212), linear-gradient(-45deg, #f49c04 0%, #f0363b 80%);
   background-origin: border-box;
   background-clip: content-box, border-box;
   transform-style: preserve-3d;
@@ -623,6 +621,25 @@ main header .title i {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+main header .title > .logo {
+  min-height: 40px;
+  margin-left: 8px;
+  padding: 5px;
+  padding-inline: 20px;
+  border-radius: 4px;
+  color: #eee8d5;
+}
+main header .title > .logo h1 {
+  font-family: "GolosTextWebBlack";
+  text-align: center;
+  letter-spacing: -1px;
+  position: relative;
+}
+main header .title > .logo h1 sup {
+  position: absolute;
+  font-size: 11px;
+  top: 20px;
 }
 main .tasks-block {
   display: flex;
@@ -708,6 +725,7 @@ main .tasks-block .task .content > i.fa-circle {
 }
 main .tasks-block .task .content > i.fa-circle.checked {
   color: #0d72ea;
+  color: #f49c04;
 }
 main .tasks-block .task .content > i.fa-circle.checked::before {
   content: "\f058";
@@ -723,8 +741,8 @@ main .tasks-block .task .content > i.fa-circle.checked.checked.hover + P {
   z-index: 0;
 }
 @media screen and (min-width: 768px) {
-  main .tasks-block .task .content > i.fa-circle:hover {
-    color: #0d72ea;
+  main .tasks-block .task .content > i.fa-circle:not(.checked):hover {
+    color: #f9d893;
   }
 }
 main .tasks-block .task .content > p {
@@ -1015,6 +1033,7 @@ nav {
   min-width: 245px;
   border-radius: 10px;
   background-color: #222;
+  background-color: #282a2f;
   overflow: hidden;
 }
 @media screen and (max-width: 767px) {
@@ -1037,7 +1056,7 @@ nav header {
   width: calc(100% - 40px);
   max-width: 226.83px;
   margin: 20px auto 20px 20px;
-  background: linear-gradient(135deg, #8b0000 0%, #ff9001 70%);
+  background: linear-gradient(135deg, #f0363b 0%, #f49c04 70%);
 }
 nav header h1 {
   font-family: "GolosTextWebBlack";

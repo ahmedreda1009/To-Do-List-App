@@ -10,6 +10,7 @@ main {
 	border-radius: abstracts.$radiusLg;
 	padding: 20px 0px 15px 10px;
 	background-color: abstracts.$clr-main-dark;
+	background-color: abstracts.$grayLight;
 	// box-shadow: 3px 3px 20px 1px abstracts.$clr-main-shadow;
 	flex-basis: 100%;
 	overflow: hidden;
@@ -33,14 +34,23 @@ main {
 		border: 3px solid transparent;
 		color: abstracts.$clr-main-text;
 		border-radius: abstracts.$radiusLg;
+		// background-image: linear-gradient(
+		// 		abstracts.$clr-main-darkest,
+		// 		abstracts.$clr-main-darkest
+		// 	),
+		// 	linear-gradient(
+		// 		90deg,
+		// 		abstracts.$clr-gradient-red 0%,
+		// 		abstracts.$clr-gradient-yellow 70%
+		// 	);
 		background-image: linear-gradient(
 				abstracts.$clr-main-darkest,
 				abstracts.$clr-main-darkest
 			),
 			linear-gradient(
-				90deg,
-				abstracts.$clr-gradient-red 0%,
-				abstracts.$clr-gradient-yellow 70%
+				-45deg,
+				abstracts.$clrNewYellow 0%,
+				abstracts.$clrNewRed 80%
 			);
 		background-origin: border-box;
 		background-clip: content-box, border-box;
@@ -109,6 +119,35 @@ main {
 				-webkit-background-clip: text;
 				background-clip: text;
 				-webkit-text-fill-color: transparent;
+			}
+
+			> .logo {
+				// width: 50px;
+				min-height: 40px;
+				margin-left: 8px;
+				padding: 5px;
+				padding-inline: 20px;
+				border-radius: 4px;
+				// background: linear-gradient(
+				// 	135deg,
+				// 	abstracts.$clrNewRed 0%,
+				// 	abstracts.$clrNewYellow 80%
+				// );
+				// background-color: abstracts.$clrNewBeige;
+				color: abstracts.$clrNewBeige;
+
+				h1 {
+					font-family: "GolosTextWebBlack";
+					text-align: center;
+					letter-spacing: -1px;
+					position: relative;
+
+					sup {
+						position: absolute;
+						font-size: 11px;
+						top: 20px;
+					}
+				}
 			}
 		}
 	}
@@ -203,6 +242,7 @@ main {
 
 						&.checked {
 							color: abstracts.$clr-list-completed;
+							color: abstracts.$clrNewYellow;
 
 							&::before {
 								content: "\f058";
@@ -222,8 +262,8 @@ main {
 						}
 
 						@include abstracts.media-up(sm) {
-							&:hover {
-								color: abstracts.$clr-list-completed;
+							&:not(.checked):hover {
+								color: abstracts.$yellowLight;
 							}
 						}
 					}

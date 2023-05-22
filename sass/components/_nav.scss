@@ -12,6 +12,7 @@ nav {
 	min-width: 245px;
 	border-radius: abstracts.$radiusLg;
 	background-color: abstracts.$clr-main-dark;
+	background-color: abstracts.$grayLight;
 	// box-shadow: 3px 3px 20px 1px abstracts.$clr-main-shadow;
 	overflow: hidden;
 
@@ -38,10 +39,15 @@ nav {
 		// }
 		max-width: 226.83px;
 		margin: 20px auto 20px 20px;
+		// background: linear-gradient(
+		// 	135deg,
+		// 	abstracts.$clr-gradient-red 0%,
+		// 	abstracts.$clr-gradient-yellow 70%
+		// );
 		background: linear-gradient(
 			135deg,
-			abstracts.$clr-gradient-red 0%,
-			abstracts.$clr-gradient-yellow 70%
+			abstracts.$clrNewRed 0%,
+			abstracts.$clrNewYellow 70%
 		);
 
 		h1 {

@@ -47,7 +47,8 @@ html {
 
 body {
 	color: abstracts.$clr-main-text;
-	background-color: abstracts.$clr-main-darkest;
+	// background-color: abstracts.$clr-main-darkest;
+	background-color: abstracts.$grayLight;
 	font: {
 		family: "GolosTextWebRegular";
 	}
@@ -124,9 +125,11 @@ svg {
 	border-radius: abstracts.$radiusLg;
 	height: min(90vh, 700px);
 	// background: rgba(255, 255, 255, 0.2);
-	background: rgb(82 80 75);
-	background: rgb(139, 136, 127);
-	background: rgb(184, 183, 178);
+	// background: rgb(82 80 75);
+	// background: rgb(139, 136, 127);
+	// background: rgb(184, 183, 178);
+	background: abstracts.$black;
+	// background: abstracts.$clrLightGreen;
 	// background: rgb(139, 137, 132);
 	border-radius: 16px;
 	// box-shadow: 3px 3px 20px 1px abstracts.$clr-main-shadow;
