@@ -662,12 +662,14 @@ main .tasks-block .task {
   border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 8px;
   position: relative;
-  cursor: default;
+  cursor: pointer;
   opacity: 1;
   transition: background-color 5ms ease;
 }
-main .tasks-block .task:hover {
-  background-color: rgba(24, 24, 24, 0.5);
+@media screen and (min-width: 768px) {
+  main .tasks-block .task:hover {
+    background-color: rgba(24, 24, 24, 0.5);
+  }
 }
 main .tasks-block .task.active {
   position: relative;

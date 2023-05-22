@@ -151,12 +151,14 @@ main {
 			border: 1px solid rgba(255, 255, 255, 0.04);
 			border-radius: abstracts.$radiusSm;
 			position: relative;
-			cursor: default;
+			cursor: pointer;
 			opacity: 1;
 			transition: background-color 5ms ease;
 
-			&:hover {
-				background-color: rgba(abstracts.$clr-task, 0.5);
+			@include abstracts.media-up(sm) {
+				&:hover {
+					background-color: rgba(abstracts.$clr-task, 0.5);
+				}
 			}
 
 			&.active {
