@@ -21,10 +21,16 @@ export function addNewTodo() {
 	TodoList.updateCounts();
 
 	// add todo to html
-	tasksBlock.append(todo.render());
+	let activeList = TodoList.activeList;
+	let inProgList = ListsNames.inprogress;
+	let allList = ListsNames.all;
+	let favList = ListsNames.favourite;
+	if (activeList === allList || activeList == inProgList || (activeList == favList && isFav)) {
+		tasksBlock.append(todo.render());
+	}
 
 	// render todos from active list.
-	renderTodos(TodoList.activeList);
+	// renderTodos(TodoList.activeList);
 
 	// clear input field
 	input.value = "";
