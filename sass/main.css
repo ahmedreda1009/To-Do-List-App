@@ -333,8 +333,12 @@ nav .nav-block .actions > div.clear .question .buttons button {
   cursor: pointer;
   width: 60px;
 }
-nav .nav-block .actions > div.clear .question .buttons button.no:hover {
+nav .nav-block .actions > div.clear .question .buttons button.yes:hover {
   background-color: #731702;
+  color: #c4c4c4;
+}
+nav .nav-block .actions > div.clear .question .buttons button.no:hover {
+  background-color: #222;
   color: #c4c4c4;
 }
 nav .nav-block .actions > div.clear .question .buttons .close {

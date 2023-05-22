@@ -200,8 +200,13 @@ nav .nav-block {
 							cursor: pointer;
 							width: 60px;
 
-							&.no:hover {
+							&.yes:hover {
 								background-color: abstracts.$clrNewRedDark;
+								color: abstracts.$clr-main-text;
+							}
+
+							&.no:hover {
+								background-color: abstracts.$clr-main-dark;
 								color: abstracts.$clr-main-text;
 							}
 						}
