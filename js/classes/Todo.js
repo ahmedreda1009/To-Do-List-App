@@ -62,7 +62,7 @@ export default class Todo {
 		let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 		let AmPm = "";
 
-		if (hour < 9) {
+		if (hour <= 9) {
 			hour = "0" + hour;
 			AmPm = "AM";
 		} else if (hour > 9 && hour < 12) {
