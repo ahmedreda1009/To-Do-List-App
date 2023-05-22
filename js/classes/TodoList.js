@@ -33,6 +33,7 @@ export default class TodoList {
 		this.todos = [];
 
 		Storage.clear();
+		location.reload();
 	}
 
 	static deleteTrash() {
