@@ -43,14 +43,20 @@ main {
 		// 		abstracts.$clr-gradient-red 0%,
 		// 		abstracts.$clr-gradient-yellow 70%
 		// 	);
-		background-image: linear-gradient(
-				abstracts.$clr-main-darkest,
-				abstracts.$clr-main-darkest
-			),
+		// background-image: linear-gradient(
+		// 		abstracts.$clr-main-darkest,
+		// 		abstracts.$clr-main-darkest
+		// 	),
+		// 	linear-gradient(
+		// 		-45deg,
+		// 		abstracts.$clrNewYellow 0%,
+		// 		abstracts.$clrNewRed 80%
+		// 	);
+		background-image: linear-gradient(abstracts.$black, abstracts.$black),
 			linear-gradient(
-				-45deg,
-				abstracts.$clrNewYellow 0%,
-				abstracts.$clrNewRed 80%
+				90deg,
+				abstracts.$clr-gradient-red 0%,
+				abstracts.$clr-gradient-yellow 70%
 			);
 		background-origin: border-box;
 		background-clip: content-box, border-box;
@@ -444,7 +450,7 @@ main {
 		transform: translateX(-50%) scale(0);
 		transform-origin: bottom;
 		z-index: 999;
-		width: 100%;
+		width: calc(100% + 2px);
 		height: 100%;
 		opacity: 0;
 		// box-shadow: 0px 0px 0 400px transparent;

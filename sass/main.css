@@ -567,7 +567,7 @@ main header {
   border: 3px solid transparent;
   color: #c4c4c4;
   border-radius: 10px;
-  background-image: linear-gradient(#121212, #121212), linear-gradient(-45deg, #f49c04 0%, #f0363b 80%);
+  background-image: linear-gradient(#15161a, #15161a), linear-gradient(90deg, #8b0000 0%, #ff9001 70%);
   background-origin: border-box;
   background-clip: content-box, border-box;
   transform-style: preserve-3d;
@@ -894,7 +894,7 @@ main .new-task-container {
   transform: translateX(-50%) scale(0);
   transform-origin: bottom;
   z-index: 999;
-  width: 100%;
+  width: calc(100% + 2px);
   height: 100%;
   opacity: 0;
   transition: transform 50ms ease-in-out, bottom 50ms ease-in-out, left 50ms ease-in-out;
