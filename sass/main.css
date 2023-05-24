@@ -137,7 +137,7 @@ svg {
 .container {
   display: flex;
   gap: 20px;
-  padding: 30px;
+  padding: 20px;
   margin: auto;
   transition: width 0.3s ease-in-out, padding 0.3s ease;
   border-radius: 10px;
@@ -150,7 +150,6 @@ svg {
   .container {
     width: 100vw;
     height: 100dvh;
-    padding: 20px;
     border-radius: 0px;
   }
 }
@@ -160,7 +159,6 @@ svg {
     max-width: 1200px;
     height: 90vh;
     border-radius: 10px;
-    padding: 30px;
   }
 }
 @media screen and (max-width: 767px) {

@@ -119,7 +119,7 @@ svg {
 .container {
 	display: flex;
 	gap: 20px;
-	padding: 30px;
+	padding: 20px;
 	margin: auto;
 	transition: width 0.3s ease-in-out, padding 0.3s ease;
 	border-radius: abstracts.$radiusLg;
@@ -129,8 +129,7 @@ svg {
 	// background: rgb(139, 136, 127);
 	// background: rgb(184, 183, 178);
 	background: abstracts.$black;
-	// background: abstracts.$clrLightGreen;
-	// background: rgb(139, 137, 132);
+	// background: abstracts.$clrLightGreen;	// background: rgb(139, 137, 132);
 	border-radius: 16px;
 	// box-shadow: 3px 3px 20px 1px abstracts.$clr-main-shadow;
 	// backdrop-filter: blur(3.9px);
@@ -140,7 +139,7 @@ svg {
 	@include abstracts.media-up(xs) {
 		width: 100vw;
 		height: 100dvh;
-		padding: 20px;
+		// padding: 20px;
 		border-radius: 0px;
 	}
 
@@ -149,7 +148,7 @@ svg {
 		max-width: 1200px;
 		height: 90vh;
 		border-radius: abstracts.$radiusLg;
-		padding: 30px;
+		// padding: 30px;
 	}
 
 	@include abstracts.media-down(mb) {
