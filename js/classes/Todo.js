@@ -73,7 +73,7 @@ export default class Todo {
 			AmPm = "PM";
 		} else if (hour > 12) {
 			hour = hour - 12;
-			if (hour < 10) hour = '0' + hour;
+			if (hour < 10) hour = "0" + hour;
 			AmPm = "PM";
 		}
 
@@ -97,14 +97,16 @@ export default class Todo {
                     <p>edit</p>
                 </div>
                 <div class="favourite ${this.isDeleted ? "deleted" : ""}">
-                    <i class="fa-solid ${this.isFavourite && !this.isDeleted
-				? "fa-star-half-stroke"
-				: "fa-star"
-			}"></i>
-                    <p>${this.isFavourite && !this.isDeleted
-				? "Unfavorite"
-				: "Favourite"
-			}</p>
+                    <i class="fa-solid ${
+						this.isFavourite && !this.isDeleted
+							? "fa-star-half-stroke"
+							: "fa-star"
+					}"></i>
+                    <p>${
+						this.isFavourite && !this.isDeleted
+							? "Unfavorite"
+							: "Favourite"
+					}</p>
                 </div>
                 <div class="delete">
                     <i class="fa-thin fa-trash"></i>
@@ -115,9 +117,10 @@ export default class Todo {
         <div class="date ${this.isFavourite ? "favourite" : ""}">
             <time>${hour}:${minite > 9 ? minite : "0" + minite} ${AmPm} </time>
             -
-            <time>${days[weekDay]}</time>&nbsp;&nbsp;&nbsp;
-            <time>${day > 9 ? day : "0" + day}.${month > 9 ? month + 1 : "0" + (month + 1)
-			}.${year}</time>&nbsp;&nbsp;&nbsp;
+            <time>${days[weekDay]}</time>&nbsp;&nbsp;
+            <time>${day > 9 ? day : "0" + day}&bull;${
+			month > 9 ? month + 1 : "0" + (month + 1)
+		}&bull;${year}</time>&nbsp;&nbsp;&nbsp;
             <i class="fa-solid fa-star" style="color: #ffa42b"></i>
             <i class="fa-solid fa-circle" style="color: #af2626"></i>&nbsp;
         </div>`;
