@@ -5,29 +5,30 @@ import { setCaret, renderTodos } from "./helperFunctions.js";
 let tasksBlock = document.querySelector("main .tasks-block");
 
 // open new task window.
+let newTodoBtn = document.querySelector("main button.new-task");
+newTodoBtn.addEventListener("click", (e) => {
+	e.stopPropagation();
+	const newTaskContainer = document.querySelector("main .new-task-container");
+	newTaskContainer.classList.add("active");
+	newTodoBtn.classList.add("active");
+	document.querySelector("main .new-task-container input").focus();
+});
 document.addEventListener("click", (e) => {
-	let isAddBtn = e.target.matches("main button.new-task");
-
-	if (!isAddBtn && e.target.closest(".new-task-window")) return;
+	if (e.target.closest(".new-task-window")) return;
 
 	const newTaskContainer = document.querySelector("main .new-task-container");
+	newTaskContainer.classList.remove("active");
+	newTodoBtn.classList.remove("active");
 
-	if (!isAddBtn) {
-		newTaskContainer.classList.remove("active");
-		document
-			.querySelector("main button.new-task")
-			.classList.remove("active");
-		document.querySelector("main .new-task-container input").value = "";
-		document
-			.querySelector("main .new-task-container .icons .fa-star")
-			.classList.remove("active");
-	} else {
-		newTaskContainer.classList.toggle("active");
-		document
-			.querySelector("main button.new-task")
-			.classList.toggle("active");
-		document.querySelector("main .new-task-container input").focus();
-	}
+	const favIcon = document.querySelector(
+		"main .new-task-container .icons .fa-star"
+	);
+	favIcon.classList.remove("active");
+
+	const newTaskInput = document.querySelector(
+		"main .new-task-container input"
+	);
+	newTaskInput.value = "";
 });
 
 // nav list buttons.
@@ -35,68 +36,64 @@ let navListBtns = document.querySelectorAll("nav .nav-block .lists > div");
 navListBtns.forEach((btn) => {
 	btn.addEventListener("click", () => {
 		navListBtns.forEach((btn) => {
-			if (btn === this) return;
 			btn.classList.remove("active");
 		});
-
 		btn.classList.add("active");
 	});
 });
 
-// clear and reset buttons
-document.addEventListener("click", (e) => {
-	let currentBtn = e.target.closest("nav .nav-block .actions .clear > div");
-	let close = e.target.matches("nav .nav-block .actions .clear > div .close");
-	let no = e.target.matches("nav .nav-block .actions .clear > div .no");
+// reset button and clear trash
+let resetBtn = document.querySelector("nav .actions .clear .reset-all");
+let clearTrashBtn = document.querySelector("nav .actions .clear .clear-trash");
+// reset button
+resetBtn.addEventListener("click", function (e) {
+	e.stopPropagation();
 
-	let closeAndClearBtns = document.querySelectorAll(
-		"nav .nav-block .actions .clear > div"
-	);
-
-	if (currentBtn == null || close || no) {
-		closeAndClearBtns.forEach((btn) => {
-			btn.classList.remove("active");
-		});
+	let closeBtn = resetBtn.querySelector(".close");
+	let noBtn = resetBtn.querySelector(".no");
+	if (e.target == closeBtn || e.target == noBtn) {
+		resetBtn.classList.remove("active");
 		return;
-	} else {
-		currentBtn.classList.add("active");
 	}
 
-	closeAndClearBtns.forEach((btn) => {
-		if (currentBtn == btn) return;
-		btn.classList.remove("active");
-	});
+	resetBtn.classList.add("active");
+	clearTrashBtn.classList.remove("active");
+});
+document.addEventListener("click", function () {
+	resetBtn.classList.remove("active");
+});
+
+// clear trash button
+clearTrashBtn.addEventListener("click", function (e) {
+	e.stopPropagation();
+
+	let closeBtn = clearTrashBtn.querySelector(".close");
+	let noBtn = clearTrashBtn.querySelector(".no");
+	if (e.target == closeBtn || e.target == noBtn) {
+		clearTrashBtn.classList.remove("active");
+		return;
+	}
+
+	clearTrashBtn.classList.add("active");
+	resetBtn.classList.remove("active");
+});
+document.addEventListener("click", function () {
+	clearTrashBtn.classList.remove("active");
 });
 
 // .todo option button
 document.addEventListener("click", (e) => {
-	let isOptBtn = e.target.matches(
-		".tasks-block .task .content .fa-ellipsis-vertical"
-	);
-	// if (
-	// 	!isOptBtn &&
-	// 	e.target.closest(".tasks-block .task .content .options") != null
-	// )
-	// 	return;
+	let isOptBtn = e.target.matches(".task .content .fa-ellipsis-vertical");
 	if (e.target.closest(".tasks-block .task .content .options")) return;
 
 	let currrentMenu = e.target.nextElementSibling;
 	if (isOptBtn) {
 		currrentMenu.classList.toggle("active");
 		currrentMenu.closest(".task").classList.toggle("active");
-
-		// scroll to the beginning of the active task
-		// document.querySelector("main .tasks-block").scrollTo({
-		// 	top: currrentMenu.closest(".task").offsetTop - 110,
-		// 	left: 0,
-		// 	behavior: "smooth",
-		// });
 	}
 
 	// close all other option lists.
-	const optionsMenus = document.querySelectorAll(
-		".tasks-block .task .content .options"
-	);
+	const optionsMenus = document.querySelectorAll(".task .content .options");
 	optionsMenus.forEach((menu) => {
 		if (menu === currrentMenu) return;
 		menu.classList.remove("active");
@@ -138,7 +135,7 @@ document.addEventListener("click", (e) => {
 	}
 	// renderTodos(TodoList.activeList);
 	options.classList.remove("active");
-	options.closest('.task').classList.remove("active");
+	options.closest(".task").classList.remove("active");
 });
 
 // delete button inside todo options window
@@ -249,7 +246,7 @@ document
 		TodoList.deleteTrash();
 		// renderTodos(TodoList.activeList);
 
-		if (TodoList.activeList === ListsNames.trash) tasksBlock.innerHTML = ''
+		if (TodoList.activeList === ListsNames.trash) tasksBlock.innerHTML = "";
 
 		document
 			.querySelector("nav .nav-block .actions .clear .clear-trash")
@@ -273,7 +270,7 @@ document
 		});
 
 		// renderTodos(TodoList.activeList);
-		tasksBlock.innerHTML = ''
+		tasksBlock.innerHTML = "";
 	});
 
 // search button
