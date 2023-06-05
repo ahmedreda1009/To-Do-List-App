@@ -96,15 +96,13 @@ export default class Todo {
                     <i class="fa-solid fa-pen-to-square"></i>
                     <p>edit</p>
                 </div>
-                <div class="favourite ${this.isDeleted ? "deleted" : ""}">
+                <div class="favourite ${this.isDeleted ? "deleted" : ""}" ${this.isDeleted ? "style='opacity: .3;'" : ""}>
                     <i class="fa-solid ${this.isFavourite && !this.isDeleted
 				? "fa-star-half-stroke"
-				: "fa-star"
-			}"></i>
-                    <p>${this.isFavourite && !this.isDeleted
+				: "fa-star"}"></i>
+					<p>${this.isFavourite && !this.isDeleted
 				? "Unfavorite"
-				: "Favourite"
-			}</p>
+				: "Favourite"}</p>
                 </div>
                 <div class="delete">
                     <i class="fa-thin fa-trash"></i>

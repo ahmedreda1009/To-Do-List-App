@@ -347,13 +347,16 @@ main {
 
 						&.deleted:hover {
 							cursor: no-drop;
+							opacity: 0.5;
 						}
 
-						&:hover {
-							background-color: #222;
+						@include abstracts.media-up(sm) {
+							&:hover {
+								background-color: #222;
 
-							p {
-								color: rgba(#a7a7a7, 0.9);
+								p {
+									color: rgba(#a7a7a7, 0.9);
+								}
 							}
 						}
 

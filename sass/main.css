@@ -817,12 +817,15 @@ main .tasks-block .task .content .options > div {
 }
 main .tasks-block .task .content .options > div.deleted:hover {
   cursor: no-drop;
+  opacity: 0.5;
 }
-main .tasks-block .task .content .options > div:hover {
-  background-color: #222;
-}
-main .tasks-block .task .content .options > div:hover p {
-  color: rgba(167, 167, 167, 0.9);
+@media screen and (min-width: 768px) {
+  main .tasks-block .task .content .options > div:hover {
+    background-color: #222;
+  }
+  main .tasks-block .task .content .options > div:hover p {
+    color: rgba(167, 167, 167, 0.9);
+  }
 }
 main .tasks-block .task .content .options > div i {
   color: rgba(209, 209, 223, 0.7);
