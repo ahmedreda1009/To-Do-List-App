@@ -88,7 +88,7 @@ export function renderTodos(listName) {
 	let todos = getTodos(listName);
 	tasksBlock.innerHTML = "";
 	todos.forEach((todo) => tasksBlock.append(todo.render()));
-	TodoList.updateCounts();
+	// TodoList.updateCounts();
 }
 
 export function setCaret(element) {

@@ -13,41 +13,83 @@ export default class Todo {
 	check() {
 		this.isDone = true;
 		Storage.update();
+		// TodoList.updateCounts();
+
+		TodoList.counts.completed++;
+		TodoList.counts.inprogress--;
+
 		TodoList.updateCounts();
 	}
 
 	unCheck() {
 		this.isDone = false;
 		Storage.update();
+		// TodoList.updateCounts();
+
+		TodoList.counts.completed--;
+		TodoList.counts.inprogress++;
+
 		TodoList.updateCounts();
 	}
 
 	favourite() {
 		this.isFavourite = true;
 		Storage.update();
+		// TodoList.updateCounts();
+
+		TodoList.counts.favourite++;
+
 		TodoList.updateCounts();
 	}
 
 	unFavourite() {
 		this.isFavourite = false;
 		Storage.update();
+		// TodoList.updateCounts();
+
+		TodoList.counts.favourite--;
+
 		TodoList.updateCounts();
 	}
 
 	edit(newText) {
 		this.body = newText;
 		Storage.update();
-		TodoList.updateCounts();
+		// TodoList.updateCounts();
 	}
 
 	delete() {
 		this.isDeleted = true;
 		this.unFavourite();
+
+		TodoList.counts.all--;
+		TodoList.counts.trash++;
+
+		if (this.isDone) {
+			TodoList.counts.completed--;
+		} else if (!this.isDone) {
+			TodoList.counts.inprogress--;
+		} else if (this.isFavourite) {
+			TodoList.counts.favourite--;
+		}
+
+		TodoList.updateCounts();
 	}
 
 	restore() {
 		this.isDeleted = false;
 		Storage.update();
+		// TodoList.updateCounts();
+
+		TodoList.counts.all++;
+		TodoList.counts.trash--;
+
+		if (this.isDone) {
+			TodoList.counts.completed++;
+		} else {
+			TodoList.counts.inprogress++;
+		}
+
 		TodoList.updateCounts();
 	}
 

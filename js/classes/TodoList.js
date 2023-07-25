@@ -12,8 +12,8 @@ export const ListsNames = Object.freeze({
 export default class TodoList {
 	static todos = [];
 	static counts = {
-		all: 0,
-		inprogress: 0,
+		all: 1,
+		inprogress: 1,
 		completed: 0,
 		favourite: 0,
 		trash: 0,
@@ -50,11 +50,15 @@ export default class TodoList {
 	}
 
 	static updateCounts() {
-		TodoList.counts.all = getTodos(ListsNames.all).length;
-		TodoList.counts.inprogress = getTodos(ListsNames.inprogress).length;
-		TodoList.counts.completed = getTodos(ListsNames.completed).length;
-		TodoList.counts.favourite = getTodos(ListsNames.favourite).length;
-		TodoList.counts.trash = getTodos(ListsNames.trash).length;
+		// TodoList.counts.all = getTodos(ListsNames.all).length;
+		// TodoList.counts.inprogress = getTodos(ListsNames.inprogress).length;
+		// TodoList.counts.completed = getTodos(ListsNames.completed).length;
+		// TodoList.counts.favourite = getTodos(ListsNames.favourite).length;
+		// TodoList.counts.trash = getTodos(ListsNames.trash).length;
+
+		for (let list in TodoList.counts) {
+			if (TodoList.counts[list] < 0) TodoList.counts[list] = 0;
+		}
 
 		document.querySelector("#list-all > span").innerHTML =
 			TodoList.counts.all;
