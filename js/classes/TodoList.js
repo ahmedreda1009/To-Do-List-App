@@ -27,6 +27,7 @@ export default class TodoList {
 	static add(todo) {
 		TodoList.todos.push(todo);
 		Storage.update();
+		this.updateCounts();
 	}
 
 	static clear() {

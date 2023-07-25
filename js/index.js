@@ -30,6 +30,7 @@ if (todos) {
 	let todo = new Todo(Date.now(), "Be Productive, DO MORE.", true);
 	TodoList.add(todo);
 	todosBlock.append(todo.render());
+	TodoList.updateCounts();
 }
 
 // add new todo

@@ -18,6 +18,8 @@ export function addNewTodo() {
 	let isFav = favBtn.classList.contains("active");
 	const todo = new Todo(Date.now(), input.value, isFav);
 	TodoList.add(todo);
+	TodoList.counts.all++;
+	TodoList.counts.inprogress++;
 	TodoList.updateCounts();
 
 	// add todo to html
