@@ -126,6 +126,10 @@ document.addEventListener("click", (e) => {
 		todo.classList.remove("favourite");
 		fav.previousElementSibling.classList.remove("fa-star-half-stroke");
 		fav.previousElementSibling.classList.add("fa-star");
+
+		if (TodoList.activeList === 'list-favourite') {
+			todo.remove();
+		}
 	} else {
 		todoObj.favourite();
 
@@ -220,11 +224,19 @@ document.addEventListener("click", (e) => {
 
 		checkBtn.classList.remove("checked");
 		todo.classList.remove("checked");
+
+		if (TodoList.activeList === 'list-completed') {
+			todo.remove();
+		}
 	} else {
 		todoObj.check();
 
 		checkBtn.classList.add("checked");
 		todo.classList.add("checked");
+
+		if (TodoList.activeList === 'list-progress') {
+			todo.remove();
+		}
 	}
 	// renderTodos(TodoList.activeList);
 });
